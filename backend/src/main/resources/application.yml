@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: dev # the app will use the properties defined under the dev profile
+  servlet:
+    multipart:
+      max-file-size: 10MB # for file uploads
+springdoc: # used for generating API documentation
+  default-produces-media-type: application/json
+server:
+  servlet:
+    context-path: /api/v1/ # the base URL under which the app is accessed

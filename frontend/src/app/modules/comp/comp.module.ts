@@ -6,13 +6,15 @@ import { MainComponent } from './pages/main/main.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CompListComponent } from './pages/comp-list/comp-list.component';
 import { CompCardComponent } from './components/comp-card/comp-card.component';
+import { MyCompsComponent } from './pages/my-comps/my-comps.component';
 
 @NgModule({
   declarations: [
     MainComponent,
     MenuComponent,
     CompCardComponent,
-    CompListComponent
+    CompListComponent,
+    MyCompsComponent
   ],
   imports: [
     CommonModule,

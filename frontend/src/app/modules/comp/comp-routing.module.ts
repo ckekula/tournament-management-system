@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './pages/main/main.component';
 import { CompListComponent } from './pages/comp-list/comp-list.component';
+import { MyCompsComponent } from './pages/my-comps/my-comps.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
       {
         path: '',
         component: CompListComponent,
+      },
+      {
+        path: 'my-comps',
+        component: MyCompsComponent
       }
     ]
   }

@@ -1,5 +1,8 @@
 <h3>List of competitions</h3>
 <hr>
 <div class="d-flex justify-content-start gap-2 flex-wrap">
-    competition list    
+    <app-comp-card
+    *ngFor="let comp of compResponse.content"
+    [comp]="comp"
+    ></app-comp-card>
 </div>

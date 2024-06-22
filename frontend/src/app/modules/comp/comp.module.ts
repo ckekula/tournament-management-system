@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { CompRoutingModule } from './comp-routing.module';
 import { MainComponent } from './pages/main/main.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { CompListComponent } from './pages/comp-list/comp-list.component';
 import { CompCardComponent } from './components/comp-card/comp-card.component';
 
 @NgModule({
   declarations: [
     MainComponent,
     MenuComponent,
-    CompCardComponent
+    CompCardComponent,
+    CompListComponent
   ],
   imports: [
     CommonModule,

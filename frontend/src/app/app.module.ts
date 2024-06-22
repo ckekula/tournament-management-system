@@ -9,9 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
 import { CodeInputModule } from 'angular-code-input';
-import { MainComponent } from './modules/comp/pages/main/main.component';
-import { MenuComponent } from './modules/comp/components/menu/menu.component';
-import { CompListComponent } from './modules/comp/pages/comp-list/comp-list.component';
 import { HttpTokenInterceptor } from './services/interceptor/http-token.interceptor';
 
 @NgModule({

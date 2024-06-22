@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CompService } from '../../../../services/services';
 import { Router } from '@angular/router';
 import { PageResponseCompResponse } from '../../../../services/models';
+import { CompResponse } from '../../../../services/models';
 
 @Component({
   selector: 'app-comp-list',
@@ -33,8 +34,8 @@ export class CompListComponent {
       size: this.size
     })
       .subscribe({
-        next: (books) => {
-          this.compResponse = books;
+        next: (comps) => {
+          this.compResponse = comps;
           this.pages = Array(this.compResponse.totalPages)
             .fill(0)
             .map((x, i) => i);

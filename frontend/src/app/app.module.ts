@@ -9,13 +9,17 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
 import { CodeInputModule } from 'angular-code-input';
+import { MainComponent } from './modules/pages/main/main.component';
+import { MenuComponent } from './modules/components/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ActivateAccountComponent
+    ActivateAccountComponent,
+    MainComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

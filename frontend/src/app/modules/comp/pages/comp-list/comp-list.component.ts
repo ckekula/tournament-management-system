@@ -42,4 +42,38 @@ export class CompListComponent {
         }
       });
   }
+
+  gotToPage(page: number) {
+    this.page = page;
+    this.findAllComps();
+  }
+
+  goToFirstPage() {
+    this.page = 0;
+    this.findAllComps();
+  }
+
+  goToPreviousPage() {
+    this.page --;
+    this.findAllComps();
+  }
+
+  goToLastPage() {
+    this.page = this.compResponse.totalPages as number - 1;
+    this.findAllComps();
+  }
+
+  goToNextPage() {
+    this.page++;
+    this.findAllComps();
+  }
+
+  get isLastPage() {
+    return this.page === this.compResponse.totalPages as number - 1;
+  }
+
+  displayCompDetails(comp: CompResponse) {
+    this.router.navigate(['comps', 'details', comp.id]);
+  }
+
 }

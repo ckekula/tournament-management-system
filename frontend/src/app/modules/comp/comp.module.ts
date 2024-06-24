@@ -7,6 +7,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { CompListComponent } from './pages/comp-list/comp-list.component';
 import { CompCardComponent } from './components/comp-card/comp-card.component';
 import { MyCompsComponent } from './pages/my-comps/my-comps.component';
+import { ManageCompComponent } from './pages/manage-comp/manage-comp.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { MyCompsComponent } from './pages/my-comps/my-comps.component';
     MenuComponent,
     CompCardComponent,
     CompListComponent,
-    MyCompsComponent
+    MyCompsComponent,
+    ManageCompComponent
   ],
   imports: [
     CommonModule,
-    CompRoutingModule
+    CompRoutingModule,
+    FormsModule
   ]
 })
 export class CompModule { }

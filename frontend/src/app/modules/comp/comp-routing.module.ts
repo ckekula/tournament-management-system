@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './pages/main/main.component';
 import { CompListComponent } from './pages/comp-list/comp-list.component';
 import { MyCompsComponent } from './pages/my-comps/my-comps.component';
+import { ManageCompComponent } from './pages/manage-comp/manage-comp.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,14 @@ const routes: Routes = [
       {
         path: 'my-comps',
         component: MyCompsComponent
+      },
+      {
+        path: 'manage-comps',
+        component: ManageCompComponent
+      },
+      {
+        path: 'manage-comps',
+        component: ManageCompComponent
       }
     ]
   }

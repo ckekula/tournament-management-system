@@ -1,0 +1,55 @@
+<div class="p-2">
+    <h2>Manage my competitions</h2>
+    <hr>
+    <div class="alert alert-danger mt-2" role="alert" *ngIf="errorMsg.length">
+      <p class="p-0 m-0" *ngFor="let msg of errorMsg">{{msg}}</p>
+    </div>
+    <div class="d-flex gap-2">
+      <div class="col-3">
+        <img class="rounded-1" width="100%" height="100%" [src]=" selectedPicture || 'https://source.unsplash.com/user/c_v_r/1900x800'" alt="">
+        <div class="mt-2">
+          <input
+            (change)="onFileSelected($event)"
+            class="form-control"
+            type="file"
+            id="formFile"
+            accept="image/*"
+          >
+        </div>
+      </div>
+      <div class="col-9">
+        <form class="row g-3">
+          <div class="col-12">
+            <label for="name" class="form-label">Competition Name</label>
+            <input [(ngModel)]="compRequest.name" type="text" class="form-control" id="name" name="name"
+                   placeholder="Competition name">
+          </div>
+          <div class="col-md-6">
+            <label for="host" class="form-label">Host name</label>
+            <input [(ngModel)]="compRequest.host" type="text" class="form-control" id="host" name="host"
+                   placeholder="Host name">
+          </div>
+          <div class="col-md-6">
+            <label for="startDate" class="form-label">Start Date</label>
+            <input [(ngModel)]="compRequest.startDate" type="text" class="form-control" id="startDate" name="startDate"
+                    placeholder="Start date">
+          </div>
+          <div class="col-12">
+            <label for="endDate" class="form-label">End Date</label>
+            <input [(ngModel)]="compRequest.endDate" type="text" class="form-control" id="endDate" name="endDate"
+                      placeholder="End date">
+          </div>
+
+          <div class="d-flex justify-content-end gap-2 col-12">
+            <button (click)="saveComp()" type="submit" class="btn btn-outline-primary">
+              <i class="fas fa-save"></i>&nbsp;Save
+            </button>
+            <a routerLink="/books/my-books" type="submit" class="btn btn-link btn text-danger">
+              <i class="fas fa-times"></i>&nbsp;Cancel
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

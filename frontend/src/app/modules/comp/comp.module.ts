@@ -9,7 +9,6 @@ import { CompCardComponent } from './components/comp-card/comp-card.component';
 import { MyCompsComponent } from './pages/my-comps/my-comps.component';
 import { ManageCompComponent } from './pages/manage-comp/manage-comp.component';
 import {FormsModule} from '@angular/forms';
-import { CompDetailsComponent } from './pages/comp-details/comp-details.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { CompDetailsComponent } from './pages/comp-details/comp-details.componen
     CompCardComponent,
     CompListComponent,
     MyCompsComponent,
-    ManageCompComponent,
-    CompDetailsComponent
+    ManageCompComponent
   ],
   imports: [
     CommonModule,

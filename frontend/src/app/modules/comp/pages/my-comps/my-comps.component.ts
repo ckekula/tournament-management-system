@@ -70,7 +70,7 @@ export class MyCompsComponent implements OnInit {
     return this.page === this.compResponse.totalPages as number - 1;
   }
 
-  editcomp(comp: CompResponse) {
+  editComp(comp: CompResponse) {
     this.router.navigate(['comps', 'manage', comp.id]);
   }
 }

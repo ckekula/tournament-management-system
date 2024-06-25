@@ -22,12 +22,12 @@ const routes: Routes = [
         canActivate: [authGuard]
       },
       {
-        path: 'manage-comps',
+        path: 'manage',
         component: ManageCompComponent,
         canActivate: [authGuard]
       },
       {
-        path: 'manage-comps',
+        path: 'manage/:compId',
         component: ManageCompComponent,
         canActivate: [authGuard]
       }

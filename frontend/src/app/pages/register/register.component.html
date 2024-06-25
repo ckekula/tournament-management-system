@@ -5,12 +5,14 @@
       <p *ngFor="let msg of errorMsg">{{msg}}</p>
     </div>
     <div class="mb-3">
-      <label for="firstname" class="form-label">Displayname</label>
-      <input [(ngModel)]="registerRequest.firstname" type="text" class="form-control" id="firstname" placeholder="Firstname">
+      <label for="firstname" class="form-label">Organization Name</label>
+      <input [(ngModel)]="registerRequest.firstname" type="text" class="form-control" id="firstname" 
+      placeholder="Your Organization Name">
     </div>
     <div class="mb-3">
-      <label for="lastname" class="form-label">Fullname</label>
-      <input [(ngModel)]="registerRequest.lastname" type="text" class="form-control" id="lastname" placeholder="Lastname">
+      <label for="lastname" class="form-label">Full Name</label>
+      <input [(ngModel)]="registerRequest.lastname" type="text" class="form-control" id="lastname" 
+      placeholder="Your Full Name">
     </div>
     <div class="mb-3">
       <label for="login" class="form-label">Email address</label>

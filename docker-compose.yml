@@ -1,10 +1,10 @@
 services:
   mysql:
-    container_name: mysql-bsn
+    container_name: mysql-tms
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: chamuditha360
-      MYSQL_DATABASE: bsn
+      MYSQL_DATABASE: tms
       MYSQL_USER: username
       MYSQL_PASSWORD: password
     volumes:
@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
 
   mail-dev:
-    container_name: mail-dev-bsn
+    container_name: mail-dev-tms
     image: maildev/maildev
     ports:
       - 1080:1080

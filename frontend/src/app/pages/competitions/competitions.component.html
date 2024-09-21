@@ -1,0 +1,121 @@
+<div>
+    <div class="surface-section py-8 px-4 md:px-6 lg:px-8">
+        <div class="text-700 text-center">
+            <div class="text-blue-600 font-bold mb-3"><i class="pi pi-trophy"></i>&nbsp;GET IN ON THE ACTION!</div>
+            <div class="text-900 font-bold text-5xl mb-3">Browse Competitions</div>
+            <div class="text-700 text-2xl mb-5">Checkout live scores and stats on your favorite competitions</div>
+        </div>
+    </div>
+
+    <div>
+        <p-table
+        #dt2
+        [value]="competitions"
+        dataKey="id"
+        [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        [globalFilterFields]="['name', 'year', 'organizer', 'status']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+    >
+            <ng-template pTemplate="caption">
+                <div class="flex justify-between items-center">
+                    <div class="text-blue-600 font-semibold mt-3 text-left">Search and click on any competition!</div>
+                    <p-iconField iconPosition="left" class="ml-auto">
+                        <p-inputIcon>
+                            <i class="pi pi-search"></i>
+                        </p-inputIcon>
+                        <input 
+                            pInputText 
+                            type="text" 
+                            (input)="onGlobalFilter($event, dt2)" 
+                            placeholder="Search keyword" />
+                    </p-iconField>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:22%">Competition</th>
+                    <th style="width:22%">Year</th>
+                    <th style="width:22%">Organizer</th>
+                    <th style="width:22%">Status</th>
+                </tr>
+                <tr>
+                    <th>
+                        <p-columnFilter 
+                            type="text" 
+                            field="name" 
+                            placeholder="Search by name" 
+                            ariaLabel="Filter Name" />
+                    </th>
+                    <th>
+                        <p-columnFilter 
+                            type="text" 
+                            field="year" 
+                            placeholder="Search by year" 
+                            ariaLabel="Filter Year" />
+                    </th>
+                    <th>
+                        <p-columnFilter 
+                        type="text" 
+                        field="organizer" 
+                        placeholder="Search by organizer" 
+                        ariaLabel="Filter Organizer" />
+                    </th>
+                    <th>
+                        <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
+                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                <p-dropdown 
+                                    [ngModel]="value" 
+                                    [options]="statuses" 
+                                    (onChange)="filter($event.value)" 
+                                    placeholder="Select One" 
+                                    [showClear]="true">
+                                        <ng-template let-option pTemplate="item">
+                                            <p-tag 
+                                                [value]="option.value" 
+                                                [severity]="getSeverity(option.label)" />
+                                        </ng-template>
+                                </p-dropdown>
+                            </ng-template>
+                        </p-columnFilter>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-competition>
+                <tr (click)="onCompetitionClick(competition)" class="cursor-pointer hover:text-blue-600">
+                    <td>
+                        {{ competition.name }}
+                    </td>
+                    <td>
+                        <span class="ml-1 vertical-align-middle">
+                            {{ competition.year }}
+                        </span>
+                    </td>
+                    <td>
+                        <img 
+                            [alt]="competition.organizer" 
+                            [src]="getOrganizerImage(competition.organizer)" 
+                            width="32" 
+                            style="vertical-align: middle" />
+                        <span class="ml-1 vertical-align-middle">
+                            {{ competition.organizer }}
+                        </span>
+                    </td>
+                    <td>
+                        <p-tag 
+                            [value]="competition.status" 
+                            [severity]="getSeverity(competition.status)" />
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5">No Competitions found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+</div>

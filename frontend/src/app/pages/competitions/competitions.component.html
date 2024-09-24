@@ -1,16 +1,16 @@
 <div>
-    <div class="surface-section py-8 px-4 md:px-6 lg:px-8">
+    <div class="surface-section py-6 px-4 md:px-6 lg:px-8">
         <div class="text-700 text-center">
             <div class="text-blue-600 font-bold mb-3"><i class="pi pi-trophy"></i>&nbsp;GET IN ON THE ACTION!</div>
             <div class="text-900 font-bold text-5xl mb-3">Browse Competitions</div>
-            <div class="text-700 text-2xl mb-5">Checkout live scores and stats on your favorite competitions</div>
+            <div class="text-700 text-2xl mb-4">Checkout live scores and stats on your favorite competitions</div>
         </div>
     </div>
 
-    <div>
+    <div class="surface-section px-4 md:px-6">
         <p-table
         #dt2
-        [value]="competitions"
+        [value]="competition"
         dataKey="id"
         [rows]="10"
         [rowsPerPageOptions]="[10, 25, 50]"

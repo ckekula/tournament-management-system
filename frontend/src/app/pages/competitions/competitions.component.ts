@@ -9,7 +9,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import jsonData from '../../init.json';
+import jsonData from '../../utils/init.json';
 
 @Component({
     selector: 'app-competitions',

@@ -93,7 +93,7 @@
     }
   ],
 
-  "group_stages": [
+  "group_stage": [
     {
       "id": "group_stage_1",
       "name": "Group A",
@@ -144,7 +144,7 @@
     }
   ],
 
-  "knockout_stages": [
+  "knockout_stage": [
     {
       "id": "knockout_stage_1",
       "format": "Single Elimination",
@@ -157,7 +157,7 @@
     }
   ],
 
-  "group_rounds": [
+  "group_round": [
     {
       "id": "GR1A",
       "group_stage_id": "group_stage_1",
@@ -240,7 +240,7 @@
     }
   ],
 
-  "knockout_rounds": [
+  "knockout_round": [
     {
       "id": "KR1",
       "knockout_stage_id": "knockout_stage_1",
@@ -295,252 +295,6 @@
       "id": "KR11",
       "knockout_stage_id": "knockout_stage_2",
       "name": "Final"
-    }
-  ],
-
-  "organizations": [
-    {
-      "id": "org1",
-      "name": "International Sports Federation"
-    },
-    {
-      "id": "org2",
-      "name": "Global Athletic Association"
-    },
-    {
-      "id": "org3",
-      "name": "World Sports Council"
-    },
-    {
-      "id": "org4",
-      "name": "International Sporting Body"
-    },
-    {
-      "id": "org5",
-      "name": "Global Games Federation"
-    },
-    {
-      "id": "org6",
-      "name": "World Athletic Commission"
-    },
-    {
-      "id": "org7",
-      "name": "International Sports Board"
-    },
-    {
-      "id": "org8",
-      "name": "Global Sports Authority"
-    },
-    {
-      "id": "org9",
-      "name": "World Sports League"
-    },
-    {
-      "id": "org10",
-      "name": "International Sports Union"
-    },
-    {
-      "id": "org11",
-      "name": "Global Sports Alliance"
-    },
-    {
-      "id": "org12",
-      "name": "World Sports Federation"
-    }
-  ],
-
-  "teams": [
-    {
-      "org_id": "org1",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org2",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org3",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org4",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org5",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org6",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org7",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org8",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org9",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org10",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org11",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org12",
-      "event_id": "event_1"
-    },
-    {
-      "org_id": "org1",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org2",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org3",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org4",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org5",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org6",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org7",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org8",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org9",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org10",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org11",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org12",
-      "event_id": "event_2"
-    },
-    {
-      "org_id": "org1",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org2",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org3",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org4",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org5",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org6",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org7",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org8",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org9",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org10",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org11",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org12",
-      "event_id": "event_3"
-    },
-    {
-      "org_id": "org1",
-      "event_id": "event_4"
-    },
-    {
-      "org_id": "org2",
-      "event_id": "event_4"
-    },
-    {
-      "org_id": "org3",
-      "event_id": "event_4"
-    },
-    {
-      "org_id": "org4",
-      "event_id": "event_4"
-    },
-    {
-      "org_id": "org5",
-      "event_id": "event_4"
-    },
-    {
-      "org_id": "org6",
-      "event_id": "event_4"
-    },
-    {
-      "org_id": "org7",
-      "event_id": "event_4"
-    },
-    {
-      "org_id": "org8",
-      "event_id": "event_4"
-    },
-    {
-      "org_id": "org9",
-      "event_id": "event_4"
-    },
-    {
-      "org_id": "org10",
-      "event_id": "event_4"
-    },
-    {
-      "org_id": "org11",
-      "event_id": "event_4"
-    },
-    {
-      "org_id": "org12",
-      "event_id": "event_4"
     }
   ]
 }

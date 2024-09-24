@@ -1,0 +1,166 @@
+<div>
+    <div class="surface-section px-4 py-5 md:px-6 lg:px-8">
+        <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-3">
+            <li>
+                <a class="text-500 no-underline line-height-3 cursor-pointer">Competitions</a>
+            </li>
+            <li class="px-2">
+                <i class="pi pi-angle-right text-500 line-height-3"></i>
+            </li>
+            <li>
+                <span class="text-900 line-height-3">{{ getCompetition() }}</span>
+            </li>
+        </ul>
+
+    <div class="surface-section px-4 py-4 md:px-6 lg:px-8">
+        <div class="text-700 text-center">
+            <div class="text-blue-600 font-bold mb-3">WELCOME TO</div>
+            <div class="text-900 font-bold text-5xl mb-3">
+                {{ competition.name }}
+                <span>- {{ competition.year }}</span>
+            </div>
+            <div class="text-700 text-2xl mb-5">
+                Organized by:
+                <span>{{ competition.organizer }}</span>
+            </div>
+        </div>
+        
+        <div class="flex text-700 justify-content-center mb-4 text-blue-400">
+            <div class="mr-5 flex align-items-center">
+                <i class="pi pi-user mr-2"></i>
+                <span>9402 Participants</span>
+            </div>
+            <div class="mr-5 flex align-items-center">
+                <i class="pi pi-building mr-2"></i>
+                <span>332 Teams</span>
+            </div>
+            <div class="flex align-items-center">
+                <i class="pi pi-globe mr-2"></i>
+                <span>32 Organizations</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row mb-6">
+        <div class="font-medium text-3xl text-900">Overall Results</div>
+        <div class="text-700">
+            The Competition is
+            <span>: </span>
+            <p-tag 
+            [value]="getStatus()" 
+            [severity]="getSeverity(competition.status)" />
+        </div>
+    </div>
+
+    <div class="surface-section px-4 pb-6 md:px-6 lg:px-8 text-center">
+        <div class="grid">
+            <div class="col-12 md:col-4 px-5">
+                <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                    <i class="pi pi-trophy text-4xl text-gray-500"></i>
+                </span>
+                <div class="text-900 text-xl mb-3 font-medium">First Runners-Up</div>
+                <span class="text-700 line-height-3">University of Moratuwa</span>
+            </div>
+            <div class="col-12 md:col-4 px-5">
+                <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                    <i class="pi pi-trophy text-4xl text-yellow-600"></i>
+                </span>
+                <div class="text-900 text-xl mb-3 font-medium">Champions</div>
+                <span class="text-700 line-height-3">University of Ruhuna</span>
+            </div>
+            <div class="col-12 md:col-4 px-5">
+                <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                    <i class="pi pi-trophy text-4xl text-orange-200"></i>
+                </span>
+                <div class="text-900 text-xl mb-3 font-medium">Second Runners up</div>
+                <span class="text-700 line-height-3">University of Colombo</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row mb-6">
+        <div class="font-medium text-3xl text-900">Tournaments</div>
+    </div>
+
+    <div>
+        <p-table
+        #dt2
+        [value]="tournament"
+        dataKey="id"
+        [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        [globalFilterFields]="['name', 'start_date', 'venue']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+    >
+            <ng-template pTemplate="caption">
+                <div class="flex justify-between items-center">
+                    <div class="text-blue-600 font-semibold mt-3 text-left">Search and click on any tournament!</div>
+                    <p-iconField iconPosition="left" class="ml-auto">
+                        <p-inputIcon>
+                            <i class="pi pi-search"></i>
+                        </p-inputIcon>
+                        <input 
+                            pInputText 
+                            type="text" 
+                            (input)="onGlobalFilter($event, dt2)" 
+                            placeholder="Search keyword" />
+                    </p-iconField>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:22%">Tournament</th>
+                    <th style="width:22%">Start Date</th>
+                    <th style="width:22%">Venue</th>
+                </tr>
+                <tr>
+                    <th>
+                        <p-columnFilter 
+                            type="text" 
+                            field="name" 
+                            placeholder="Search by name" 
+                            ariaLabel="Filter Name" />
+                    </th>
+                    <th>
+                        <p-columnFilter 
+                            type="text" 
+                            field="year" 
+                            placeholder="Search by start date" 
+                            ariaLabel="Filter Start Date" />
+                    </th>
+                    <th>
+                        <p-columnFilter 
+                        type="text" 
+                        field="organizer" 
+                        placeholder="Search by venue" 
+                        ariaLabel="Filter Venue" />
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-tournament>
+                <tr (click)="onTournamentClick(tournament)" class="cursor-pointer hover:text-blue-600">
+                    <td>
+                        {{ tournament.name }}
+                    </td>
+                    <td>
+                        <span class="ml-1 vertical-align-middle">
+                            {{ tournament.start_date }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="ml-1 vertical-align-middle">
+                            {{ tournament.venue }}
+                        </span>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5">No Tournaments found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

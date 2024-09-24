@@ -1,0 +1,546 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "Amy Elsner",
+      "image": "assets/amy.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Anna Fali",
+      "image": "assets/anna.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Bernardo Dominic",
+      "image": "assets/hero.jpg"
+    }
+  ],
+
+  "competition": [
+    {
+      "id": 1,
+      "name": "Sri Lanka University Games",
+      "year": 2023,
+      "organizer": "Amy Elsner",
+      "status": "completed"
+    },
+    {
+      "id": 2,
+      "name": "Inter University Games",
+      "year": 2024,
+      "organizer": "Anna Fali",
+      "status": "ongoing"
+    },
+    {
+      "id": 3,
+      "name": "National University Games",
+      "year": 2025,
+      "organizer": "Bernardo Dominic",
+      "status": "yet to start"
+    }
+  ],
+
+  "tournament": [
+    {
+      "id": "tournament_1",
+      "name": "Basketball Tournament",
+      "competition_id": "2",
+      "sport": "Basketball",
+      "start_date": "2028-07-25",
+      "end_date": "2028-08-08",
+      "venue": "Basketball Arena"
+    },
+    {
+      "id": "tournament_2",
+      "name": "Track & Field Tournament",
+      "competition_id": "2",
+      "sport": "Track & Field",
+      "start_date": "2028-08-09",
+      "end_date": "2028-08-13",
+      "venue": "Olympic Stadium"
+    }
+  ],
+
+  "event": [
+    {
+      "id": "event_1",
+      "name": "Men's Basketball",
+      "gender": "Male",
+      "age_group": "",
+      "tournament_id": "tournament_1"
+    },
+    {
+      "id": "event_2",
+      "name": "Women's Basketball",
+      "gender": "Female",
+      "age_group": "",
+      "tournament_id": "tournament_1"
+    },
+    {
+      "id": "event_3",
+      "name": "Men's 100m",
+      "gender": "Male",
+      "age_group": "",
+      "tournament_id": "tournament_2"
+    },
+    {
+      "id": "event_4",
+      "name": "Women's 4x400m",
+      "gender": "Female",
+      "age_group": "",
+      "tournament_id": "tournament_2"
+    }
+  ],
+
+  "group_stages": [
+    {
+      "id": "group_stage_1",
+      "name": "Group A",
+      "format": "Round Robin",
+      "event_id": "event_1"
+    },
+    {
+      "id": "group_stage_2",
+      "name": "Group B",
+      "format": "Round Robin",
+      "event_id": "event_1"
+    },
+    {
+      "id": "group_stage_3",
+      "name": "Group C",
+      "format": "Round Robin",
+      "event_id": "event_1"
+    },
+    {
+      "id": "group_stage_4",
+      "name": "Group D",
+      "format": "Round Robin",
+      "event_id": "event_1"
+    },
+    {
+      "id": "group_stage_5",
+      "name": "Group A",
+      "format": "Round Robin",
+      "event_id": "event_3"
+    },
+    {
+      "id": "group_stage_6",
+      "name": "Group B",
+      "format": "Round Robin",
+      "event_id": "event_3"
+    },
+    {
+      "id": "group_stage_7",
+      "name": "Group C",
+      "format": "Round Robin",
+      "event_id": "event_3"
+    },
+    {
+      "id": "group_stage_8",
+      "name": "Group D",
+      "format": "Round Robin",
+      "event_id": "event_3"
+    }
+  ],
+
+  "knockout_stages": [
+    {
+      "id": "knockout_stage_1",
+      "format": "Single Elimination",
+      "event_id": "event_1"
+    },
+    {
+      "id": "knockout_stage_2",
+      "format": "Single Elimination",
+      "event_id": "event_3"
+    }
+  ],
+
+  "group_rounds": [
+    {
+      "id": "GR1A",
+      "group_stage_id": "group_stage_1",
+      "name": "Round 1"
+    },
+    {
+      "id": "GR2A",
+      "group_stage_id": "group_stage_1",
+      "name": "Round 2"
+    },
+    {
+      "id": "GR3A",
+      "group_stage_id": "group_stage_1",
+      "name": "Round 3"
+    },
+    {
+      "id": "GR1B",
+      "group_stage_id": "group_stage_2",
+      "name": "Round 1"
+    },
+    {
+      "id": "GR2B",
+      "group_stage_id": "group_stage_2",
+      "name": "Round 2"
+    },
+    {
+      "id": "GR3B",
+      "group_stage_id": "group_stage_2",
+      "name": "Round 3"
+    },
+    {
+      "id": "GR1C",
+      "group_stage_id": "group_stage_3",
+      "name": "Round 1"
+    },
+    {
+      "id": "GR2C",
+      "group_stage_id": "group_stage_3",
+      "name": "Round 2"
+    },
+    {
+      "id": "GR3C",
+      "group_stage_id": "group_stage_3",
+      "name": "Round 3"
+    },
+    {
+      "id": "GR1D",
+      "group_stage_id": "group_stage_4",
+      "name": "Round 1"
+    },
+    {
+      "id": "GR2D",
+      "group_stage_id": "group_stage_4",
+      "name": "Round 2"
+    },
+    {
+      "id": "GR3D",
+      "group_stage_id": "group_stage_4",
+      "name": "Round 3"
+    },
+    {
+      "id": "GR1E",
+      "group_stage_id": "group_stage_5",
+      "name": "Heat 1"
+    },
+    {
+      "id": "GR1F",
+      "group_stage_id": "group_stage_6",
+      "name": "Heat 1"
+    },
+    {
+      "id": "GR1G",
+      "group_stage_id": "group_stage_7",
+      "name": "Heat 1"
+    },
+    {
+      "id": "GR1H",
+      "group_stage_id": "group_stage_8",
+      "name": "Heat 1"
+    }
+  ],
+
+  "knockout_rounds": [
+    {
+      "id": "KR1",
+      "knockout_stage_id": "knockout_stage_1",
+      "name": "Quarterfinal 1"
+    },
+    {
+      "id": "KR2",
+      "knockout_stage_id": "knockout_stage_1",
+      "name": "Quarterfinal 2"
+    },
+    {
+      "id": "KR3",
+      "knockout_stage_id": "knockout_stage_1",
+      "name": "Quarterfinal 3"
+    },
+    {
+      "id": "KR4",
+      "knockout_stage_id": "knockout_stage_1",
+      "name": "Quarterfinal 4"
+    },
+    {
+      "id": "KR5",
+      "knockout_stage_id": "knockout_stage_1",
+      "name": "Semifinal 1"
+    },
+    {
+      "id": "KR6",
+      "knockout_stage_id": "knockout_stage_1",
+      "name": "Semifinal 2"
+    },
+    {
+      "id": "KR7",
+      "knockout_stage_id": "knockout_stage_1",
+      "name": "Final"
+    },
+    {
+      "id": "KR8",
+      "knockout_stage_id": "knockout_stage_1",
+      "name": "Consolation Final"
+    },
+    {
+      "id": "KR9",
+      "knockout_stage_id": "knockout_stage_2",
+      "name": "Semifinal 1"
+    },
+    {
+      "id": "KR10",
+      "knockout_stage_id": "knockout_stage_2",
+      "name": "Semifinal 2"
+    },
+    {
+      "id": "KR11",
+      "knockout_stage_id": "knockout_stage_2",
+      "name": "Final"
+    }
+  ],
+
+  "organizations": [
+    {
+      "id": "org1",
+      "name": "International Sports Federation"
+    },
+    {
+      "id": "org2",
+      "name": "Global Athletic Association"
+    },
+    {
+      "id": "org3",
+      "name": "World Sports Council"
+    },
+    {
+      "id": "org4",
+      "name": "International Sporting Body"
+    },
+    {
+      "id": "org5",
+      "name": "Global Games Federation"
+    },
+    {
+      "id": "org6",
+      "name": "World Athletic Commission"
+    },
+    {
+      "id": "org7",
+      "name": "International Sports Board"
+    },
+    {
+      "id": "org8",
+      "name": "Global Sports Authority"
+    },
+    {
+      "id": "org9",
+      "name": "World Sports League"
+    },
+    {
+      "id": "org10",
+      "name": "International Sports Union"
+    },
+    {
+      "id": "org11",
+      "name": "Global Sports Alliance"
+    },
+    {
+      "id": "org12",
+      "name": "World Sports Federation"
+    }
+  ],
+
+  "teams": [
+    {
+      "org_id": "org1",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org2",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org3",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org4",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org5",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org6",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org7",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org8",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org9",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org10",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org11",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org12",
+      "event_id": "event_1"
+    },
+    {
+      "org_id": "org1",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org2",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org3",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org4",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org5",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org6",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org7",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org8",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org9",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org10",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org11",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org12",
+      "event_id": "event_2"
+    },
+    {
+      "org_id": "org1",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org2",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org3",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org4",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org5",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org6",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org7",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org8",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org9",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org10",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org11",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org12",
+      "event_id": "event_3"
+    },
+    {
+      "org_id": "org1",
+      "event_id": "event_4"
+    },
+    {
+      "org_id": "org2",
+      "event_id": "event_4"
+    },
+    {
+      "org_id": "org3",
+      "event_id": "event_4"
+    },
+    {
+      "org_id": "org4",
+      "event_id": "event_4"
+    },
+    {
+      "org_id": "org5",
+      "event_id": "event_4"
+    },
+    {
+      "org_id": "org6",
+      "event_id": "event_4"
+    },
+    {
+      "org_id": "org7",
+      "event_id": "event_4"
+    },
+    {
+      "org_id": "org8",
+      "event_id": "event_4"
+    },
+    {
+      "org_id": "org9",
+      "event_id": "event_4"
+    },
+    {
+      "org_id": "org10",
+      "event_id": "event_4"
+    },
+    {
+      "org_id": "org11",
+      "event_id": "event_4"
+    },
+    {
+      "org_id": "org12",
+      "event_id": "event_4"
+    }
+  ]
+}

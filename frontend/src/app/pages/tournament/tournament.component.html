@@ -1,0 +1,144 @@
+<div class="surface-section px-4 md:px-6 lg:px-8">
+    <div class="py-5">
+        <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-3">
+            <li>
+                <a class="text-500 no-underline line-height-3 cursor-pointer">{{ getCompetition() }}</a>
+            </li>
+            <li class="px-2">
+                <i class="pi pi-angle-right text-500 line-height-3"></i>
+            </li>
+            <li>
+                <span class="text-900 line-height-3">{{ getTournament() }}</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pb-4">
+        <div class="text-700 text-center">
+            <div class="text-blue-600 font-bold mb-3">WELCOME TO</div>
+            <div class="text-900 font-bold text-5xl mb-3">
+                {{ competition.name }}
+                <span>- {{ competition.year }}</span>
+            </div>
+            <div class="text-700 text-2xl mb-5">
+                <span>{{ tournament.name }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row mb-6">
+        <div class="font-medium text-3xl text-900">Overall Results</div>
+    </div>
+
+    <div class="pb-6 text-center">
+        <div class="grid">
+            <div class="col-12 md:col-4 px-5">
+                <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                    <i class="pi pi-trophy text-4xl text-gray-500"></i>
+                </span>
+                <div class="text-900 text-xl mb-3 font-medium">First Runners-Up</div>
+                <span class="text-700 line-height-3">University of Moratuwa</span>
+            </div>
+            <div class="col-12 md:col-4 px-5">
+                <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                    <i class="pi pi-trophy text-4xl text-yellow-600"></i>
+                </span>
+                <div class="text-900 text-xl mb-3 font-medium">Champions</div>
+                <span class="text-700 line-height-3">University of Ruhuna</span>
+            </div>
+            <div class="col-12 md:col-4 px-5">
+                <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                    <i class="pi pi-trophy text-4xl text-orange-200"></i>
+                </span>
+                <div class="text-900 text-xl mb-3 font-medium">Second Runners up</div>
+                <span class="text-700 line-height-3">University of Colombo</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row mb-6">
+        <div class="font-medium text-3xl text-900">Tournaments</div>
+    </div>
+
+    <div>
+        <p-table
+        #dt2
+        [value]="event"
+        dataKey="id"
+        [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        [globalFilterFields]="['name', 'gender', 'age_group']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+    >
+            <ng-template pTemplate="caption">
+                <div class="flex justify-between items-center">
+                    <div class="text-blue-600 font-semibold mt-3 text-left">Search and click on any event!</div>
+                    <p-iconField iconPosition="left" class="ml-auto">
+                        <p-inputIcon>
+                            <i class="pi pi-search"></i>
+                        </p-inputIcon>
+                        <input 
+                            pInputText 
+                            type="text"
+                            (input)="onGlobalFilter($event, dt2)" 
+                            placeholder="Search keyword" />
+                    </p-iconField>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:22%">Event</th>
+                    <th style="width:22%">Gender</th>
+                    <th style="width:22%">Age Group</th>
+                </tr>
+                <tr>
+                    <th>
+                        <p-columnFilter 
+                            type="text" 
+                            field="name" 
+                            placeholder="Search by name" 
+                            ariaLabel="Filter Name" />
+                    </th>
+                    <th>
+                        <p-columnFilter 
+                            type="text" 
+                            field="year" 
+                            placeholder="Search by gender" 
+                            ariaLabel="Filter Gender" />
+                    </th>
+                    <th>
+                        <p-columnFilter 
+                        type="text" 
+                        field="organizer" 
+                        placeholder="Search by age group" 
+                        ariaLabel="Filter Age Group" />
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-event>
+                <tr (click)="onEventClick(event)" class="cursor-pointer hover:text-blue-600">
+                    <td>
+                        {{ event.name }}
+                    </td>
+                    <td>
+                        <span class="ml-1 vertical-align-middle">
+                            {{ event.gender }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="ml-1 vertical-align-middle">
+                            {{ event.age_group }}
+                        </span>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5">No Events found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

@@ -2,55 +2,79 @@
   "organization": [
     {
       "id": "org1",
-      "name": "International Sports Federation"
+      "name": "International Sports Federation",
+      "abb": "ISF",
+      "image": ""
     },
     {
       "id": "org2",
-      "name": "Global Athletic Association"
+      "name": "Global Athletic Association",
+      "abb": "GAA",
+      "image": ""
     },
     {
       "id": "org3",
-      "name": "World Sports Council"
+      "name": "World Sports Council",
+      "abb": "WSC",
+      "image": ""
     },
     {
       "id": "org4",
-      "name": "International Sporting Body"
+      "name": "International Sporting League",
+      "abb": "ISL",
+      "image": ""
     },
     {
       "id": "org5",
-      "name": "Global Games Federation"
+      "name": "Global Games Federation",
+      "abb": "GGF",
+      "image": ""
     },
     {
       "id": "org6",
-      "name": "World Athletic Commission"
+      "name": "World Athletic Commission",
+      "abb": "WAC",
+      "image": ""
     },
     {
       "id": "org7",
-      "name": "International Sports Board"
+      "name": "International Sports Board",
+      "abb": "ISB",
+      "image": ""
     },
     {
       "id": "org8",
-      "name": "Global Sports Authority"
+      "name": "Global Sports Authority",
+      "abb": "GSA",
+      "image": ""
     },
     {
       "id": "org9",
-      "name": "World Sports League"
+      "name": "World Sports League",
+      "abb": "WSL",
+      "image": ""
     },
     {
       "id": "org10",
-      "name": "International Sports Union"
+      "name": "International Sports Union",
+      "abb": "ISU",
+      "image": ""
     },
     {
       "id": "org11",
-      "name": "Global Sports Alliance"
+      "name": "Global Sports League",
+      "abb": "GSL",
+      "image": ""
     },
     {
       "id": "org12",
-      "name": "World Sports Federation"
+      "name": "World Sports Federation",
+      "abb": "WSF",
+      "image": ""
     }
   ],
 
-  "teams": [
+  "team": [
     {
       "org_id": "org1",
       "event_id": "event_1",

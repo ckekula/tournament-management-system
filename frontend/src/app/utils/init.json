@@ -68,28 +68,36 @@
       "name": "Men's Basketball",
       "gender": "Male",
       "age_group": "",
-      "tournament_id": "tournament_1"
+      "tournament_id": "tournament_1",
+      "group_stages": "4",
+      "knockout_stages": "3"
     },
     {
       "id": "event_2",
       "name": "Women's Basketball",
       "gender": "Female",
       "age_group": "",
-      "tournament_id": "tournament_1"
+      "tournament_id": "tournament_1",
+      "group_stages": "3",
+      "knockout_stages": "3"
     },
     {
       "id": "event_3",
       "name": "Men's 100m",
       "gender": "Male",
       "age_group": "",
-      "tournament_id": "tournament_2"
+      "tournament_id": "tournament_2",
+      "group_stages": "4",
+      "knockout_stages": "2"
     },
     {
       "id": "event_4",
       "name": "Women's 4x400m",
       "gender": "Female",
       "age_group": "",
-      "tournament_id": "tournament_2"
+      "tournament_id": "tournament_2",
+      "group_stages": "4",
+      "knockout_stages": "2"
     }
   ],
 

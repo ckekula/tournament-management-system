@@ -1,0 +1,66 @@
+.bracket-container {
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  .bracket-grid {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr); /* 14 columns */
+    grid-template-rows: repeat(14, 1fr);    /* 14 rows */
+    width: 1400px; /* Ensures that the grid is horizontally scrollable */
+    height: 700px;
+    border-color: #ccc;
+  }
+  
+  .bracket-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100px;
+    position: relative;
+    background-color: #ccc;
+  }
+  
+  .cell-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .half {
+    width: 50%;
+    text-align: center;
+  }
+  
+  .left-half {
+    border-right: 1px solid #ccc;
+  }
+  
+  /* Apply custom styles */
+  .border-top {
+    border-top: var(--border-top, 1px solid transparent); /* Default to transparent */
+  }
+  
+  .border-bottom {
+    border-bottom: var(--border-bottom, 1px solid transparent);
+  }
+  
+  .border-left {
+    border-left: var(--border-left, 1px solid transparent);
+  }
+  
+  .border-right {
+    border-right: var(--border-right, 1px solid transparent);
+  }
+  
+  .blue-border-top {
+    border-top: 2px solid #1E88E5;  /* Change color as needed */
+  }
+  .blue-border-right {
+    border-right: 2px solid #1E88E5;  /* Change color as needed */
+  }
+  
+  .colored-cell {
+    background-color: white;
+  }

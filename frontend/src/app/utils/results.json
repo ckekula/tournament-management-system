@@ -1,0 +1,247 @@
+{
+  "gr_team_score": [
+    {
+      "id": "gr1t1e1",
+      "team_id": "team_1_event_1",
+      "gr_id": "GR1A",
+      "score": "10"
+    },
+    {
+      "id": "gr1t2e1",
+      "team_id": "team_2_event_1",
+      "gr_id": "GR1A",
+      "score": "20"
+    },
+    {
+      "id": "gr1t3e1",
+      "team_id": "team_1_event_1",
+      "gr_id": "GR2A",
+      "score": "15"
+    },
+    {
+      "id": "gr1t4e1",
+      "team_id": "team_3_event_1",
+      "gr_id": "GR2A",
+      "score": "25"
+    },
+    {
+      "id": "gr2t1e1",
+      "team_id": "team_2_event_1",
+      "gr_id": "GR3A",
+      "score": "10"
+    },
+    {
+      "id": "gr2t2e1",
+      "team_id": "team_3_event_1",
+      "gr_id": "GR3A",
+      "score": "20"
+    },
+    {
+      "id": "gr2t3e1",
+      "team_id": "team_4_event_1",
+      "gr_id": "GR1B",
+      "score": "20"
+    },
+    {
+      "id": "gr2t4e1",
+      "team_id": "team_5_event_1",
+      "gr_id": "GR1B",
+      "score": "15"
+    },
+    {
+      "id": "gr3t1e1",
+      "team_id": "team_4_event_1",
+      "gr_id": "GR2B",
+      "score": "10"
+    },
+    {
+      "id": "gr3t2e1",
+      "team_id": "team_6_event_1",
+      "gr_id": "GR2B",
+      "score": "10"
+    },
+    {
+      "id": "gr3t3e1",
+      "team_id": "team_5_event_1",
+      "gr_id": "GR3B",
+      "score": "20"
+    },
+    {
+      "id": "gr3t4e1",
+      "team_id": "team_6_event_1",
+      "gr_id": "GR3B",
+      "score": "30"
+    },
+    {
+      "id": "gr1t1e2",
+      "team_id": "team_7_event_1",
+      "gr_id": "GR1C",
+      "score": "12"
+    },
+    {
+      "id": "gr1t2e2",
+      "team_id": "team_8_event_1",
+      "gr_id": "GR1C",
+      "score": "18"
+    },
+    {
+      "id": "gr1t3e2",
+      "team_id": "team_7_event_1",
+      "gr_id": "GR2C",
+      "score": "14"
+    },
+    {
+      "id": "gr1t4e2",
+      "team_id": "team_9_event_1",
+      "gr_id": "GR2C",
+      "score": "24"
+    },
+    {
+      "id": "gr2t1e2",
+      "team_id": "team_8_event_1",
+      "gr_id": "GR3C",
+      "score": "10"
+    },
+    {
+      "id": "gr2t2e2",
+      "team_id": "team_9_event_1",
+      "gr_id": "GR3C",
+      "score": "22"
+    },
+    {
+      "id": "gr2t3e2",
+      "team_id": "team_10_event_1",
+      "gr_id": "GR1D",
+      "score": "20"
+    },
+    {
+      "id": "gr2t4e2",
+      "team_id": "team_11_event_1",
+      "gr_id": "GR1D",
+      "score": "18"
+    },
+    {
+      "id": "gr3t1e2",
+      "team_id": "team_10_event_1",
+      "gr_id": "GR2D",
+      "score": "16"
+    },
+    {
+      "id": "gr3t2e2",
+      "team_id": "team_12_event_1",
+      "gr_id": "GR2D",
+      "score": "12"
+    },
+    {
+      "id": "gr3t3e2",
+      "team_id": "team_11_event_1",
+      "gr_id": "GR3D",
+      "score": "28"
+    },
+    {
+      "id": "gr3t4e2",
+      "team_id": "team_12_event_1",
+      "gr_id": "GR3D",
+      "score": "26"
+    }
+  ],
+
+  "kr_team_score": [
+    {
+      "id": "kr1t1e1",
+      "team_id": "team_1_event_1",
+      "kr_id": "KR1",
+      "score": "10"
+    },
+    {
+      "id": "kr1t2e1",
+      "team_id": "team_2_event_1",
+      "kr_id": "KR1",
+      "score": "20"
+    },
+    {
+      "id": "kr1t1e1",
+      "team_id": "team_3_event_1",
+      "kr_id": "KR2",
+      "score": "10"
+    },
+    {
+      "id": "kr1t2e1",
+      "team_id": "team_4_event_1",
+      "kr_id": "KR2",
+      "score": "20"
+    },
+    {
+      "id": "kr1t1e1",
+      "team_id": "team_5_event_1",
+      "kr_id": "KR3",
+      "score": "10"
+    },
+    {
+      "id": "kr1t2e1",
+      "team_id": "team_6_event_1",
+      "kr_id": "KR3",
+      "score": "20"
+    },
+    {
+      "id": "kr1t1e1",
+      "team_id": "team_7_event_1",
+      "kr_id": "KR4",
+      "score": "10"
+    },
+    {
+      "id": "kr1t2e1",
+      "team_id": "team_8_event_1",
+      "kr_id": "KR4",
+      "score": "20"
+    },
+    {
+      "id": "kr5t1e1",
+      "team_id": "team_1_event_1",
+      "kr_id": "KR5",
+      "score": "10"
+    },
+    {
+      "id": "kr5t3e1",
+      "team_id": "team_3_event_1",
+      "kr_id": "KR5",
+      "score": "20"
+    },
+    {
+      "id": "kr6t5e1",
+      "team_id": "team_5_event_1",
+      "kr_id": "KR6",
+      "score": "10"
+    },
+    {
+      "id": "kr6t7e1",
+      "team_id": "team_7_event_1",
+      "kr_id": "KR6",
+      "score": "20"
+    },
+    {
+      "id": "kr7t1e1",
+      "team_id": "team_1_event_1",
+      "kr_id": "KR7",
+      "score": "10"
+    },
+    {
+      "id": "kr7t5e1",
+      "team_id": "team_5_event_1",
+      "kr_id": "KR7",
+      "score": "20"
+    },
+    {
+      "id": "kr8t3e1",
+      "team_id": "team_3_event_1",
+      "kr_id": "KR8",
+      "score": "10"
+    },
+    {
+      "id": "kr8t7e1",
+      "team_id": "team_7_event_1",
+      "kr_id": "KR8",
+      "score": "20"
+    }
+  ]
+}

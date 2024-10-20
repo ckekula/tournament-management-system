@@ -1,0 +1,24 @@
+<div class="bracket-container">
+    <div class="bracket-grid">
+      <div
+        class="bracket-cell"
+        *ngFor="let cell of cells; let i = index"
+        [ngClass]="{
+          'blue-border-top': isBorderTopBlue(i),
+          'blue-border-right': isBorderRightBlue(i),
+          'colored-cell': isColoredCell(i)
+        }"
+      >
+        <ng-container *ngIf="hasTwoItems(i); else singleContent">
+          <div class="cell-content">
+            <div class="half left-half">{{ getCellContent(i)?.left || '' }}</div>
+            <div class="half right-half">{{ getCellContent(i)?.right || '' }}</div>
+          </div>
+        </ng-container>
+        <ng-template #singleContent>
+          {{ getCellContent(i)?.left || '' }}
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  

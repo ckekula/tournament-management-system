@@ -68,183 +68,156 @@
       "name": "Men's Basketball",
       "gender": "Male",
       "age_group": "",
-      "tournament_id": "tournament_1",
-      "group_stages": "4",
-      "knockout_stages": "3"
+      "tournament_id": "tournament_1"
     },
     {
       "id": "event_2",
       "name": "Women's Basketball",
       "gender": "Female",
       "age_group": "",
-      "tournament_id": "tournament_1",
-      "group_stages": "3",
-      "knockout_stages": "3"
+      "tournament_id": "tournament_1"
     },
     {
       "id": "event_3",
       "name": "Men's 100m",
       "gender": "Male",
       "age_group": "",
-      "tournament_id": "tournament_2",
-      "group_stages": "4",
-      "knockout_stages": "2"
+      "tournament_id": "tournament_2"
     },
     {
       "id": "event_4",
       "name": "Women's 4x400m",
       "gender": "Female",
       "age_group": "",
-      "tournament_id": "tournament_2",
-      "group_stages": "4",
-      "knockout_stages": "2"
+      "tournament_id": "tournament_2"
     }
   ],
 
-  "group_stage": [
+  "stage": [
     {
       "id": "group_stage_1",
-      "name": "Group A",
-      "format": "Round Robin",
+      "type": "group",
       "event_id": "event_1"
     },
     {
-      "id": "group_stage_2",
-      "name": "Group B",
-      "format": "Round Robin",
+      "id": "knockout_stage_1",
+      "name": "knockout",
       "event_id": "event_1"
     },
     {
-      "id": "group_stage_3",
-      "name": "Group C",
-      "format": "Round Robin",
-      "event_id": "event_1"
-    },
-    {
-      "id": "group_stage_4",
-      "name": "Group D",
-      "format": "Round Robin",
-      "event_id": "event_1"
-    },
-    {
-      "id": "group_stage_5",
-      "name": "Group A",
-      "format": "Round Robin",
-      "event_id": "event_3"
-    },
-    {
-      "id": "group_stage_6",
-      "name": "Group B",
-      "format": "Round Robin",
-      "event_id": "event_3"
-    },
-    {
-      "id": "group_stage_7",
-      "name": "Group C",
-      "format": "Round Robin",
-      "event_id": "event_3"
-    },
-    {
-      "id": "group_stage_8",
-      "name": "Group D",
-      "format": "Round Robin",
-      "event_id": "event_3"
+      "id": "heat_stage_2",
+      "name": "heat",
+      "event_id": "event_2"
     }
   ],
 
-  "knockout_stage": [
+  "group": [
     {
-      "id": "knockout_stage_1",
-      "format": "Single Elimination",
-      "event_id": "event_1"
+      "id": "group_A",
+      "name": "Group A",
+      "stage_id": "group_stage_1"
     },
     {
-      "id": "knockout_stage_2",
-      "format": "Single Elimination",
-      "event_id": "event_3"
+      "id": "group_B",
+      "name": "Group C",
+      "stage_id": "group_stage_1"
+    },
+    {
+      "id": "group_C",
+      "name": "Group C",
+      "stage_id": "group_stage_1"
+    },
+    {
+      "id": "group_D",
+      "name": "Group D",
+      "stage_id": "group_stage_1"
     }
   ],
 
   "group_round": [
     {
+      "name": "Group D",
       "id": "GR1A",
-      "group_stage_id": "group_stage_1",
-      "name": "Round 1"
+      "group_id": "group_A",
+      "team1_id": "team_1_event_1",
+      "team2_id": "team_2_event_1"
     },
     {
       "id": "GR2A",
-      "group_stage_id": "group_stage_1",
-      "name": "Round 2"
+      "name": "Group D",
+      "group_id": "group_A",
+      "team1_id": "team_1_event_1",
+      "team2_id": "team_3_event_1"
     },
     {
       "id": "GR3A",
-      "group_stage_id": "group_stage_1",
-      "name": "Round 3"
+      "name": "Group D",
+      "group_id": "group_A",
+      "team1_id": "team_2_event_1",
+      "team2_id": "team_3_event_1"
     },
     {
       "id": "GR1B",
-      "group_stage_id": "group_stage_2",
-      "name": "Round 1"
+      "name": "Group D",
+      "group_id": "group_B",
+      "team1_id": "team_4_event_1",
+      "team2_id": "team_5_event_1"
     },
     {
       "id": "GR2B",
-      "group_stage_id": "group_stage_2",
-      "name": "Round 2"
+      "name": "Group D",
+      "group_id": "group_B",
+      "team1_id": "team_4_event_1",
+      "team2_id": "team_6_event_1"
     },
     {
       "id": "GR3B",
-      "group_stage_id": "group_stage_2",
-      "name": "Round 3"
+      "name": "Group D",
+      "group_id": "group_B",
+      "team1_id": "team_5_event_1",
+      "team2_id": "team_6_event_1"
     },
     {
       "id": "GR1C",
-      "group_stage_id": "group_stage_3",
-      "name": "Round 1"
+      "name": "Group D",
+      "group_id": "group_C",
+      "team1_id": "team_7_event_1",
+      "team2_id": "team_8_event_1"
     },
     {
       "id": "GR2C",
-      "group_stage_id": "group_stage_3",
-      "name": "Round 2"
+      "name": "Group D",
+      "group_id": "group_C",
+      "team1_id": "team_7_event_1",
+      "team2_id": "team_9_event_1"
     },
     {
       "id": "GR3C",
-      "group_stage_id": "group_stage_3",
-      "name": "Round 3"
+      "name": "Group D",
+      "group_id": "group_C",
+      "team1_id": "team_8_event_1",
+      "team2_id": "team_9_event_1"
     },
     {
       "id": "GR1D",
-      "group_stage_id": "group_stage_4",
-      "name": "Round 1"
+      "name": "Group D",
+      "group_id": "group_D",
+      "team1_id": "team_10_event_1",
+      "team2_id": "team_11_event_1"
     },
     {
       "id": "GR2D",
-      "group_stage_id": "group_stage_4",
-      "name": "Round 2"
+      "name": "Group D",
+      "group_id": "group_D",
+      "team1_id": "team_10_event_1",
+      "team2_id": "team_12_event_1"
     },
     {
       "id": "GR3D",
-      "group_stage_id": "group_stage_4",
-      "name": "Round 3"
-    },
-    {
-      "id": "GR1E",
-      "group_stage_id": "group_stage_5",
-      "name": "Heat 1"
-    },
-    {
-      "id": "GR1F",
-      "group_stage_id": "group_stage_6",
-      "name": "Heat 1"
-    },
-    {
-      "id": "GR1G",
-      "group_stage_id": "group_stage_7",
-      "name": "Heat 1"
-    },
-    {
-      "id": "GR1H",
-      "group_stage_id": "group_stage_8",
-      "name": "Heat 1"
+      "name": "Group D",
+      "group_id": "group_D",
+      "team1_id": "team_11_event_1",
+      "team2_id": "team_12_event_1"
     }
   ],
 
@@ -252,42 +225,58 @@
     {
       "id": "KR1",
       "knockout_stage_id": "knockout_stage_1",
-      "name": "Quarterfinal 1"
+      "name": "Quarterfinal 1",
+      "team1_id": "team_1_event_1",
+      "team2_id": "team_2_event_1"
     },
     {
       "id": "KR2",
       "knockout_stage_id": "knockout_stage_1",
-      "name": "Quarterfinal 2"
+      "name": "Quarterfinal 2",
+      "team1_id": "team_1_event_1",
+      "team2_id": "team_2_event_1"
     },
     {
       "id": "KR3",
       "knockout_stage_id": "knockout_stage_1",
-      "name": "Quarterfinal 3"
+      "name": "Quarterfinal 3",
+      "team1_id": "team_1_event_1",
+      "team2_id": "team_2_event_1"
     },
     {
       "id": "KR4",
       "knockout_stage_id": "knockout_stage_1",
-      "name": "Quarterfinal 4"
+      "name": "Quarterfinal 4",
+      "team1_id": "team_1_event_1",
+      "team2_id": "team_2_event_1"
     },
     {
       "id": "KR5",
       "knockout_stage_id": "knockout_stage_1",
-      "name": "Semifinal 1"
+      "name": "Semifinal 1",
+      "team1_id": "team_1_event_1",
+      "team2_id": "team_2_event_1"
     },
     {
       "id": "KR6",
       "knockout_stage_id": "knockout_stage_1",
-      "name": "Semifinal 2"
+      "name": "Semifinal 2",
+      "team1_id": "team_1_event_1",
+      "team2_id": "team_2_event_1"
     },
     {
       "id": "KR7",
       "knockout_stage_id": "knockout_stage_1",
-      "name": "Final"
+      "name": "Final",
+      "team1_id": "team_1_event_1",
+      "team2_id": "team_2_event_1"
     },
     {
       "id": "KR8",
       "knockout_stage_id": "knockout_stage_1",
-      "name": "Consolation Final"
+      "name": "Consolation Final",
+      "team1_id": "team_1_event_1",
+      "team2_id": "team_2_event_1"
     },
     {
       "id": "KR9",

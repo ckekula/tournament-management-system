@@ -14,5 +14,5 @@ export const routes: Routes = [
     { path: 'competitions', component: CompetitionsComponent },
     { path: 'comp-details/:id', component: CompDetailsComponent },
     { path: 'tournament/:id', component: TournamentComponent },
-    { path: 'event/:id', component: EventComponent },
+    { path: 'event/:id', component: EventComponent }
 ];

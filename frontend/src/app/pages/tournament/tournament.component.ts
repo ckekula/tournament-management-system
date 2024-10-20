@@ -31,7 +31,7 @@ export class TournamentComponent implements OnInit {
 
   competition!: any;
   tournament!: any;
-  event!: any[];
+  events!: any[];
 
   loading: boolean = true;
 
@@ -53,7 +53,7 @@ export class TournamentComponent implements OnInit {
         console.error('Tournament not found!');
         // Optionally, navigate to a 404 page or show an error message
       } else {
-        this.event = jsonData.event.filter(e => e.tournament_id == tournamentId);
+        this.events = jsonData.event.filter(e => e.tournament_id == tournamentId);
         this.competition = jsonData.competition.find(c => c.id == competitionId);
       }
       this.loading = false;

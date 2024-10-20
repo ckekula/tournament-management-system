@@ -2,13 +2,13 @@
   <div class="py-5">
     <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-3">
       <li>
-        <a class="text-500 no-underline line-height-3 cursor-pointer">{{ getTournament() }}</a>
+        <a class="text-500 no-underline line-height-3 cursor-pointer">{{ tournament.name }}</a>
       </li>
       <li class="px-2">
         <i class="pi pi-angle-right text-500 line-height-3"></i>
       </li>
       <li>
-        <span class="text-900 line-height-3">{{ getEvent() }}</span>
+        <span class="text-900 line-height-3">{{ event.name }}</span>
       </li>
     </ul>
   </div>
@@ -56,28 +56,24 @@
     </div>
   </div>
 
-  <div class="">
+  <div *ngIf="!loading">
     <p-tabView styleClass="tabview-custom">
       <p-tabPanel>
         <ng-template pTemplate="header">
           <div class="flex align-items-center gap-2">
-            <span class="font-bold white-space-nowrap m-0">
-              Group Stage
-            </span>
+            <span class="font-bold white-space-nowrap m-0">Group Stage</span>
           </div>
         </ng-template>
+        <!-- Group stage -->
       </p-tabPanel>
       <p-tabPanel header="Header II">
         <ng-template pTemplate="header">
           <div class="flex align-items-center gap-2">
-            <span class="font-bold white-space-nowrap m-0">
-              Knockout Stage
-            </span>
+            <span class="font-bold white-space-nowrap m-0">Knockout Stage</span>
           </div>
         </ng-template>
-        <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium...
-        </p>
+        <!-- Knockout Stage -->
+        <app-knockout-stage [eventId]="eventId"></app-knockout-stage>
       </p-tabPanel>
     </p-tabView>
   </div>

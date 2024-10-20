@@ -113,10 +113,10 @@ CREATE TABLE tourn_results (
 );
 -- @block Knockout Results Table
 CREATE TABLE knockout_results (
-    knockout_id VARCHAR(255) NOT NULL,
-    tourn_first_id VARCHAR(255) NOT NULL,
-    tourn_second_id VARCHAR(255) NOT NULL,
-    tourn_third_id VARCHAR(255) NOT NULL,
+    knockout_stage_id VARCHAR(255) NOT NULL,
+    knockout_first_id VARCHAR(255) NOT NULL,
+    knockout_second_id VARCHAR(255) NOT NULL,
+    knockout_third_id VARCHAR(255) NOT NULL,
     ADD CONSTRAINT fk_tourn_first FOREIGN KEY (tourn_first_id) REFERENCES team(id),
     ADD CONSTRAINT fk_tourn_second FOREIGN KEY (tourn_second_id) REFERENCES team(id),
     ADD CONSTRAINT fk_tourn_third FOREIGN KEY (tourn_third_id) REFERENCES team(id),
@@ -130,7 +130,16 @@ CREATE TABLE part_round_score (
     FOREIGN KEY (participant_id) REFERENCES participant(participant_id),
     FOREIGN KEY (rounds_id) REFERENCES rounds(rounds_id)
 );
--- @block Team Round Score Table
+-- @block Knockout Round Team Score Table
+CREATE TABLE team_round_score (
+    trs_id VARCHAR(20) PRIMARY KEY,
+    team_id VARCHAR(15) NOT NULL,
+    rounds_id VARCHAR(15) NOT NULL,
+    team_score INT,
+    FOREIGN KEY (team_id) REFERENCES team(team_id),
+    FOREIGN KEY (rounds_id) REFERENCES rounds(rounds_id)
+);
+-- @block Group Round Team Score Table
 CREATE TABLE team_round_score (
     trs_id VARCHAR(20) PRIMARY KEY,
     team_id VARCHAR(15) NOT NULL,

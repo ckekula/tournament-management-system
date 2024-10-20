@@ -1,17 +1,22 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TabViewModule } from 'primeng/tabview';
 import { BadgeModule } from 'primeng/badge';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 import jsonData from '../../utils/init.json';
+import { CommonModule } from '@angular/common';
+import { KnockoutStageComponent } from "../../components/knockout-stage/knockout-stage.component";
 
-
-@Component({
+@Component({ 
   selector: 'app-event',
   standalone: true,
   imports: [
-    TabViewModule, 
-    BadgeModule
-  ],
+    TabViewModule,
+    BadgeModule,
+    CommonModule,
+    ScrollPanelModule,
+    KnockoutStageComponent
+],
   templateUrl: './event.component.html',
   styleUrl: './event.component.scss'
 })
@@ -20,12 +25,13 @@ export class EventComponent implements OnInit{
   competition!: any;
   tournament!: any;
   event!: any;
+  stages!: any[];
 
   loading: boolean = true;
+  eventId!: string;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
   ) {}
 
   ngOnInit() {
@@ -35,13 +41,16 @@ export class EventComponent implements OnInit{
       const eventId = params['id'];
 
       this.event = jsonData.event.find(e => e.id == eventId);
-      const tournamentId = this.event.tournament_id;
 
       if (!this.event) {
         console.error('Event not found!');
         // Optionally, navigate to a 404 page or show an error message
       } else {
+        this.stages = jsonData.stage.filter(s => s.event_id == eventId);
+
+        const tournamentId = this.event.tournament_id;
         this.tournament = jsonData.tournament.find(t => t.id == tournamentId);
+
         const competitionId = this.tournament.competition_id;
         this.competition = jsonData.competition.find(c => c.id == competitionId);
       }
@@ -50,16 +59,4 @@ export class EventComponent implements OnInit{
     });
   };
 
-  getTournament() {
-    return this.tournament.name;
-  }
-
-  getEvent() {
-    return this.event.name;
-  }
-
-  onGlobalFilter(event: Event, dt2: any) {
-    const inputValue = (event.target as HTMLInputElement).value;
-    dt2.filterGlobal(inputValue, 'contains');
-  }
 }

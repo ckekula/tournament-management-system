@@ -78,242 +78,266 @@
     {
       "org_id": "org1",
       "event_id": "event_1",
-      "team_id": "team_1_event_1"
+      "id": "team_1_event_1",
+      "name": "International Sports Federation",
+      "abb": "ISF"
     },
     {
       "org_id": "org2",
       "event_id": "event_1",
-      "team_id": "team_2_event_1"
+      "id": "team_2_event_1",
+      "name": "Global Athletic Association",
+      "abb": "GAA"
     },
     {
       "org_id": "org3",
       "event_id": "event_1",
-      "team_id": "team_3_event_1"
+      "id": "team_3_event_1",
+      "name": "World Sports Council",
+      "abb": "WSC"
     },
     {
       "org_id": "org4",
       "event_id": "event_1",
-      "team_id": "team_4_event_1"
+      "id": "team_4_event_1",
+      "name": "International Sporting League",
+      "abb": "ISL"
     },
     {
       "org_id": "org5",
       "event_id": "event_1",
-      "team_id": "team_5_event_1"
+      "id": "team_5_event_1",
+      "name": "Global Games Federation",
+      "abb": "GGF"
     },
     {
       "org_id": "org6",
       "event_id": "event_1",
-      "team_id": "team_6_event_1"
+      "id": "team_6_event_1",
+      "name": "World Athletic Commission",
+      "abb": "WAC"
     },
     {
       "org_id": "org7",
       "event_id": "event_1",
-      "team_id": "team_7_event_1"
+      "id": "team_7_event_1",
+      "name": "International Sports Board",
+      "abb": "ISB"
     },
     {
       "org_id": "org8",
       "event_id": "event_1",
-      "team_id": "team_8_event_1"
+      "id": "team_8_event_1",
+      "name": "Global Sports Authority",
+      "abb": "GSA"
     },
     {
       "org_id": "org9",
       "event_id": "event_1",
-      "team_id": "team_9_event_1"
+      "id": "team_9_event_1",
+      "name": "World Sports League",
+      "abb": "WSL"
     },
     {
       "org_id": "org10",
       "event_id": "event_1",
-      "team_id": "team_10_event_1"
+      "id": "team_10_event_1",
+      "name": "International Sports Union",
+      "abb": "ISU"
     },
     {
       "org_id": "org11",
       "event_id": "event_1",
-      "team_id": "team_11_event_1"
+      "id": "team_11_event_1",
+      "name": "Global Sports League",
+      "abb": "GSL"
     },
     {
       "org_id": "org12",
       "event_id": "event_1",
-      "team_id": "team_12_event_1"
+      "id": "team_12_event_1",
+      "name": "World Sports Federation",
+      "abb": "WSF"
     },
     {
       "org_id": "org1",
       "event_id": "event_2",
-      "team_id": "team_1_event_2"
+      "id": "team_1_event_2"
     },
     {
       "org_id": "org2",
       "event_id": "event_2",
-      "team_id": "team_2_event_2"
+      "id": "team_2_event_2"
     },
     {
       "org_id": "org3",
       "event_id": "event_2",
-      "team_id": "team_3_event_2"
+      "id": "team_3_event_2"
     },
     {
       "org_id": "org4",
       "event_id": "event_2",
-      "team_id": "team_4_event_2"
+      "id": "team_4_event_2"
     },
     {
       "org_id": "org5",
       "event_id": "event_2",
-      "team_id": "team_5_event_2"
+      "id": "team_5_event_2"
     },
     {
       "org_id": "org6",
       "event_id": "event_2",
-      "team_id": "team_6_event_2"
+      "id": "team_6_event_2"
     },
     {
       "org_id": "org7",
       "event_id": "event_2",
-      "team_id": "team_7_event_2"
+      "id": "team_7_event_2"
     },
     {
       "org_id": "org8",
       "event_id": "event_2",
-      "team_id": "team_8_event_2"
+      "id": "team_8_event_2"
     },
     {
       "org_id": "org9",
       "event_id": "event_2",
-      "team_id": "team_9_event_2"
+      "id": "team_9_event_2"
     },
     {
       "org_id": "org10",
       "event_id": "event_2",
-      "team_id": "team_10_event_2"
+      "id": "team_10_event_2"
     },
     {
       "org_id": "org11",
       "event_id": "event_2",
-      "team_id": "team_11_event_2"
+      "id": "team_11_event_2"
     },
     {
       "org_id": "org12",
       "event_id": "event_2",
-      "team_id": "team_12_event_2"
+      "id": "team_12_event_2"
     },
     {
       "org_id": "org1",
       "event_id": "event_3",
-      "team_id": "team_1_event_3"
+      "id": "team_1_event_3"
     },
     {
       "org_id": "org2",
       "event_id": "event_3",
-      "team_id": "team_2_event_3"
+      "id": "team_2_event_3"
     },
     {
       "org_id": "org3",
       "event_id": "event_3",
-      "team_id": "team_3_event_3"
+      "id": "team_3_event_3"
     },
     {
       "org_id": "org4",
       "event_id": "event_3",
-      "team_id": "team_4_event_3"
+      "id": "team_4_event_3"
     },
     {
       "org_id": "org5",
       "event_id": "event_3",
-      "team_id": "team_5_event_3"
+      "id": "team_5_event_3"
     },
     {
       "org_id": "org6",
       "event_id": "event_3",
-      "team_id": "team_6_event_3"
+      "id": "team_6_event_3"
     },
     {
       "org_id": "org7",
       "event_id": "event_3",
-      "team_id": "team_7_event_3"
+      "id": "team_7_event_3"
     },
     {
       "org_id": "org8",
       "event_id": "event_3",
-      "team_id": "team_8_event_3"
+      "id": "team_8_event_3"
     },
     {
       "org_id": "org9",
       "event_id": "event_3",
-      "team_id": "team_9_event_3"
+      "id": "team_9_event_3"
     },
     {
       "org_id": "org10",
       "event_id": "event_3",
-      "team_id": "team_10_event_3"
+      "id": "team_10_event_3"
     },
     {
       "org_id": "org11",
       "event_id": "event_3",
-      "team_id": "team_11_event_3"
+      "id": "team_11_event_3"
     },
     {
       "org_id": "org12",
       "event_id": "event_3",
-      "team_id": "team_12_event_3"
+      "id": "team_12_event_3"
     },
     {
       "org_id": "org1",
       "event_id": "event_4",
-      "team_id": "team_1_event_4"
+      "id": "team_1_event_4"
     },
     {
       "org_id": "org2",
       "event_id": "event_4",
-      "team_id": "team_2_event_4"
+      "id": "team_2_event_4"
     },
     {
       "org_id": "org3",
       "event_id": "event_4",
-      "team_id": "team_3_event_4"
+      "id": "team_3_event_4"
     },
     {
       "org_id": "org4",
       "event_id": "event_4",
-      "team_id": "team_4_event_4"
+      "id": "team_4_event_4"
     },
     {
       "org_id": "org5",
       "event_id": "event_4",
-      "team_id": "team_5_event_4"
+      "id": "team_5_event_4"
     },
     {
       "org_id": "org6",
       "event_id": "event_4",
-      "team_id": "team_6_event_4"
+      "id": "team_6_event_4"
     },
     {
       "org_id": "org7",
       "event_id": "event_4",
-      "team_id": "team_7_event_4"
+      "id": "team_7_event_4"
     },
     {
       "org_id": "org8",
       "event_id": "event_4",
-      "team_id": "team_8_event_4"
+      "id": "team_8_event_4"
     },
     {
       "org_id": "org9",
       "event_id": "event_4",
-      "team_id": "team_9_event_4"
+      "id": "team_9_event_4"
     },
     {
       "org_id": "org10",
       "event_id": "event_4",
-      "team_id": "team_10_event_4"
+      "id": "team_10_event_4"
     },
     {
       "org_id": "org11",
       "event_id": "event_4",
-      "team_id": "team_11_event_4"
+      "id": "team_11_event_4"
     },
     {
       "org_id": "org12",
       "event_id": "event_4",
-      "team_id": "team_12_event_4"
+      "id": "team_12_event_4"
     }
   ]
 }

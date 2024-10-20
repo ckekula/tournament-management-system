@@ -6,6 +6,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import jsonData from '../../utils/init.json';
 import { CommonModule } from '@angular/common';
 import { KnockoutStageComponent } from "../../components/knockout-stage/knockout-stage.component";
+import { GroupStageComponent } from '../../components/group-stage/group-stage.component';
 
 @Component({ 
   selector: 'app-event',
@@ -15,7 +16,8 @@ import { KnockoutStageComponent } from "../../components/knockout-stage/knockout
     BadgeModule,
     CommonModule,
     ScrollPanelModule,
-    KnockoutStageComponent
+    KnockoutStageComponent,
+    GroupStageComponent
 ],
   templateUrl: './event.component.html',
   styleUrl: './event.component.scss'

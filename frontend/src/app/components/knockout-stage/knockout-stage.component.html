@@ -6,7 +6,11 @@
         [ngClass]="{
           'blue-border-top': isBorderTopBlue(i),
           'blue-border-right': isBorderRightBlue(i),
-          'colored-cell': isColoredCell(i)
+          'colored-cell': isColoredCell(i),
+          'black-border-top': isBorderTopBlack(i),
+          'black-border-bottom': isBorderBottomBlack(i),
+          'black-border-left': isBorderLeftBlack(i),
+          'black-border-right': isBorderRightBlack(i)
         }"
       >
         <ng-container *ngIf="hasTwoItems(i); else singleContent">

@@ -36,12 +36,8 @@ export class GroupStageComponent {
   grTeamScores!: any[];
 
   ngOnInit() {
-    if (this.groupStage) {
-      this.groupRounds = jsonData.group_round?.filter(gr => gr.group_stage_id === this.groupStage.id);
-      this.groupRoundTeams = jsonResults.gr_team_score?.filter(grts => grts.team_id);
-      this.grTeamScores = jsonResults.gr_team_score?.filter(grts => this.groupRoundTeams.includes(grts.team_id));
-      this.organizations = jsonTeam.team?.filter(t => t.org_id);
-    }
+    this.loading = true;
+    
     this.loading = false;
   }
 

@@ -58,22 +58,20 @@
 
   <div *ngIf="!loading">
     <p-tabView styleClass="tabview-custom">
-      <p-tabPanel>
+      <p-tabPanel *ngFor="let stage of stages">
         <ng-template pTemplate="header">
           <div class="flex align-items-center gap-2">
-            <span class="font-bold white-space-nowrap m-0">Group Stage</span>
+            <span class="font-bold white-space-nowrap m-0">{{ stage.name }}</span>
           </div>
         </ng-template>
-        <!-- Group stage -->
-      </p-tabPanel>
-      <p-tabPanel header="Header II">
-        <ng-template pTemplate="header">
-          <div class="flex align-items-center gap-2">
-            <span class="font-bold white-space-nowrap m-0">Knockout Stage</span>
-          </div>
-        </ng-template>
-        <!-- Knockout Stage -->
-        <app-knockout-stage [eventId]="eventId"></app-knockout-stage>
+        
+        <!-- Conditionally render components based on the stage type -->
+        <ng-container [ngSwitch]="stage.type">
+          <app-group-stage *ngSwitchCase="'group'"></app-group-stage>
+          <app-knockout-stage [eventId]="event.id" *ngSwitchCase="'knockout'"></app-knockout-stage>
+          <!-- Add other cases here if needed -->
+          <p *ngSwitchDefault>Unknown stage type</p>
+        </ng-container>
       </p-tabPanel>
     </p-tabView>
   </div>

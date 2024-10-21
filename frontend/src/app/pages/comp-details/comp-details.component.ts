@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { TagModule } from 'primeng/tag';
@@ -27,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     MultiSelectModule,
     DropdownModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   templateUrl: './comp-details.component.html',
   styleUrls: ['./comp-details.component.scss']  // Make sure this is 'styleUrls' with an 's'
@@ -83,10 +84,6 @@ export class CompDetailsComponent implements OnInit {
         default:
           return 'secondary';
     }
-  }
-
-  getCompetition() {
-    return this.competition.name;
   }
 
   onGlobalFilter(event: Event, dt2: any) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { TabViewModule } from 'primeng/tabview';
 import { BadgeModule } from 'primeng/badge';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
@@ -17,7 +17,8 @@ import { GroupStageComponent } from '../../components/group-stage/group-stage.co
     CommonModule,
     ScrollPanelModule,
     KnockoutStageComponent,
-    GroupStageComponent
+    GroupStageComponent,
+    RouterModule
 ],
   templateUrl: './event.component.html',
   styleUrl: './event.component.scss'

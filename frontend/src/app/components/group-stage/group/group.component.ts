@@ -75,7 +75,8 @@ export class GroupComponent {
   getTeamsStatsArray() {
     return Object.keys(this.teamsStats).map(teamId => ({
       teamId,
-      ...this.teamsStats[teamId]
+      ...this.teamsStats[teamId],
+      points: this.calculatePoints(this.teamsStats[teamId].wins, this.teamsStats[teamId].ties) // Calculate points here
     }));
   }
 

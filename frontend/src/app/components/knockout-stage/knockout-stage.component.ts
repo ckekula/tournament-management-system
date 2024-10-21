@@ -152,10 +152,14 @@ export class KnockoutStageComponent {
     ].includes(index);
   }
 
-  isColoredCell(index: number): boolean {
+  isGrayColoredCell(index: number): boolean {
     return [
-      0, 1, 4, 5, 8, 9, 12, 13, 28, 29, 42, 43, 84, 85, 98, 99, 140, 141, 154, 155, 196, 197, 210, 211, 60, 61, 74, 75, 172, 173, 186, 187, 120, 121, 134, 135, 124, 125, 138, 139
+      28, 29, 42, 43, 84, 85, 98, 99, 140, 141, 154, 155, 196, 197, 210, 211, 60, 61, 74, 75, 172, 173, 186, 187, 120, 121, 134, 135, 124, 125, 138, 139
     ].includes(index);
+  }
+
+  isBlueColoredCell(index: number): boolean {
+    return [0, 1, 4, 5, 8, 9, 12, 13].includes(index);
   }
 
   isBorderTopBlack(index: number): boolean {

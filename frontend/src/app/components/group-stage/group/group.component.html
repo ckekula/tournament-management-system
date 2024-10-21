@@ -5,16 +5,18 @@
         <div class="font-medium text-3xl text-900">Standings</div>
       </div>
       <p-table
-      [value]="getTeamsStatsArray()" 
-      styleClass="p-datatable-gridlines p-datatable-striped" 
-        [tableStyle]="{ 'min-width': '50rem' }">
+      [value]="getTeamsStatsArray()"
+      sortField="points"
+      [sortOrder]="-1"
+      styleClass="p-datatable-gridlines p-datatable-striped"
+      [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
           <tr>
             <th>Team</th>
             <th>W</th>
             <th>L</th>
             <th>T</th>
-            <th>Pts</th>
+            <th pSortableColumn="points">Pts</th>
             <th>+/-</th>
           </tr>
         </ng-template>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import jsonData from '../../utils/init.json'
 import { TableModule } from 'primeng/table';
@@ -22,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     MultiSelectModule,
     DropdownModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   templateUrl: './tournament.component.html',
   styleUrl: './tournament.component.scss'
@@ -59,14 +60,6 @@ export class TournamentComponent implements OnInit {
       this.loading = false;
     });
   };
-
-  getTournament() {
-    return this.tournament.name;
-  }
-
-  getCompetition() {
-    return this.competition.name;
-  }
 
   onGlobalFilter(event: Event, dt2: any) {
     const inputValue = (event.target as HTMLInputElement).value;

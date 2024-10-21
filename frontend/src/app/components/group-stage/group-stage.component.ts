@@ -3,13 +3,11 @@ import { TableModule } from 'primeng/table';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputIconModule } from 'primeng/inputicon';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { DropdownModule } from 'primeng/dropdown';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import jsonData from '../../utils/init.json';
-import jsonTeam from '../../utils/teams.json';
-import jsonResults from '../../utils/results.json';
+import { TabViewModule } from 'primeng/tabview';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { GroupComponent } from './group/group.component';
 
 @Component({
   selector: 'app-group-stage',
@@ -19,31 +17,37 @@ import jsonResults from '../../utils/results.json';
     IconFieldModule, 
     InputTextModule,
     InputIconModule, 
-    CommonModule
+    CommonModule,
+    TabViewModule,
+    CommonModule,
+    ScrollPanelModule,
+    GroupComponent
   ],
   templateUrl: './group-stage.component.html',
   styleUrl: './group-stage.component.scss'
 })
 export class GroupStageComponent {
 
-  @Input() groupStage!: any;
+  @Input() eventId!: string;
 
   loading: boolean = true;
   event!: any;
-  groupRounds!: any[];
-  groupRoundTeams!: any[];
-  organizations!: any[];
-  grTeamScores!: any[];
+  groups!: any[];
 
   ngOnInit() {
     this.loading = true;
+  
+    if (this.eventId) {
+      this.event = jsonData.event.find(e => e.id === this.eventId);
+
+      this.groups = jsonData.group.filter(g => g.event_id === this.eventId);
+    } else {
+      console.error('Event not found!');
+    }
     
     this.loading = false;
   }
 
-  getTeams() {
-    return this.groupRoundTeams
-  }
 
   onGlobalFilter(event: Event, dt2: any) {
     const inputValue = (event.target as HTMLInputElement).value;

@@ -67,7 +67,7 @@
         
         <!-- Conditionally render components based on the stage type -->
         <ng-container [ngSwitch]="stage.type">
-          <app-group-stage *ngSwitchCase="'group'"></app-group-stage>
+          <app-group-stage [eventId]="event.id" *ngSwitchCase="'group'"></app-group-stage>
           <app-knockout-stage [eventId]="event.id" *ngSwitchCase="'knockout'"></app-knockout-stage>
           <!-- Add other cases here if needed -->
           <p *ngSwitchDefault>Unknown stage type</p>

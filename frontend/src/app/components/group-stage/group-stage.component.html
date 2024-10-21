@@ -1,3 +1,14 @@
 <div>
-    Hello
+  <div *ngIf="!loading">
+      <p-tabView styleClass="tabview-custom">
+        <p-tabPanel *ngFor="let group of groups">
+          <ng-template pTemplate="header">
+            <div class="flex align-items-center gap-2">
+              <span class="font-bold white-space-nowrap m-0">{{ group.name }}</span>
+            </div>
+          </ng-template>
+          <app-group [groupId]="group.id"></app-group>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
 </div>

@@ -107,40 +107,66 @@
       "event_id": "event_1"
     },
     {
-      "id": "heat_stage_2",
-      "name": "Heats",
-      "type": "heat",
+      "id": "group_stage_1",
+      "name": "Group Stage",
+      "type": "group",
+      "event_id": "event_2"
+    },
+    {
+      "id": "knockout_stage_1",
+      "name": "Knockout Stage",
+      "type": "knockout",
       "event_id": "event_2"
     }
   ],
 
   "group": [
     {
-      "id": "group_A",
+      "id": "event_1_group_A",
       "name": "Group A",
       "event_id": "event_1"
     },
     {
-      "id": "group_B",
+      "id": "event_1_group_B",
       "name": "Group B",
       "event_id": "event_1"
     },
     {
-      "id": "group_C",
+      "id": "event_1_group_C",
       "name": "Group C",
       "event_id": "event_1"
     },
     {
-      "id": "group_D",
+      "id": "event_1_group_D",
       "name": "Group D",
       "event_id": "event_1"
+    },
+    {
+      "id": "event_2_group_A",
+      "name": "Group A",
+      "event_id": "event_2"
+    },
+    {
+      "id": "event_2_group_B",
+      "name": "Group B",
+      "event_id": "event_2"
+    },
+    {
+      "id": "event_2_group_C",
+      "name": "Group C",
+      "event_id": "event_2"
+    },
+    {
+      "id": "event_2_group_D",
+      "name": "Group D",
+      "event_id": "event_2"
     }
   ],
 
   "group_round": [
     {
       "id": "GR1A",
-      "group_id": "group_A",
+      "group_id": "event_1_group_A",
       "team1_id": "team_1_event_1",
       "team2_id": "team_2_event_1",
       "team1_score": "10",
@@ -148,7 +174,7 @@
     },
     {
       "id": "GR2A",
-      "group_id": "group_A",
+      "group_id": "event_1_group_A",
       "team1_id": "team_1_event_1",
       "team2_id": "team_3_event_1",
       "team1_score": "30",
@@ -156,7 +182,7 @@
     },
     {
       "id": "GR3A",
-      "group_id": "group_A",
+      "group_id": "event_1_group_A",
       "team1_id": "team_2_event_1",
       "team2_id": "team_3_event_1",
       "team1_score": "15",
@@ -164,7 +190,7 @@
     },
     {
       "id": "GR1B",
-      "group_id": "group_B",
+      "group_id": "event_1_group_B",
       "team1_id": "team_4_event_1",
       "team2_id": "team_5_event_1",
       "team1_score": "2",
@@ -172,7 +198,7 @@
     },
     {
       "id": "GR2B",
-      "group_id": "group_B",
+      "group_id": "event_1_group_B",
       "team1_id": "team_4_event_1",
       "team2_id": "team_6_event_1",
       "team1_score": "2",
@@ -180,7 +206,7 @@
     },
     {
       "id": "GR3B",
-      "group_id": "group_B",
+      "group_id": "event_1_group_B",
       "team1_id": "team_5_event_1",
       "team2_id": "team_6_event_1",
       "team1_score": "2",
@@ -188,7 +214,7 @@
     },
     {
       "id": "GR1C",
-      "group_id": "group_C",
+      "group_id": "event_1_group_C",
       "team1_id": "team_7_event_1",
       "team2_id": "team_8_event_1",
       "team1_score": "2",
@@ -196,7 +222,7 @@
     },
     {
       "id": "GR2C",
-      "group_id": "group_C",
+      "group_id": "event_1_group_C",
       "team1_id": "team_7_event_1",
       "team2_id": "team_9_event_1",
       "team1_score": "2",
@@ -204,7 +230,7 @@
     },
     {
       "id": "GR3C",
-      "group_id": "group_C",
+      "group_id": "event_1_group_C",
       "team1_id": "team_8_event_1",
       "team2_id": "team_9_event_1",
       "team1_score": "2",
@@ -212,7 +238,7 @@
     },
     {
       "id": "GR1D",
-      "group_id": "group_D",
+      "group_id": "event_1_group_D",
       "team1_id": "team_10_event_1",
       "team2_id": "team_11_event_1",
       "team1_score": "2",
@@ -220,7 +246,7 @@
     },
     {
       "id": "GR2D",
-      "group_id": "group_D",
+      "group_id": "event_1_group_D",
       "team1_id": "team_10_event_1",
       "team2_id": "team_12_event_1",
       "team1_score": "2",
@@ -228,101 +254,107 @@
     },
     {
       "id": "GR3D",
-      "group_id": "group_D",
+      "group_id": "event_1_group_D",
       "team1_id": "team_11_event_1",
       "team2_id": "team_12_event_1",
       "team1_score": "2",
       "team2_score": "2"
-    }
-  ],
-
-  "knockout_round": [
+    },
     {
-      "id": "KR1",
-      "event_id": "event_1",
-      "name": "qf1",
+      "id": "GR1A",
+      "group_id": "event_2_group_A",
       "team1_id": "team_1_event_1",
       "team2_id": "team_2_event_1",
       "team1_score": "10",
-      "team2_score": "15"
+      "team2_score": "20"
     },
     {
-      "id": "KR2",
-      "event_id": "event_1",
-      "name": "qf2",
-      "team1_id": "team_3_event_1",
-      "team2_id": "team_4_event_1",
-      "team1_score": "10",
-      "team2_score": "15"
-    },
-    {
-      "id": "KR3",
-      "event_id": "event_1",
-      "name": "qf3",
-      "team1_id": "team_5_event_1",
-      "team2_id": "team_6_event_1",
-      "team1_score": "10",
-      "team2_score": "15"
-    },
-    {
-      "id": "KR4",
-      "event_id": "event_1",
-      "name": "qf4",
-      "team1_id": "team_7_event_1",
-      "team2_id": "team_8_event_1",
-      "team1_score": "10",
-      "team2_score": "15"
-    },
-    {
-      "id": "KR5",
-      "event_id": "event_1",
-      "name": "sf1",
+      "id": "GR2A",
+      "group_id": "event_2_group_A",
       "team1_id": "team_1_event_1",
       "team2_id": "team_3_event_1",
-      "team1_score": "10",
+      "team1_score": "30",
+      "team2_score": "40"
+    },
+    {
+      "id": "GR3A",
+      "group_id": "event_2_group_A",
+      "team1_id": "team_2_event_1",
+      "team2_id": "team_3_event_1",
+      "team1_score": "15",
       "team2_score": "15"
     },
     {
-      "id": "KR6",
-      "event_id": "event_1",
-      "name": "sf2",
-      "team1_id": "team_5_event_1",
-      "team2_id": "team_7_event_1",
-      "team1_score": "10",
-      "team2_score": "15"
-    },
-    {
-      "id": "KR7",
-      "event_id": "event_1",
-      "name": "f",
-      "team1_id": "team_1_event_1",
+      "id": "GR1B",
+      "group_id": "event_2_group_B",
+      "team1_id": "team_4_event_1",
       "team2_id": "team_5_event_1",
-      "team1_score": "10",
-      "team2_score": "15"
+      "team1_score": "2",
+      "team2_score": "2"
     },
     {
-      "id": "KR8",
-      "event_id": "event_1",
-      "name": "cf",
-      "team1_id": "team_3_event_1",
-      "team2_id": "team_7_event_1",
-      "team1_score": "10",
-      "team2_score": "15"
+      "id": "GR2B",
+      "group_id": "event_2_group_B",
+      "team1_id": "team_4_event_1",
+      "team2_id": "team_6_event_1",
+      "team1_score": "2",
+      "team2_score": "2"
     },
     {
-      "id": "KR9",
-      "event_id": "event_1",
-      "name": "Semifinal 1"
+      "id": "GR3B",
+      "group_id": "event_2_group_B",
+      "team1_id": "team_5_event_1",
+      "team2_id": "team_6_event_1",
+      "team1_score": "2",
+      "team2_score": "2"
     },
     {
-      "id": "KR10",
-      "event_id": "event_1",
-      "name": "Semifinal 2"
+      "id": "GR1C",
+      "group_id": "event_2_group_C",
+      "team1_id": "team_7_event_1",
+      "team2_id": "team_8_event_1",
+      "team1_score": "2",
+      "team2_score": "2"
     },
     {
-      "id": "KR11",
-      "event_id": "event_1",
-      "name": "Final"
+      "id": "GR2C",
+      "group_id": "event_2_group_C",
+      "team1_id": "team_7_event_1",
+      "team2_id": "team_9_event_1",
+      "team1_score": "2",
+      "team2_score": "2"
+    },
+    {
+      "id": "GR3C",
+      "group_id": "event_2_group_C",
+      "team1_id": "team_8_event_1",
+      "team2_id": "team_9_event_1",
+      "team1_score": "2",
+      "team2_score": "2"
+    },
+    {
+      "id": "GR1D",
+      "group_id": "event_2_group_D",
+      "team1_id": "team_10_event_1",
+      "team2_id": "team_11_event_1",
+      "team1_score": "2",
+      "team2_score": "2"
+    },
+    {
+      "id": "GR2D",
+      "group_id": "event_2_group_D",
+      "team1_id": "team_10_event_1",
+      "team2_id": "team_12_event_1",
+      "team1_score": "2",
+      "team2_score": "2"
+    },
+    {
+      "id": "GR3D",
+      "group_id": "event_2_group_D",
+      "team1_id": "team_11_event_1",
+      "team2_id": "team_12_event_1",
+      "team1_score": "2",
+      "team2_score": "2"
     }
   ]
 }

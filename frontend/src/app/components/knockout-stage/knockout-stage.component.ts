@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import jsonData from '../../utils/init.json';
-import jsonTeam from '../../utils/teams.json';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import jsonResults from '../../utils/results.json';
+import jsonTeam from '../../utils/teams.json';
 import { CommonModule } from '@angular/common';
 
 interface KnockoutRound {
@@ -26,6 +25,7 @@ export class KnockoutStageComponent {
   cells = Array(16 * 14).fill('');
 
   @Input() eventId!: string;
+  @Output() winners = new EventEmitter<string[]>();
 
   loading: boolean = true;
   cellContent: { [key: number]: { left: string, right?: string } } = {};
@@ -45,9 +45,7 @@ export class KnockoutStageComponent {
     this.loading = true;
   
     if (this.eventId) {
-      this.event = jsonData.event.find(e => e.id === this.eventId);
-
-      this.knockoutRounds = jsonData.knockout_round.filter(k => k.event_id === this.eventId);
+      this.knockoutRounds = jsonResults.knockout_round.filter(k => k.event_id === this.eventId);
 
       this.quarterfinal1 = this.knockoutRounds.find(k => k.name === 'qf1');
       this.quarterfinal2 = this.knockoutRounds.find(k => k.name === 'qf2');
@@ -58,6 +56,9 @@ export class KnockoutStageComponent {
       this.semifinal2 = this.knockoutRounds.find(k => k.name === 'sf2');
       this.final = this.knockoutRounds.find(k => k.name === 'f');
       this.consolationfinal = this.knockoutRounds.find(k => k.name === 'cf');
+
+      // Emit the winner names to the parent component
+      this.emitWinners();
     } else {
       console.error('No eventId provided!');
     }
@@ -74,42 +75,85 @@ export class KnockoutStageComponent {
       13: { left: 'Round' },
       // round information
       28: { left: this.quarterfinal1 ? this.getTeamAbb(this.quarterfinal1, 'team1') : 'N/A' },
-      29: { left: this.quarterfinal1 ? this.getTeamImg(this.quarterfinal1, 'team1') : 'N/A',  right: '10' },
+      29: { left: this.quarterfinal1 ? this.getTeamImg(this.quarterfinal1, 'team1') : 'N/A',  
+        right: this.quarterfinal1 ? this.quarterfinal1.team1_score : 'N/A' },
       42: { left: this.quarterfinal1 ? this.getTeamAbb(this.quarterfinal1, 'team2') : 'N/A' },
-      43: { left: this.quarterfinal1 ? this.getTeamImg(this.quarterfinal1, 'team2') : 'N/A',  right: '20' },
+      43: { left: this.quarterfinal1 ? this.getTeamImg(this.quarterfinal1, 'team2') : 'N/A',  
+        right: this.quarterfinal1 ? this.quarterfinal1.team2_score : 'N/A' },
       84: { left: this.quarterfinal2 ? this.getTeamAbb(this.quarterfinal2, 'team1') : 'N/A' },
-      85: { left: this.quarterfinal2 ? this.getTeamImg(this.quarterfinal2, 'team1') : 'N/A',  right: '30' },
+      85: { left: this.quarterfinal2 ? this.getTeamImg(this.quarterfinal2, 'team1') : 'N/A',  
+        right: this.quarterfinal2 ? this.quarterfinal2.team1_score : 'N/A' },
       98: { left: this.quarterfinal2 ? this.getTeamAbb(this.quarterfinal2, 'team2') : 'N/A' },
-      99: { left: this.quarterfinal2 ? this.getTeamImg(this.quarterfinal2, 'team2') : 'N/A',  right: '40' },
+      99: { left: this.quarterfinal2 ? this.getTeamImg(this.quarterfinal2, 'team2') : 'N/A',  
+        right: this.quarterfinal2 ? this.quarterfinal2.team2_score : 'N/A' },
       140: { left: this.quarterfinal3 ? this.getTeamAbb(this.quarterfinal3, 'team1') : 'N/A' },
-      141: { left: this.quarterfinal3 ? this.getTeamImg(this.quarterfinal3, 'team1') : 'N/A',  right: '10' },
+      141: { left: this.quarterfinal3 ? this.getTeamImg(this.quarterfinal3, 'team1') : 'N/A',  
+        right: this.quarterfinal3 ? this.quarterfinal3.team1_score : 'N/A' },
       154: { left: this.quarterfinal3 ? this.getTeamAbb(this.quarterfinal3, 'team2') : 'N/A' },
-      155: { left: this.quarterfinal3 ? this.getTeamImg(this.quarterfinal3, 'team2') : 'N/A',  right: '20' },
+      155: { left: this.quarterfinal3 ? this.getTeamImg(this.quarterfinal3, 'team2') : 'N/A',  
+        right: this.quarterfinal3 ? this.quarterfinal3.team2_score : 'N/A' },
       196: { left: this.quarterfinal4 ? this.getTeamAbb(this.quarterfinal4, 'team1') : 'N/A' },
-      197: { left: this.quarterfinal4 ? this.getTeamImg(this.quarterfinal4, 'team1') : 'N/A',  right: '30' },
+      197: { left: this.quarterfinal4 ? this.getTeamImg(this.quarterfinal4, 'team1') : 'N/A',  
+        right: this.quarterfinal4 ? this.quarterfinal4.team1_score : 'N/A' },
       210: { left: this.quarterfinal4 ? this.getTeamAbb(this.quarterfinal4, 'team2') : 'N/A' },
-      211: { left: this.quarterfinal4 ? this.getTeamImg(this.quarterfinal4, 'team2') : 'N/A',  right: '40' },
+      211: { left: this.quarterfinal4 ? this.getTeamImg(this.quarterfinal4, 'team2') : 'N/A',  
+        right: this.quarterfinal4 ? this.quarterfinal4.team2_score : 'N/A' },
 
       60: { left: this.semifinal1 ? this.getTeamAbb(this.semifinal1, 'team1') : 'N/A' },
-      61: { left: this.semifinal1 ? this.getTeamImg(this.semifinal1, 'team1') : 'N/A',  right: '40' },
+      61: { left: this.semifinal1 ? this.getTeamImg(this.semifinal1, 'team1') : 'N/A',  
+        right: this.semifinal1 ? this.semifinal1.team1_score : 'N/A' },
       74: { left: this.semifinal1 ? this.getTeamAbb(this.semifinal1, 'team2') : 'N/A' },
-      75: { left: this.semifinal1 ? this.getTeamImg(this.semifinal1, 'team2') : 'N/A',  right: '40' },
+      75: { left: this.semifinal1 ? this.getTeamImg(this.semifinal1, 'team2') : 'N/A',  
+        right: this.semifinal1 ? this.semifinal1.team2_score : 'N/A' },
       172: { left: this.semifinal2 ? this.getTeamAbb(this.semifinal2, 'team1') : 'N/A' },
-      173: { left: this.semifinal2 ? this.getTeamImg(this.semifinal2, 'team1') : 'N/A',  right: '40' },
+      173: { left: this.semifinal2 ? this.getTeamImg(this.semifinal2, 'team1') : 'N/A',  
+        right: this.semifinal2 ? this.semifinal2.team1_score : 'N/A' },
       186: { left: this.semifinal2 ? this.getTeamAbb(this.semifinal2, 'team1') : 'N/A' },
-      187: { left: this.semifinal2 ? this.getTeamImg(this.semifinal2, 'team1') : 'N/A',  right: '40' },
+      187: { left: this.semifinal2 ? this.getTeamImg(this.semifinal2, 'team1') : 'N/A',  
+        right: this.semifinal2 ? this.semifinal2.team2_score : 'N/A' },
 
       120: { left: this.final ? this.getTeamAbb(this.final, 'team1') : 'N/A' },
-      121: { left: this.final ? this.getTeamImg(this.final, 'team1') : 'N/A',  right: '40' },
+      121: { left: this.final ? this.getTeamImg(this.final, 'team1') : 'N/A',  
+        right: this.final ? this.final.team1_score : 'N/A' },
       134: { left: this.final ? this.getTeamAbb(this.final, 'team2') : 'N/A' },
-      135: { left: this.final ? this.getTeamImg(this.final, 'team2') : 'N/A',  right: '40' },
+      135: { left: this.final ? this.getTeamImg(this.final, 'team2') : 'N/A',  
+        right: this.final ? this.final.team2_score : 'N/A' },
       124: { left: this.consolationfinal ? this.getTeamAbb(this.consolationfinal, 'team1') : 'N/A' },
-      125: { left: this.consolationfinal ? this.getTeamImg(this.consolationfinal, 'team1') : 'N/A',  right: '40' },
+      125: { left: this.consolationfinal ? this.getTeamImg(this.consolationfinal, 'team1') : 'N/A',  
+        right: this.consolationfinal ? this.consolationfinal.team1_score : 'N/A' },
       138: { left: this.consolationfinal ? this.getTeamAbb(this.consolationfinal, 'team2') : 'N/A' },
-      139: { left: this.consolationfinal ? this.getTeamImg(this.consolationfinal, 'team2') : 'N/A',  right: '40' },      
+      139: { left: this.consolationfinal ? this.getTeamImg(this.consolationfinal, 'team2') : 'N/A',  
+        right: this.consolationfinal ? this.consolationfinal.team2_score : 'N/A' },
     };
 
     this.loading = false;
+  }
+
+  emitWinners() {
+    const winners: string[] = [];
+  
+    // Check for final round winner (1st and 2nd place)
+    if (this.final) {
+      const firstPlace = this.final.team1_score > this.final.team2_score
+        ? this.getTeamName(this.final, 'team1')
+        : this.getTeamName(this.final, 'team2');
+      const secondPlace = this.final.team1_score < this.final.team2_score
+        ? this.getTeamName(this.final, 'team1')
+        : this.getTeamName(this.final, 'team2');
+  
+      winners.push(firstPlace, secondPlace); // Add both first and second place
+    }
+  
+    // Check for consolation final winner (3rd place)
+    if (this.consolationfinal) {
+      const thirdPlace = this.consolationfinal.team1_score > this.consolationfinal.team2_score
+        ? this.getTeamName(this.consolationfinal, 'team1')
+        : this.getTeamName(this.consolationfinal, 'team2');
+      winners.push(thirdPlace); // Add third place
+    }
+  
+    // Emit winners to the parent component
+    this.winners.emit(winners);
   }
 
   getTeamAbb(round: KnockoutRound, teamType: 'team1' | 'team2'): string {
@@ -122,14 +166,31 @@ export class KnockoutStageComponent {
     return team && team.abb ? team.abb : 'N/A';
   }
 
-  getTeamImg(round: KnockoutRound, teamType: 'team1' | 'team2'): string {
+  getTeamName(round: KnockoutRound, teamType: 'team1' | 'team2'): string {
     const teamId = teamType === 'team1' ? round.team1_id : round.team2_id;
     const eventId = round.event_id;
     const team = jsonTeam.team.find(t => t.id === teamId && t.event_id === eventId);
     if (!team) {
       console.log(`Team with id ${teamId} in event ${eventId} not found!`);
     }
-    return team && team.image ? team.image : 'N/A';
+    return team && team.name ? team.name : 'N/A';
+  }
+
+  getTeamImg(round: KnockoutRound, teamType: 'team1' | 'team2'): string {
+    const teamId = teamType === 'team1' ? round.team1_id : round.team2_id;
+    const eventId = round.event_id;
+    const team = jsonTeam.team.find(t => t.id === teamId && t.event_id === eventId);
+
+    if (!team || !team.image) {
+      // Return a placeholder image from public/assets folder
+      return 'assets/team.webp'; // Path to your test image
+    }
+  
+    return team.image;
+  }
+
+  isImagePath(content: string | undefined): boolean {
+    return !!content && content.startsWith('assets/');
   }
 
   getCellContent(index: number): { left: string, right?: string } | null {

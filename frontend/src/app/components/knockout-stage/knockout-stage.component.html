@@ -1,29 +1,38 @@
 <div class="bracket-container">
-    <div class="bracket-grid">
-      <div
-        class="bracket-cell"
-        *ngFor="let cell of cells; let i = index"
-        [ngClass]="{
-          'blue-border-top': isBorderTopBlue(i),
-          'blue-border-right': isBorderRightBlue(i),
-          'black-colored-cell': isGrayColoredCell(i),
-          'blue-colored-cell': isBlueColoredCell(i),
-          'black-border-top': isBorderTopBlack(i),
-          'black-border-bottom': isBorderBottomBlack(i),
-          'black-border-left': isBorderLeftBlack(i),
-          'black-border-right': isBorderRightBlack(i)
-        }"
-      >
-        <ng-container *ngIf="hasTwoItems(i); else singleContent">
-          <div class="cell-content">
-            <div class="half left-half">{{ getCellContent(i)?.left || '' }}</div>
-            <div class="half right-half">{{ getCellContent(i)?.right || '' }}</div>
+  <div class="bracket-grid">
+    <div
+      class="bracket-cell"
+      *ngFor="let cell of cells; let i = index"
+      [ngClass]="{
+        'blue-border-top': isBorderTopBlue(i),
+        'blue-border-right': isBorderRightBlue(i),
+        'black-colored-cell': isGrayColoredCell(i),
+        'blue-colored-cell': isBlueColoredCell(i),
+        'black-border-top': isBorderTopBlack(i),
+        'black-border-bottom': isBorderBottomBlack(i),
+        'black-border-left': isBorderLeftBlack(i),
+        'black-border-right': isBorderRightBlack(i),
+      }"
+    >
+      <ng-container *ngIf="hasTwoItems(i); else singleContent">
+        <div class="cell-content">
+          <div class="half left-half">
+            <ng-container *ngIf="isImagePath(getCellContent(i)?.left); else textContent">
+              <img [src]="getCellContent(i)?.left" alt="Team Image" width="24" height="24"/>
+            </ng-container>
+            <ng-template #textContent>
+              {{ getCellContent(i)?.left || '' }}
+            </ng-template>
           </div>
-        </ng-container>
-        <ng-template #singleContent>
-          {{ getCellContent(i)?.left || '' }}
-        </ng-template>
-      </div>
+          <div class="half right-half">
+            {{ getCellContent(i)?.right || '' }}
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #singleContent>
+        {{ getCellContent(i)?.left || '' }}
+      </ng-template>
     </div>
   </div>
+</div>
   

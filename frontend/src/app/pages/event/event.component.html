@@ -37,21 +37,21 @@
           <i class="pi pi-trophy text-4xl text-gray-500"></i>
         </span>
         <div class="text-900 text-xl mb-3 font-medium">First Runners-Up</div>
-        <span class="text-700 line-height-3">University of Moratuwa</span>
+        <span class="text-700 line-height-3">{{ winnerNames[1] || 'Not yet decided'}} </span>
       </div>
       <div class="col-12 md:col-4 px-5">
         <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
           <i class="pi pi-trophy text-4xl text-yellow-600"></i>
         </span>
         <div class="text-900 text-xl mb-3 font-medium">Champions</div>
-        <span class="text-700 line-height-3">University of Ruhuna</span>
+        <span class="text-700 line-height-3">{{ winnerNames[0] || 'Not yet decided'}}</span>
       </div>
       <div class="col-12 md:col-4 px-5">
         <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
           <i class="pi pi-trophy text-4xl text-orange-200"></i>
         </span>
         <div class="text-900 text-xl mb-3 font-medium">Second Runners up</div>
-        <span class="text-700 line-height-3">University of Colombo</span>
+        <span class="text-700 line-height-3">{{ winnerNames[2] || 'Not yet decided'}}</span>
       </div>
     </div>
   </div>
@@ -68,7 +68,11 @@
         <!-- Conditionally render components based on the stage type -->
         <ng-container [ngSwitch]="stage.type">
           <app-group-stage [eventId]="event.id" *ngSwitchCase="'group'"></app-group-stage>
-          <app-knockout-stage [eventId]="event.id" *ngSwitchCase="'knockout'"></app-knockout-stage>
+          <app-knockout-stage
+            [eventId]="event.id" 
+            (winners)="onWinnersReceived($event)"
+            *ngSwitchCase="'knockout'">
+          </app-knockout-stage>
           <!-- Add other cases here if needed -->
           <p *ngSwitchDefault>Unknown stage type</p>
         </ng-container>

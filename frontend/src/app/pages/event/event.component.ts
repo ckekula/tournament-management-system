@@ -7,6 +7,7 @@ import jsonData from '../../utils/init.json';
 import { CommonModule } from '@angular/common';
 import { KnockoutStageComponent } from "../../components/knockout-stage/knockout-stage.component";
 import { GroupStageComponent } from '../../components/group-stage/group-stage.component';
+import { ChangeDetectorRef } from '@angular/core'; // Import ChangeDetectorRef
 
 @Component({ 
   selector: 'app-event',
@@ -33,8 +34,11 @@ export class EventComponent implements OnInit{
   loading: boolean = true;
   eventId!: string;
 
+  winnerNames: string[] = [];
+
   constructor(
     private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef // Inject ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -62,4 +66,8 @@ export class EventComponent implements OnInit{
     });
   };
 
+  onWinnersReceived(winners: string[]) {
+    this.winnerNames = winners;
+    this.cdr.detectChanges(); // Manually trigger change detection
+  }
 }

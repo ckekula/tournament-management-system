@@ -2,73 +2,73 @@
   "organization": [
     {
       "id": "org1",
-      "name": "International Sports Federation",
+      "name": "University of Ruhuna",
       "abb": "ISF",
       "image": ""
     },
     {
       "id": "org2",
-      "name": "Global Athletic Association",
+      "name": "University of Moratuwa",
       "abb": "GAA",
       "image": ""
     },
     {
       "id": "org3",
-      "name": "World Sports Council",
+      "name": "University of Peradeniya",
       "abb": "WSC",
       "image": ""
     },
     {
       "id": "org4",
-      "name": "International Sporting League",
+      "name": "University of Kelaniya",
       "abb": "ISL",
       "image": ""
     },
     {
       "id": "org5",
-      "name": "Global Games Federation",
+      "name": "University of Jaffna",
       "abb": "GGF",
       "image": ""
     },
     {
       "id": "org6",
-      "name": "World Athletic Commission",
+      "name": "Sabaragamuwa University of Sri Lanka",
       "abb": "WAC",
       "image": ""
     },
     {
       "id": "org7",
-      "name": "International Sports Board",
+      "name": "Rajarata University of Sri Lanka",
       "abb": "ISB",
       "image": ""
     },
     {
       "id": "org8",
-      "name": "Global Sports Authority",
+      "name": "Rajarata University of Sri Lanka",
       "abb": "GSA",
       "image": ""
     },
     {
       "id": "org9",
-      "name": "World Sports League",
+      "name": "University of Sri Jayawardanapura",
       "abb": "WSL",
       "image": ""
     },
     {
       "id": "org10",
-      "name": "International Sports Union",
+      "name": "University of Colombo",
       "abb": "ISU",
       "image": ""
     },
     {
       "id": "org11",
-      "name": "Global Sports League",
+      "name": "Eastern University of Sri Lanka",
       "abb": "GSL",
       "image": ""
     },
     {
       "id": "org12",
-      "name": "World Sports Federation",
+      "name": "South Eastern University of Sri Lanka",
       "abb": "WSF",
       "image": ""
     }
@@ -167,8 +167,104 @@
       "org_id": "org12",
       "event_id": "event_1",
       "id": "team_12_event_1",
-      "name": "World Sports Federation",
+      "name": "Womens Sports Federation",
       "abb": "WSF",
+      "image": ""
+    },
+    {
+      "org_id": "org1",
+      "event_id": "event_2",
+      "id": "team_1_event_2",
+      "name": "International Womens Federation",
+      "abb": "IWF",
+      "image": ""
+    },
+    {
+      "org_id": "org2",
+      "event_id": "event_2",
+      "id": "team_2_event_2",
+      "name": "Womens Athletic Association",
+      "abb": "WAA",
+      "image": ""
+    },
+    {
+      "org_id": "org3",
+      "event_id": "event_2",
+      "id": "team_3_event_2",
+      "name": "Womens Sports Council",
+      "abb": "WSC",
+      "image": ""
+    },
+    {
+      "org_id": "org4",
+      "event_id": "event_2",
+      "id": "team_4_event_2",
+      "name": "International Sporting Women",
+      "abb": "ISW",
+      "image": ""
+    },
+    {
+      "org_id": "org5",
+      "event_id": "event_2",
+      "id": "team_5_event_2",
+      "name": "Womens Games Federation",
+      "abb": "WGF",
+      "image": ""
+    },
+    {
+      "org_id": "org6",
+      "event_id": "event_2",
+      "id": "team_6_event_2",
+      "name": "Womens Athletic Commission",
+      "abb": "WAC",
+      "image": ""
+    },
+    {
+      "org_id": "org7",
+      "event_id": "event_2",
+      "id": "team_7_event_2",
+      "name": "International Womens Board",
+      "abb": "IWB",
+      "image": ""
+    },
+    {
+      "org_id": "org8",
+      "event_id": "event_2",
+      "id": "team_8_event_2",
+      "name": "Global Sports Women",
+      "abb": "GSW",
+      "image": ""
+    },
+    {
+      "org_id": "org9",
+      "event_id": "event_2",
+      "id": "team_9_event_2",
+      "name": "World Womens League",
+      "abb": "WWL",
+      "image": ""
+    },
+    {
+      "org_id": "org10",
+      "event_id": "event_2",
+      "id": "team_10_event_2",
+      "name": "Womens Sports Union",
+      "abb": "WSU",
+      "image": ""
+    },
+    {
+      "org_id": "org11",
+      "event_id": "event_2",
+      "id": "team_11_event_2",
+      "name": "Global Womens League",
+      "abb": "GWL",
+      "image": ""
+    },
+    {
+      "org_id": "org12",
+      "event_id": "event_2",
+      "id": "team_12_event_2",
+      "name": "World Sports Women",
+      "abb": "WSW",
       "image": ""
     },
     {

@@ -1,7 +1,5 @@
-package com.tms.backend.handler;
+package com.tms.backend.exception;
 
-import com.tms.backend.exception.ActivationTokenException;
-import com.tms.backend.exception.OperationNotPermittedException;
 import jakarta.mail.MessagingException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,8 +12,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.tms.backend.handler.BusinessErrorCodes.*;
-import static org.springframework.http.HttpStatus.*;
+import static com.tms.backend.exception.BusinessErrorCodes.*;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -55,7 +55,7 @@ public class GlobalExceptionHandler {
                         ExceptionResponse.builder()
                                 .businessErrorCode(BAD_CREDENTIALS.getCode())
                                 .businessErrorDescription(BAD_CREDENTIALS.getDescription())
-                                .error("Login and / or Password is incorrect")
+                                .error("Email or Password is incorrect")
                                 .build()
                 );
     }

@@ -1,4 +1,4 @@
-package com.tms.backend.handler;
+package com.tms.backend.exception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;

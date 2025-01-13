@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-
-import jsonData from '../../utils/init.json'
 import { TableModule } from 'primeng/table';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputTextModule } from 'primeng/inputtext';
@@ -47,15 +45,15 @@ export class TournamentComponent implements OnInit {
     this.route.params.subscribe(params => {
       const tournamentId = params['id'];
 
-      this.tournament = jsonData.tournament.find(t => t.id == tournamentId);
+    //   this.tournament = jsonData.tournament.find(t => t.id == tournamentId);
       const competitionId = this.tournament.competition_id;
 
       if (!this.tournament) {
         console.error('Tournament not found!');
         // Optionally, navigate to a 404 page or show an error message
       } else {
-        this.events = jsonData.event.filter(e => e.tournament_id == tournamentId);
-        this.competition = jsonData.competition.find(c => c.id == competitionId);
+        // this.events = jsonData.event.filter(e => e.tournament_id == tournamentId);
+        // this.competition = jsonData.competition.find(c => c.id == competitionId);
       }
       this.loading = false;
     });

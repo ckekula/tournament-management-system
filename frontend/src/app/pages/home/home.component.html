@@ -5,8 +5,20 @@
                 <span class="text-2xl font-bold font-italic text-900">UniT</span>
             </div>
             <div class="col-6 text-right">
-                <button pButton pRipple label="Login" class="p-button-text p-button-sm mr-3"></button>
-                <button pButton pRipple label="Sign Up" class="p-button-raised p-button-sm"></button>
+                <button 
+                    pButton 
+                    pRipple 
+                    label="Login" 
+                    class="p-button-text p-button-sm mr-3" 
+                    (click)="navigateTo('/login')">
+                </button>
+                <button 
+                    pButton 
+                    pRipple 
+                    label="Sign Up" 
+                    class="p-button-raised p-button-sm" 
+                    (click)="navigateTo('/register')">
+                </button>
             </div>
         </div>
     </div>

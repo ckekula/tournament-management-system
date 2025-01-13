@@ -1,0 +1,16 @@
+.min-h-screen {
+    min-height: 100vh; /* Ensures the container takes full screen height */
+  }
+  
+  .flex {
+    display: flex; /* Enables flexbox layout */
+  }
+  
+  .align-items-center {
+    align-items: center; /* Vertically centers the content */
+  }
+  
+  .justify-content-center {
+    justify-content: center; /* Horizontally centers the content */
+  }
+  

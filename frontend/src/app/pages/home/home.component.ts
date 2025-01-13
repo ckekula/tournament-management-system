@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,5 +14,14 @@ import { RippleModule } from 'primeng/ripple';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
+  constructor(
+    private router: Router,
+  ) {
+  }
+  
+  navigateTo(url: string): void {
+    this.router.navigate([url]);
+  }
 
 }

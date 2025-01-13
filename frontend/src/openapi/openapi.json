@@ -1,12 +1,22 @@
 {
   "openapi": "3.0.1",
-  "info": { "title": "OpenAPI definition", "version": "v0" },
+  "info": {
+    "title": "OpenApi specification - Chamuditha",
+    "description": "OpenApi documentation for Tournament Management System",
+    "termsOfService": "Terms of service",
+    "contact": {
+      "name": "Chamuditha",
+      "url": "https://example.com",
+      "email": "chamukeku@gmail.com"
+    },
+    "license": { "name": "Licence name", "url": "https://example.com" },
+    "version": "1.0"
+  },
   "servers": [
-    {
-      "url": "http://localhost:8088/api/v1",
-      "description": "Generated server url"
-    }
+    { "url": "http://localhost:8088/api/v1", "description": "Local ENV" },
+    { "url": "https://example.com", "description": "PROD ENV" }
   ],
+  "security": [{ "bearerAuth": [] }],
   "paths": {
     "/auth/register": {
       "post": {
@@ -37,7 +47,7 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/AuthenticationRequest" }
+              "schema": { "$ref": "#/components/schemas/AuthRequest" }
             }
           },
           "required": true
@@ -47,9 +57,7 @@
             "description": "OK",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AuthenticationResponse"
-                }
+                "schema": { "$ref": "#/components/schemas/AuthResponse" }
               }
             }
           }
@@ -88,7 +96,7 @@
           }
         }
       },
-      "AuthenticationRequest": {
+      "AuthRequest": {
         "required": ["email", "password"],
         "type": "object",
         "properties": {
@@ -100,9 +108,18 @@
           }
         }
       },
-      "AuthenticationResponse": {
+      "AuthResponse": {
         "type": "object",
         "properties": { "token": { "type": "string" } }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "description": "JWT auth description",
+        "in": "header",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }

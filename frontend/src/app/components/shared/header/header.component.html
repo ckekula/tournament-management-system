@@ -7,20 +7,41 @@
                 </a>
             </div>
             <div class="col-6 text-right">
-                <button 
-                    pButton 
-                    pRipple 
-                    label="Login" 
-                    class="p-button-text p-button-sm mr-3" 
-                    (click)="navigateTo('/login')">
-                </button>
-                <button 
-                    pButton 
-                    pRipple 
-                    label="Sign Up" 
-                    class="p-button-raised p-button-sm" 
-                    (click)="navigateTo('/register')">
-                </button>
+                <!-- Show these buttons only when user is NOT authenticated -->
+                <ng-container *ngIf="!isAuthenticated">
+                    <button 
+                        pButton 
+                        pRipple 
+                        label="Login" 
+                        class="p-button-text p-button-sm mr-3" 
+                        (click)="navigateTo('/login')">
+                    </button>
+                    <button 
+                        pButton 
+                        pRipple 
+                        label="Sign Up" 
+                        class="p-button-raised p-button-sm" 
+                        (click)="navigateTo('/register')">
+                    </button>
+                </ng-container>
+
+                <!-- Show these buttons only when user is authenticated -->
+                <ng-container *ngIf="isAuthenticated">
+                    <button 
+                        pButton 
+                        pRipple 
+                        label="Dashboard" 
+                        class="p-button-text p-button-sm mr-3" 
+                        (click)="navigateTo('/dashboard')">
+                    </button>
+                    <button 
+                        pButton 
+                        pRipple 
+                        label="Logout" 
+                        class="p-button-raised p-button-sm" 
+                        (click)="logout()">
+                    </button>
+                </ng-container>
             </div>
         </div>
     </div>

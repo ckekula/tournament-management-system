@@ -9,10 +9,22 @@
   
       <div>
         <label for="email" class="block text-900 font-medium mb-2">Email</label>
-        <input id="email" type="text" placeholder="Email address" pInputText class="w-full mb-3">
-  
+        <input id="email" 
+               type="text" 
+               placeholder="Email address" 
+               pInputText 
+               class="w-full mb-3"
+               [(ngModel)]="authRequest.email"
+               name="email">
+      
         <label for="password" class="block text-900 font-medium mb-2">Password</label>
-        <input id="password" type="password" placeholder="Password" pInputText class="w-full mb-3">
+        <input id="password" 
+               type="password" 
+               placeholder="Password" 
+               pInputText 
+               class="w-full mb-3"
+               [(ngModel)]="authRequest.password"
+               name="password">
   
         <div class="flex align-items-center justify-content-between mb-6">
           <div class="flex align-items-center">

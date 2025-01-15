@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthenticationService} from '../../services/services/authentication.service';
+import {AuthenticationService} from '../../../services/services/authentication.service';
 import {skipUntil} from 'rxjs';
 import {CheckboxModule} from 'primeng/checkbox';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
+import { CommonModule } from '@angular/common';
+import { CodeInputModule } from 'angular-code-input';
 
 @Component({
   selector: 'app-activate-account',
@@ -14,7 +16,9 @@ import { InputTextModule } from 'primeng/inputtext';
     CheckboxModule,
     ButtonModule,
     RippleModule,
-    InputTextModule
+    InputTextModule,
+    CommonModule,
+    CodeInputModule
   ],
   templateUrl: './activate-account.component.html',
   styleUrls: ['./activate-account.component.scss']

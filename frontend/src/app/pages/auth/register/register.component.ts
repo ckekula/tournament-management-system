@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthenticationService} from '../../services/services/authentication.service';
-import {RegistrationRequest} from '../../services/models/registration-request';
+import {AuthenticationService} from '../../../services/services/authentication.service';
+import {RegistrationRequest} from '../../../services/models/registration-request';
 import {CheckboxModule} from 'primeng/checkbox';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,8 @@ import { InputTextModule } from 'primeng/inputtext';
     CheckboxModule,
     ButtonModule,
     RippleModule,
-    InputTextModule
+    InputTextModule,
+    FormsModule
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],

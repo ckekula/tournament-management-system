@@ -1,7 +1,7 @@
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './pages/auth/login/login.component';
 import { Routes } from '@angular/router';
-import { RegisterComponent } from './pages/register/register.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
 import { CompetitionsComponent } from './pages/competitions/competitions.component';
 import { CompDetailsComponent } from './pages/comp-details/comp-details.component';
 import { TournamentComponent } from './pages/tournament/tournament.component';

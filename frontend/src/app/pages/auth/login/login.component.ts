@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthenticationService} from '../../services/services/authentication.service';
-import {AuthRequest} from '../../services/models/auth-request';
+import { FormsModule } from '@angular/forms';
+import {AuthenticationService} from '../../../services/services/authentication.service';
+import {AuthRequest} from '../../../services/models/auth-request';
 import {CheckboxModule} from 'primeng/checkbox';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
@@ -14,7 +15,8 @@ import { InputTextModule } from 'primeng/inputtext';
     CheckboxModule,
     ButtonModule,
     RippleModule,
-    InputTextModule
+    InputTextModule,
+    FormsModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']

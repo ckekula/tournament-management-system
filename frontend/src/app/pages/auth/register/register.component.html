@@ -8,17 +8,41 @@
       </div>
   
       <div>
-        <label for="orgname" class="block text-900 font-medium mb-2">Organization Name</label>
-        <input id="orgname" type="text" placeholder="e.g: Sri Lanka University Sports Association" pInputText class="w-full mb-3">
-  
-        <label for="orgabb" class="block text-900 font-medium mb-2">Organization Abbreviation</label>
-        <input id="orgabb" type="text" placeholder="e.g: SLUSA" pInputText class="w-full mb-3">
-  
+        <label for="fname" class="block text-900 font-medium mb-2">First Name</label>
+        <input id="fname" 
+               type="text" 
+               placeholder="e.g: Saman" 
+               pInputText 
+               class="w-full mb-3"
+               [(ngModel)]="registerRequest.firstname"
+               name="firstname">
+        
+        <label for="lname" class="block text-900 font-medium mb-2">Last Name</label>
+        <input id="lname" 
+               type="text" 
+               placeholder="e.g: Kumara" 
+               pInputText 
+               class="w-full mb-3"
+               [(ngModel)]="registerRequest.lastname"
+               name="lastname">
+        
         <label for="email" class="block text-900 font-medium mb-2">Email</label>
-        <input id="email" type="text" placeholder="Example@mail.com" pInputText class="w-full mb-3">
-  
+        <input id="email" 
+               type="text" 
+               placeholder="Example@mail.com" 
+               pInputText 
+               class="w-full mb-3"
+               [(ngModel)]="registerRequest.email"
+               name="email">
+        
         <label for="password" class="block text-900 font-medium mb-2">Password</label>
-        <input id="password" type="password" placeholder="Password" pInputText class="w-full mb-3">
+        <input id="password" 
+               type="password" 
+               placeholder="Password" 
+               pInputText 
+               class="w-full mb-3"
+               [(ngModel)]="registerRequest.password"
+               name="password">
   
         <div class="flex align-items-center justify-content-between mb-6">
           <div class="flex align-items-center">

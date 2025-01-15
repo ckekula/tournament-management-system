@@ -7,6 +7,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
+import { AuthStateService } from '../../../services/auth-state.service';
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,7 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationService,
+    private authState: AuthStateService
   ) {
   }
 
@@ -39,7 +41,8 @@ export class LoginComponent {
       body: this.authRequest
     }).subscribe({
       next: (res) => {
-        this.router.navigate(['competitions']);
+        this.authState.setAuthState(res);
+        this.router.navigate(['/dashboard']);
       },
       error: (err) => {
         console.log(err);

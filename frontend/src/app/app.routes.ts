@@ -6,11 +6,20 @@ import { CompetitionsComponent } from './pages/competitions/competitions.compone
 import { CompDetailsComponent } from './pages/comp-details/comp-details.component';
 import { TournamentComponent } from './pages/tournament/tournament.component';
 import { EventComponent } from './pages/event/event.component';
+import { ActivateAccountComponent } from './pages/auth/activate-account/activate-account.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'activate-account', component: ActivateAccountComponent },
     { path: 'register', component: RegisterComponent },
+    { 
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
+    },
     { path: 'competitions', component: CompetitionsComponent },
     { path: 'comp-details/:id', component: CompDetailsComponent },
     { path: 'tournament/:id', component: TournamentComponent },

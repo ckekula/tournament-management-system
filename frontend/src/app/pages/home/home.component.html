@@ -1,28 +1,5 @@
 <div>
-    <div class="surface-section px-4 py-2 shadow-4">
-        <div class="grid grid-nogutter align-items-center">
-            <div class="col-6">
-                <span class="text-2xl font-bold font-italic text-900">UniT</span>
-            </div>
-            <div class="col-6 text-right">
-                <button 
-                    pButton 
-                    pRipple 
-                    label="Login" 
-                    class="p-button-text p-button-sm mr-3" 
-                    (click)="navigateTo('/login')">
-                </button>
-                <button 
-                    pButton 
-                    pRipple 
-                    label="Sign Up" 
-                    class="p-button-raised p-button-sm" 
-                    (click)="navigateTo('/register')">
-                </button>
-            </div>
-        </div>
-    </div>
-
+    <app-header/>
     <div class="grid grid-nogutter surface-section text-800">
         <div class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
             <section>
@@ -59,7 +36,7 @@
                 <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
                     <i class="pi pi-desktop text-4xl text-blue-500"></i>
                 </span>
-                <div class="text-900 text-xl mb-3 font-medium">Built for Developers</div>
+                <div class="text-900 text-xl mb-3 font-medium">Built for Managers</div>
                 <span class="text-700 line-height-3">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
             </div>
             <div class="col-12 md:col-4 mb-4 px-5">
@@ -94,13 +71,10 @@
                 <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
                     <i class="pi pi-shield text-4xl text-blue-500"></i>
                 </span>
-                <div class="text-900 text-xl mb-3 font-medium">Trusted Securitty</div>
+                <div class="text-900 text-xl mb-3 font-medium">Trusted Security</div>
                 <span class="text-700 line-height-3">Mattis rhoncus urna neque viverra justo nec ultrices. Id cursus metus aliquam eleifend.</span>
             </div>
         </div>
     </div>
-
-    <div class="surface-900 text-center text-white py-3">
-        <span>© 2024 comp. All Rights Reserved.</span>
-    </div>
+    <app-footer/>
 </div>

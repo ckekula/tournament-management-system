@@ -9,6 +9,7 @@ import { EventComponent } from './pages/event/event.component';
 import { ActivateAccountComponent } from './pages/auth/activate-account/activate-account.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
+import { EditCompComponent } from './pages/edit/edit-comp/edit-comp.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -18,6 +19,21 @@ export const routes: Routes = [
     { 
         path: 'dashboard',
         component: DashboardComponent,
+        canActivate: [AuthGuard]
+    },
+    { 
+        path: 'comp/edit/:id',
+        component: EditCompComponent,
+        canActivate: [AuthGuard]
+    },
+    { 
+        path: 'tournament/edit/:id',
+        component: EditCompComponent,
+        canActivate: [AuthGuard]
+    },
+    { 
+        path: 'event/edit/:id',
+        component: EditCompComponent,
         canActivate: [AuthGuard]
     },
     { path: 'competitions', component: CompetitionsComponent },

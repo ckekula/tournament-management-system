@@ -3,7 +3,7 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { CompetitionsComponent } from './pages/competitions/competitions.component';
-import { CompDetailsComponent } from './pages/comp-details/comp-details.component';
+import { CompComponent } from './pages/comp/comp.component';
 import { TournamentComponent } from './pages/tournament/tournament.component';
 import { EventComponent } from './pages/event/event.component';
 import { ActivateAccountComponent } from './pages/auth/activate-account/activate-account.component';
@@ -37,7 +37,7 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
     },
     { path: 'competitions', component: CompetitionsComponent },
-    { path: 'comp-details/:id', component: CompDetailsComponent },
+    { path: 'comp/:id', component: CompComponent },
     { path: 'tournament/:id', component: TournamentComponent },
     { path: 'event/:id', component: EventComponent }
 ];

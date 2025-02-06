@@ -52,7 +52,10 @@ public class User implements UserDetails, Principal {
     @ManyToMany(fetch = EAGER)
     private List<Role> roles;
 
-    @OneToOne(mappedBy = "owner")
+//    @ManyToMany
+//    private List<Organization> memberOrganizations;
+
+    @OneToOne(mappedBy = "manager")
     private Organization organization;
 
     @CreatedDate

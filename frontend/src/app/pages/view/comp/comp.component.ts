@@ -3,7 +3,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { TagModule } from 'primeng/tag';
-import jsonData from '../../utils/init.json'
 import { TableModule } from 'primeng/table';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputTextModule } from 'primeng/inputtext';
@@ -14,7 +13,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-comp-details',
+  selector: 'app-comp',
   standalone: true,
   imports: [
     RippleModule,
@@ -30,12 +29,12 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     RouterModule
   ],
-  templateUrl: './comp-details.component.html',
-  styleUrls: ['./comp-details.component.scss']  // Make sure this is 'styleUrls' with an 's'
+  templateUrl: './comp.component.html',
+  styleUrls: ['./comp.component.scss']
 })
-export class CompDetailsComponent implements OnInit {
+export class CompComponent implements OnInit {
 
-  competition!: any;  // Holds the competition details
+  competition!: any;
   status!: any[];
   tournament!: any[];
 
@@ -54,7 +53,7 @@ export class CompDetailsComponent implements OnInit {
       const competitionId = params['id'];  // Retrieve 'id' from the route params
 
       // Find the relevant competition from the JSON data
-      this.competition = jsonData.competition.find(c => c.id == competitionId);
+    //   this.competition = jsonData.competition.find(c => c.id == competitionId);
 
       // Check if the competition exists
       if (!this.competition) {
@@ -62,7 +61,7 @@ export class CompDetailsComponent implements OnInit {
         // Optionally, navigate to a 404 page or show an error message
       } else {
         // If competition exists, you can load related tournaments
-        this.tournament = jsonData.tournament.filter(t => t.competition_id == competitionId);
+        // this.tournament = jsonData.tournament.filter(t => t.competition_id == competitionId);
       }
       this.loading = false;  // Stop loading once data is retrieved
     });

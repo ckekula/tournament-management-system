@@ -1,193 +1,407 @@
--- @block User Table
-CREATE TABLE user (
-    id VARCHAR(255) PRIMARY KEY,
+-- User and Organization
+CREATE TABLE "user" (
+    id BIGSERIAL PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
     name VARCHAR(255) NOT NULL,
-    abbreviation VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    };
--- @block Competition Table
-CREATE TABLE comp (
-    id VARCHAR(255) PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    abbreviation VARCHAR(255) NOT NULL,
-    year INT NOT NULL,
-    description VARCHAR(255),
-    status VARCHAR(255) NOT NULL DEFAULT 'Not Started',
-    host VARCHAR(255),
-    org_id VARCHAR(255) NOT NULL,
-    ADD CONSTRAINT FOREIGN KEY fk_org (org_id) REFERENCES user(id)
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    metadata JSONB NOT NULL DEFAULT '{}'
 );
--- @block Tournament Table
-CREATE TABLE tournament (
-    id VARCHAR(255) PRIMARY KEY,
+
+CREATE TABLE organization (
+    id BIGSERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    competition_id VARCHAR(255) NOT NULL,
-    sport VARCHAR(255) NOT NULL,
-    begin_date DATE NOT NULL,
+    user_id BIGINT NOT NULL UNIQUE REFERENCES "user"(id),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    metadata JSONB NOT NULL DEFAULT '{}'
+);
+
+-- Competition Structure
+CREATE TABLE competition (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    organization_id BIGINT NOT NULL REFERENCES organization(id),
+    start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    venue VARCHAR(255) NOT NULL,
-    ADD CONSTRAINT fk_comp FOREIGN KEY (competition_id) REFERENCES competition(id)
+    status VARCHAR(50) NOT NULL DEFAULT 'draft',
+    settings JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Event Table
-CREATE TABLE event (
-    id VARCHAR(255) PRIMARY KEY,
+
+-- Activity (Sport/Game) Configuration
+CREATE TABLE activity (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    category VARCHAR(50) NOT NULL, -- 'sport', 'academic', 'esport', etc.
+    classification_rules JSONB NOT NULL, -- Gender, age, weight rules
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tournament (
+    id BIGSERIAL PRIMARY KEY,
+    competition_id BIGINT NOT NULL REFERENCES competition(id),
+    activity_id BIGINT NOT NULL REFERENCES activity(id),
     name VARCHAR(255) NOT NULL,
-    gender VARCHAR(255),
-    age_group VARCHAR(255),
-    tournament_id VARCHAR(255) NOT NULL,
-    ADD CONSTRAINT fk_tourn FOREIGN KEY (tournament_id) REFERENCES tournament(id),
-    ADD CONSTRAINT check_gender CHECK (gender IN ('mens', 'womens'))
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'draft',
+    settings JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Group Stage Table
-CREATE TABLE group_stage (
-    id VARCHAR(255) PRIMARY KEY,
-    name VARCHAR(255),
-    format VARCHAR(255) DEFAULT 'Round Robin',
-    event_id VARCHAR(255) NOT NULL,
-    ADD CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES event(id)
+
+CREATE TABLE event (
+    id BIGSERIAL PRIMARY KEY,
+    tournament_id BIGINT NOT NULL REFERENCES tournament(id),
+    name VARCHAR(255) NOT NULL,
+    classification JSONB NOT NULL, -- gender, age group, weight class
+    format VARCHAR(50) NOT NULL, -- 'individual', 'team', 'both'
+    scoring_config JSONB NOT NULL, -- Scoring rules and metrics
+    participant_roles JSONB NOT NULL, -- Different roles in the activity
+    team_size_rules JSONB NOT NULL DEFAULT '{}', -- Min/max team sizes
+    settings JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Knockout Stage Table
-CREATE TABLE knockout_stage (
-    id VARCHAR(255) PRIMARY KEY,
-    format VARCHAR(255) DEFAULT 'Single Elimination',
-    event_id VARCHAR(255) NOT NULL,
-    ADD CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES event(id)
+
+CREATE TABLE stage (
+    id BIGSERIAL PRIMARY KEY,
+    event_id BIGINT NOT NULL REFERENCES event(id),
+    name VARCHAR(255) NOT NULL,
+    type VARCHAR(50) NOT NULL, -- 'group', 'knockout', 'league'
+    sequence INT NOT NULL, -- Order of stages
+    settings JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Group Round Table
-CREATE TABLE group_round (
-    id VARCHAR(15) PRIMARY KEY,
-    group_stage_id VARCHAR(10) NOT NULL,
-    name VARCHAR(50),
-    ADD CONSTRAINT fk_group_stage FOREIGN KEY (group_stage_id) REFERENCES group_stage(id)
+
+CREATE TABLE event_group (
+    id BIGSERIAL PRIMARY KEY,
+    stage_id BIGINT NOT NULL REFERENCES stage(id),
+    name VARCHAR(255) NOT NULL,
+    settings JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Knockout Round Table
-CREATE TABLE knockout_round (
-    id VARCHAR(15) PRIMARY KEY,
-    knockout_stage_id VARCHAR(10) NOT NULL,
-    name VARCHAR(50),
-    ADD CONSTRAINT fk_knockout_stage FOREIGN KEY (knockout_stage_id) REFERENCES knockout_stage(id)
+
+CREATE TABLE round (
+    id BIGSERIAL PRIMARY KEY,
+    stage_id BIGINT NOT NULL REFERENCES stage(id),
+    group_id BIGINT REFERENCES event_group(id),
+    name VARCHAR(255) NOT NULL,
+    sequence INT NOT NULL,
+    settings JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Organization Table
-CREATE TABLE org (
-    id VARCHAR(255) PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
--- @block Team Table
+
+-- Team and Participant Management
 CREATE TABLE team (
-    id VARCHAR(255) PRIMARY KEY,
-    org_id VARCHAR(255) NOT NULL,
-    event_id VARCHAR(255) NOT NULL,
-    ADD CONSTRAINT fk_org FOREIGN KEY (organization_id) REFERENCES organization(id),
-    ADD CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES event(id)
+    id BIGSERIAL PRIMARY KEY,
+    organization_id BIGINT NOT NULL REFERENCES organization(id),
+    event_id BIGINT NOT NULL REFERENCES event(id),
+    name VARCHAR(255) NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'active',
+    attributes JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Participant Table
+
 CREATE TABLE participant (
-    id VARCHAR(255) PRIMARY KEY,
-    first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255) NOT NULL,
-    age INT,
-    gender VARCHAR(255),
-    team_id VARCHAR(15) NOT NULL,
-    ADD CONSTRAINT fk_team FOREIGN KEY (team_id) REFERENCES team(id)
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    gender VARCHAR(50) NOT NULL,
+    attributes JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Competition Results Table
-CREATE TABLE comp_results (
-    competition_id VARCHAR(255) NOT NULL,
-    comp_first_id VARCHAR(255) NOT NULL,
-    comp_second_id VARCHAR(255) NOT NULL,
-    comp_third_id VARCHAR(255) NOT NULL,
-    ADD CONSTRAINT fk_comp_first FOREIGN KEY (comp_first_id) REFERENCES organization(id),
-    ADD CONSTRAINT fk_comp_second FOREIGN KEY (comp_second_id) REFERENCES organization(id),
-    ADD CONSTRAINT fk_comp_third FOREIGN KEY (comp_third_id) REFERENCES organization(id),
+
+CREATE TABLE team_participant (
+    id BIGSERIAL PRIMARY KEY,
+    team_id BIGINT NOT NULL REFERENCES team(id),
+    participant_id BIGINT NOT NULL REFERENCES participant(id),
+    role VARCHAR(50) NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'active',
+    joined_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    attributes JSONB NOT NULL DEFAULT '{}'
 );
--- @block Tournament Results Table
-CREATE TABLE tourn_results (
-    tournament_id VARCHAR(255) NOT NULL,
-    tourn_first_id VARCHAR(255) NOT NULL,
-    tourn_second_id VARCHAR(255) NOT NULL,
-    tourn_third_id VARCHAR(255) NOT NULL,
-    ADD CONSTRAINT fk_tourn_first FOREIGN KEY (tourn_first_id) REFERENCES team(id),
-    ADD CONSTRAINT fk_tourn_second FOREIGN KEY (tourn_second_id) REFERENCES team(id),
-    ADD CONSTRAINT fk_tourn_third FOREIGN KEY (tourn_third_id) REFERENCES team(id),
+
+-- Match and Scoring System
+CREATE TABLE match (
+    id BIGSERIAL PRIMARY KEY,
+    round_id BIGINT NOT NULL REFERENCES round(id),
+    sequence INT NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'scheduled',
+    start_time TIMESTAMPTZ,
+    end_time TIMESTAMPTZ,
+    settings JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Knockout Results Table
-CREATE TABLE knockout_results (
-    knockout_stage_id VARCHAR(255) NOT NULL,
-    knockout_first_id VARCHAR(255) NOT NULL,
-    knockout_second_id VARCHAR(255) NOT NULL,
-    knockout_third_id VARCHAR(255) NOT NULL,
-    ADD CONSTRAINT fk_tourn_first FOREIGN KEY (tourn_first_id) REFERENCES team(id),
-    ADD CONSTRAINT fk_tourn_second FOREIGN KEY (tourn_second_id) REFERENCES team(id),
-    ADD CONSTRAINT fk_tourn_third FOREIGN KEY (tourn_third_id) REFERENCES team(id),
+
+CREATE TABLE match_participant (
+    id BIGSERIAL PRIMARY KEY,
+    match_id BIGINT NOT NULL REFERENCES match(id),
+    participant_id BIGINT REFERENCES participant(id),
+    team_id BIGINT REFERENCES team(id),
+    role VARCHAR(50) NOT NULL,
+    scores JSONB NOT NULL DEFAULT '{}',
+    statistics JSONB NOT NULL DEFAULT '{}',
+    CONSTRAINT entity_check CHECK (
+        (participant_id IS NOT NULL AND team_id IS NULL) OR
+        (participant_id IS NULL AND team_id IS NOT NULL)
+    )
 );
--- @block Part Round Score Table
-CREATE TABLE part_round_score (
-    prs_id VARCHAR(20) PRIMARY KEY,
-    participant_id VARCHAR(10) NOT NULL,
-    rounds_id VARCHAR(15) NOT NULL,
-    participant_score INT,
-    FOREIGN KEY (participant_id) REFERENCES participant(participant_id),
-    FOREIGN KEY (rounds_id) REFERENCES rounds(rounds_id)
+
+-- Indexes
+CREATE INDEX idx_participant_attributes ON participant USING gin(attributes jsonb_path_ops);
+CREATE INDEX idx_team_attributes ON team USING gin(attributes jsonb_path_ops);
+CREATE INDEX idx_event_classification ON event USING gin(classification jsonb_path_ops);
+CREATE INDEX idx_match_participant_scores ON match_participant USING gin(scores jsonb_path_ops);
+CREATE INDEX idx_match_participant_statistics ON match_participant USING gin(statistics jsonb_path_ops);
+
+-- Example activity configuration
+INSERT INTO activity (
+    name, 
+    category, 
+    format, 
+    scoring_config,
+    participant_roles,
+    team_size_rules,
+    classification_rules
+) VALUES (
+    'Basketball 5x5',
+    'sport',
+    'team',
+    '{
+        "team_metrics": ["points", "fouls", "timeouts"],
+        "player_metrics": {
+            "points": {"type": "numeric", "default": 0},
+            "rebounds": {"type": "numeric", "default": 0},
+            "assists": {"type": "numeric", "default": 0},
+            "steals": {"type": "numeric", "default": 0},
+            "blocks": {"type": "numeric", "default": 0},
+            "fouls": {"type": "numeric", "max": 5}
+        }
+    }',
+    '{
+        "player": {"max_per_team": 12},
+        "coach": {"max_per_team": 3}
+    }',
+    '{
+        "min_players": 5,
+        "max_players": 12,
+        "active_players": 5
+    }',
+    '{
+        "gender": ["male", "female"],
+        "age_groups": ["U12", "U16", "U18", "senior"],
+        "weight_class": false
+    }'
 );
--- @block Knockout Round Team Score Table
-CREATE TABLE team_round_score (
-    trs_id VARCHAR(20) PRIMARY KEY,
-    team_id VARCHAR(15) NOT NULL,
-    rounds_id VARCHAR(15) NOT NULL,
-    team_score INT,
-    FOREIGN KEY (team_id) REFERENCES team(team_id),
-    FOREIGN KEY (rounds_id) REFERENCES rounds(rounds_id)
+
+-- Point System Configuration
+CREATE TABLE point_system (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    organization_id BIGINT REFERENCES organization(id),
+    rules JSONB NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Group Round Team Score Table
-CREATE TABLE team_round_score (
-    trs_id VARCHAR(20) PRIMARY KEY,
-    team_id VARCHAR(15) NOT NULL,
-    rounds_id VARCHAR(15) NOT NULL,
-    team_score INT,
-    FOREIGN KEY (team_id) REFERENCES team(team_id),
-    FOREIGN KEY (rounds_id) REFERENCES rounds(rounds_id)
+
+-- Example point system rules:
+-- {
+--     "positions": {
+--         "1": 100,
+--         "2": 80,
+--         "3": 60,
+--         "4": 50,
+--         "5-8": 30,
+--         "9-16": 15
+--     },
+--     "bonus": {
+--         "world_record": 20,
+--         "tournament_record": 10
+--     }
+-- }
+
+-- Add point system references to existing tables
+ALTER TABLE competition ADD COLUMN point_system_id BIGINT REFERENCES point_system(id);
+ALTER TABLE tournament ADD COLUMN point_system_id BIGINT REFERENCES point_system(id);
+ALTER TABLE event ADD COLUMN point_system_id BIGINT REFERENCES point_system(id);
+
+-- Rankings and Points Tables
+CREATE TABLE event_ranking (
+    id BIGSERIAL PRIMARY KEY,
+    event_id BIGINT NOT NULL REFERENCES event(id),
+    team_id BIGINT REFERENCES team(id),
+    participant_id BIGINT REFERENCES participant(id),
+    final_position INT,
+    points NUMERIC NOT NULL DEFAULT 0,
+    ranking_details JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT entity_check CHECK (
+        (team_id IS NOT NULL AND participant_id IS NULL) OR
+        (team_id IS NULL AND participant_id IS NOT NULL)
+    )
 );
--- @block Team Round Points Table
-CREATE TABLE team_round_points (
-    trp_id VARCHAR(20) PRIMARY KEY,
-    team_id VARCHAR(15) NOT NULL,
-    rounds_id VARCHAR(15) NOT NULL,
-    team_points INT,
-    FOREIGN KEY (team_id) REFERENCES team(team_id),
-    FOREIGN KEY (rounds_id) REFERENCES rounds(rounds_id)
+
+CREATE TABLE tournament_ranking (
+    id BIGSERIAL PRIMARY KEY,
+    tournament_id BIGINT NOT NULL REFERENCES tournament(id),
+    organization_id BIGINT NOT NULL REFERENCES organization(id),
+    final_position INT,
+    total_points NUMERIC NOT NULL DEFAULT 0,
+    points_breakdown JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Team Event Points Table
-CREATE TABLE team_event_points (
-    tep_id VARCHAR(20) PRIMARY KEY,
-    team_id VARCHAR(15) NOT NULL,
-    events_id varchar(10) NOT NULL,
-    event_points INT,
-    FOREIGN KEY (team_id) REFERENCES team(team_id),
-    FOREIGN KEY (events_id) REFERENCES events(events_id)
+
+CREATE TABLE competition_ranking (
+    id BIGSERIAL PRIMARY KEY,
+    competition_id BIGINT NOT NULL REFERENCES competition(id),
+    organization_id BIGINT NOT NULL REFERENCES organization(id),
+    final_position INT,
+    total_points NUMERIC NOT NULL DEFAULT 0,
+    points_breakdown JSONB NOT NULL DEFAULT '{}',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
--- @block Uni Comp Points Table
-CREATE TABLE uni_comp_points (
-    ucp_id VARCHAR(255) PRIMARY KEY,
-    uni_id VARCHAR(5) NOT NULL,
-    comp_id VARCHAR(10) NOT NULL,
-    uni_points INT,
-    FOREIGN KEY (uni_id) REFERENCES uni(uni_id),
-    FOREIGN KEY (comp_id) REFERENCES comp(comp_id)
-);
--- @block round team Table
-CREATE TABLE round_teams(
-    round_teams_id VARCHAR(20) PRIMARY KEY,
-    team_id VARCHAR(20) NOT NULL,
-    rounds_id VARCHAR(20) NOT NULL,
-    FOREIGN KEY (team_id) REFERENCES team(team_id),
-    FOREIGN KEY (rounds_id) REFERENCES rounds(rounds_id)
-);
--- @block Official Table
-CREATE TABLE official (
-    official_id VARCHAR(10) PRIMARY KEY,
-    official_name VARCHAR(50) NOT NULL,
-    events_id VARCHAR(10) NOT NULL,
-    FOREIGN KEY (events_id) REFERENCES events(events_id),
-    FOREIGN KEY (supervisor_id) REFERENCES official(official_id)
+
+-- Functions for point calculation and ranking
+
+-- Calculate points for a team/participant in an event
+CREATE OR REPLACE FUNCTION calculate_event_points(
+    p_event_id BIGINT,
+    p_position INT
+) RETURNS NUMERIC AS $$
+DECLARE
+    v_point_system_id BIGINT;
+    v_rules JSONB;
+    v_points NUMERIC;
+BEGIN
+    -- Get point system rules
+    SELECT point_system_id INTO v_point_system_id FROM event WHERE id = p_event_id;
+    SELECT rules INTO v_rules FROM point_system WHERE id = v_point_system_id;
+    
+    -- Calculate points based on position
+    SELECT COALESCE(
+        (v_rules->'positions'->p_position::text)::NUMERIC,
+        (
+            SELECT (v_rules->'positions'->key)::NUMERIC
+            FROM jsonb_object_keys(v_rules->'positions') key
+            WHERE key LIKE '%-%'
+            AND p_position BETWEEN 
+                split_part(key, '-', 1)::INT AND 
+                split_part(key, '-', 2)::INT
+            LIMIT 1
+        ),
+        0
+    ) INTO v_points;
+    
+    RETURN v_points;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Update tournament rankings based on event results
+CREATE OR REPLACE FUNCTION update_tournament_rankings(p_tournament_id BIGINT) RETURNS VOID AS $$
+BEGIN
+    -- Clear existing rankings
+    DELETE FROM tournament_ranking WHERE tournament_id = p_tournament_id;
+    
+    -- Calculate new rankings
+    INSERT INTO tournament_ranking (
+        tournament_id,
+        organization_id,
+        total_points,
+        points_breakdown
+    )
+    SELECT 
+        p_tournament_id,
+        t.organization_id,
+        SUM(er.points),
+        jsonb_object_agg(
+            e.name,
+            jsonb_build_object(
+                'points', er.points,
+                'position', er.final_position
+            )
+        )
+    FROM event e
+    JOIN team t ON e.id = t.event_id
+    JOIN event_ranking er ON t.id = er.team_id
+    WHERE e.tournament_id = p_tournament_id
+    GROUP BY t.organization_id;
+    
+    -- Update positions
+    WITH ranked_orgs AS (
+        SELECT 
+            id,
+            ROW_NUMBER() OVER (ORDER BY total_points DESC) as position
+        FROM tournament_ranking
+        WHERE tournament_id = p_tournament_id
+    )
+    UPDATE tournament_ranking tr
+    SET final_position = ro.position
+    FROM ranked_orgs ro
+    WHERE tr.id = ro.id;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Update competition rankings based on tournament results
+CREATE OR REPLACE FUNCTION update_competition_rankings(p_competition_id BIGINT) RETURNS VOID AS $$
+BEGIN
+    -- Clear existing rankings
+    DELETE FROM competition_ranking WHERE competition_id = p_competition_id;
+    
+    -- Calculate new rankings
+    INSERT INTO competition_ranking (
+        competition_id,
+        organization_id,
+        total_points,
+        points_breakdown
+    )
+    SELECT 
+        p_competition_id,
+        tr.organization_id,
+        SUM(tr.total_points),
+        jsonb_object_agg(
+            t.name,
+            jsonb_build_object(
+                'points', tr.total_points,
+                'position', tr.final_position
+            )
+        )
+    FROM tournament t
+    JOIN tournament_ranking tr ON t.id = tr.tournament_id
+    WHERE t.competition_id = p_competition_id
+    GROUP BY tr.organization_id;
+    
+    -- Update positions
+    WITH ranked_orgs AS (
+        SELECT 
+            id,
+            ROW_NUMBER() OVER (ORDER BY total_points DESC) as position
+        FROM competition_ranking
+        WHERE competition_id = p_competition_id
+    )
+    UPDATE competition_ranking cr
+    SET final_position = ro.position
+    FROM ranked_orgs ro
+    WHERE cr.id = ro.id;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Example of point system configuration
+INSERT INTO point_system (name, organization_id, rules) VALUES (
+    'Olympic Style Points',
+    1,
+    '{
+        "positions": {
+            "1": 100,
+            "2": 80,
+            "3": 60,
+            "4": 50,
+            "5-8": 30,
+            "9-16": 15
+        },
+        "bonus": {
+            "world_record": 20,
+            "tournament_record": 10
+        },
+        "multipliers": {
+            "team_events": 2,
+            "individual_events": 1
+        }
+    }'
 );

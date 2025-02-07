@@ -1,0 +1,11 @@
+:host ::ng-deep .p-button.p-button-text:enabled:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.surface-card {
+    transition: transform 0.2s;
+}
+
+.surface-card:hover {
+    transform: translateY(-2px);
+}

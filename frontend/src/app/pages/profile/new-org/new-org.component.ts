@@ -7,7 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { FileUploadModule } from 'primeng/fileupload';
 import { AvatarModule } from 'primeng/avatar';
-import { OrganizationService } from '../../../graphql/organization.service';
+import { OrganizationService } from '../../../graphql/services/organization.service';
 
 @Component({
   selector: 'app-new-org',

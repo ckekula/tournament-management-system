@@ -18,12 +18,12 @@ public class OrganizationResolver implements GraphQLQueryResolver, GraphQLMutati
     }
 
     // Query: Get all organizations
-    public List<Organization> organizations() {
+    public List<Organization> getAllOrganizations() {
         return organizationService.getAllOrganizations();
     }
 
     // Query: Get a specific organization by ID
-    public Organization organization(Long id) {
+    public Organization getOrganizationById(Long id) {
         return organizationService.getOrganizationById(id);
     }
 

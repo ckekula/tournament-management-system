@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FooterComponent } from "../../../components/shared/footer/footer.component";
 import { HeaderComponent } from '../../../components/shared/header/header.component';
 import { Router } from '@angular/router';
-import { OrganizationService } from '../../../graphql/services/organization.service';
 import { CompCardComponent } from '../../../components/comp-card/comp-card.component';
 import { CommonModule } from '@angular/common';
 import { Competition } from '../../../../types/competition';
+import { CompetitionService } from '../../../graphql/services/competition.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-organization',
@@ -20,39 +22,50 @@ import { Competition } from '../../../../types/competition';
   styleUrl: './organization.component.scss'
 })
 export class OrganizationComponent implements OnInit {
-
-  competitions: Competition[] = [
-    {
-        name: 'Global Innovation Challenge',
-        year: 2024,
-        startDate: new Date('2024-03-15'),
-        organization: 'Tech Innovators Inc.'
-    },
-    {
-        name: 'Data Science Olympics',
-        year: 2024,
-        startDate: new Date('2024-04-01'),
-        organization: 'DataMinds Academy'
-    },
-    {
-        name: 'Startup Pitch Contest',
-        year: 2024,
-        startDate: new Date('2024-05-20'),
-        organization: 'Venture Capital Partners'
-    }
-  ];
+  public competitions: Competition[] = [];
+  private organizationId: string = '';
+  public organizationName: string = '';
 
   constructor(
-    private organizationService: OrganizationService,
-    private router: Router
+    private competitionService: CompetitionService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void { }
-
-  addCompetition() {
-    this.router.navigate(['/view/comp/:id']);
+  ngOnInit(): void {
+    // Get organization ID from URL
+    this.route.params.subscribe(params => {
+      this.organizationId = params['id'];
+      this.loadCompetitions();
+    });
   }
 
-  getOrgName() {}
+  private loadCompetitions(): void {
+    this.competitionService.getCompetitionsByOrganizer(this.organizationId)
+      .pipe(
+        map(response => response.data.getCompetitionsByOrganizer)
+      )
+      .subscribe({
+        next: (competitions: Competition[]) => {
+          this.competitions = competitions;
+          if (competitions.length > 0) {
+            this.organizationName = competitions[0].organization;
+          }
+        },
+        error: (error) => {
+          console.error('Error fetching competitions:', error);
+          // Handle error appropriately - you might want to show a notification
+        }
+      });
+  }
 
+  addCompetition() {
+    this.router.navigate(['/competition/new'], {
+      queryParams: { organizationId: this.organizationId }
+    });
+  }
+
+  getOrgName(): string {
+    return this.organizationName || 'Organization';
+  }
 }

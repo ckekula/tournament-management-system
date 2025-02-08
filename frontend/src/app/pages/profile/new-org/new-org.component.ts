@@ -32,7 +32,7 @@ export class NewOrgComponent {
 
   constructor(
     private organizationService: OrganizationService,
-    private router: Router // Inject Router
+    private router: Router
   ) {}
 
   onFileSelected(event: any) {

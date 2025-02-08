@@ -17,9 +17,9 @@ export const CompetitionQueries = {
     }
   `,
 
-  GET_COMPETITIONS_BY_ORGANIZATION: gql`
-    query GetCompetitionsByOrganization($organizationId: String!) {
-      competitionsByOrganization(organizationId: $organizationId) {
+  GET_COMPETITIONS_BY_ORGANIZER: gql`
+    query GetCompetitionsByOrganizer($organizationId: String!) {
+      competitionsByOrganizer(organizationId: $organizationId) {
         id
         name
         year

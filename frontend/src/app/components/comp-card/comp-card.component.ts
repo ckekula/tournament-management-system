@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Competition } from '../../../types/competition';
 
 @Component({
@@ -12,8 +12,7 @@ import { Competition } from '../../../types/competition';
   styleUrl: './comp-card.component.scss'
 })
 export class CompCardComponent {
-
-  competition!: Competition;
+  @Input() competition!: Competition;
   
   editCompetition(comp: Competition) {}
 

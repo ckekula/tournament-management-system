@@ -49,9 +49,9 @@ export class CompetitionService {
     });
   }
 
-  getCompetitionsByOrganization(organizationId: string): Observable<any> {
+  getCompetitionsByOrganizer(organizationId: string): Observable<any> {
     return this.apollo.query({
-      query: CompetitionQueries.GET_COMPETITIONS_BY_ORGANIZATION,
+      query: CompetitionQueries.GET_COMPETITIONS_BY_ORGANIZER,
       variables: { organizationId },
     });
   }

@@ -4,7 +4,7 @@
     <div class="surface-section px-4 py-6 md:px-6 lg:px-8">
         <div class="text-700 text-center mb-6">
             <div class="text-blue-600 font-bold mb-3">WELCOME BACK!</div>
-            <div class="text-900 font-bold text-5xl mb-3">getOrgName()</div>
+            <div class="text-900 font-bold text-5xl mb-3">{{getOrgName()}}</div>
         </div>
 
         <div class="container mx-auto">
@@ -20,8 +20,15 @@
             <!-- Competition Cards -->
             <div class="grid">
                 <div *ngFor="let competition of competitions" class="col-12 mb-4">
-                    <app-comp-card/>
+                    <app-comp-card
+                        [competition]="competition"
+                    />
                 </div>
+            </div>
+
+            <!-- No competitions message -->
+            <div *ngIf="competitions.length === 0" class="text-center p-4">
+                <p class="text-700">No competitions found for this organization.</p>
             </div>
         </div>
     </div>

@@ -58,18 +58,23 @@ public class BeansConfig {
                 HttpHeaders.ORIGIN,
                 HttpHeaders.CONTENT_TYPE,
                 HttpHeaders.ACCEPT,
-                HttpHeaders.AUTHORIZATION
+                HttpHeaders.AUTHORIZATION,
+                "X-Requested-With",
+                "apollo-require-preflight"  // Required for Apollo Client
         ));
         config.setAllowedMethods(Arrays.asList(
                 "GET",
                 "POST",
                 "DELETE",
                 "PUT",
-                "PATCH"
+                "PATCH",
+                "OPTIONS"
+        ));
+        config.setExposedHeaders(Arrays.asList(
+                "Access-Control-Allow-Origin",
+                "Access-Control-Allow-Credentials"
         ));
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
-
     }
-
 }

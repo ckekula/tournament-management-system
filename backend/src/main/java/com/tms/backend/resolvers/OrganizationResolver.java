@@ -36,7 +36,6 @@ public class OrganizationResolver implements GraphQLQueryResolver, GraphQLMutati
         return organizationService.createOrganization(organization);
     }
 
-    // Mutation: Update an existing organization
     public Organization updateOrganization(Long id, String name, String abbreviation, String image) {
         Organization updatedOrganization = new Organization();
         updatedOrganization.setName(name);
@@ -45,7 +44,6 @@ public class OrganizationResolver implements GraphQLQueryResolver, GraphQLMutati
         return organizationService.updateOrganization(id, updatedOrganization);
     }
 
-    // Mutation: Delete an organization
     public Boolean deleteOrganization(Long id) {
         organizationService.deleteOrganization(id);
         return true;

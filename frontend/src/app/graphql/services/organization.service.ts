@@ -10,12 +10,12 @@ import { OrganizationMutations } from '../mutations/organization.mutation';
 export class OrganizationService {
   constructor(private apollo: Apollo) {}
 
-  createOrganization(name: string, abbreviation: string, image?: string): Observable<any> {
+  createOrganization(variables: { name: string; abbreviation: string; image?: string }): Observable<any> {
     return this.apollo.mutate({
       mutation: OrganizationMutations.CREATE_ORGANIZATION,
-      variables: { name, abbreviation, image },
+      variables,
     });
-  }
+  }  
 
   updateOrganization(id: string, name: string, abbreviation: string, image?: string): Observable<any> {
     return this.apollo.mutate({

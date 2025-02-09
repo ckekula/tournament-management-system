@@ -2,6 +2,9 @@ package com.tms.backend.services;
 
 import com.tms.backend.entities.Organization;
 import com.tms.backend.repositories.OrganizationRepository;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +18,17 @@ public class OrganizationService {
         this.organizationRepository = organizationRepository;
     }
 
+    @Transactional
     public Organization createOrganization(Organization organization) {
-        return organizationRepository.save(organization);
+        try {
+            if (organization.getManager() == null) {
+                throw new IllegalArgumentException("Organization manager cannot be null");
+            }
+
+            return organizationRepository.save(organization);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     public Organization updateOrganization(Long id, Organization updatedOrganization) {

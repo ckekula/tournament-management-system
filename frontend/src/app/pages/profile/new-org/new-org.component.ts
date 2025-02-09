@@ -54,13 +54,17 @@ export class NewOrgComponent {
         alert('Please fill in both name and abbreviation.');
         return;
       }
-
-      const variables: any = {
+  
+      const variables: { name: string; abbreviation: string; image?: string; } = {
         name: this.name,
-        abbreviation: this.abbreviation,
-        image: this.profileImage
+        abbreviation: this.abbreviation
       };
-
+  
+      // Only add image if it exists
+      if (this.profileImage) {
+        variables['image'] = this.profileImage;
+      }
+  
       const response = await firstValueFrom(this.organizationService.createOrganization(variables));
       
       if (response?.data?.createOrganization) {

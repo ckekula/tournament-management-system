@@ -42,7 +42,7 @@ export class LoginComponent {
     }).subscribe({
       next: (res) => {
         this.authState.setAuthState(res);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/new-profile']);
       },
       error: (err) => {
         console.log(err);

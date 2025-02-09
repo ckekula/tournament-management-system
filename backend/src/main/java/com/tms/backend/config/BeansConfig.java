@@ -74,6 +74,9 @@ public class BeansConfig {
                 "Access-Control-Allow-Origin",
                 "Access-Control-Allow-Credentials"
         ));
+        source.registerCorsConfiguration("/api/v1/graphql", config);
+        source.registerCorsConfiguration("/graphql", config);
+        source.registerCorsConfiguration("/graphql/**", config);
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }

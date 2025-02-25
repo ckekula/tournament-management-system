@@ -1,16 +1,47 @@
+version: '3.8'
+
 services:
+  frontend:
+    container_name: angular-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - spring-demo
+
+  backend:
+    container_name: spring-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/tms
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    ports:
+      - "8088:8088"
+    depends_on:
+      - postgres
+    networks:
+      - spring-demo
+
   postgres:
     container_name: postgres-sql-tms
     image: postgres
     environment:
-      POSTGRES_USER: chamuditha
-      POSTGRES_PASSWORD: chamuditha360
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       PGDATA: /var/lib/postgresql/data
       POSTGRES_DB: tms
     volumes:
       - postgres:/data/postgres
     ports:
-      - 5432:5432
+      - "5432:5432"
     networks:
       - spring-demo
     restart: unless-stopped
@@ -19,22 +50,10 @@ services:
     container_name: mail-dev-tms
     image: maildev/maildev
     ports:
-      - 1080:1080
-      - 1025:1025
-
-  jenkins:
-    container_name: jenkins-server
-    image: jenkins/jenkins:lts
-    user: root
-    ports:
-      - 8080:8080
-      - 50000:50000
-    volumes:
-      - jenkins-data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
+      - "1080:1080"
+      - "1025:1025"
     networks:
       - spring-demo
-    restart: unless-stopped
 
 networks:
   spring-demo:
@@ -42,6 +61,4 @@ networks:
 
 volumes:
   postgres:
-    driver: local
-  jenkins-data:
     driver: local

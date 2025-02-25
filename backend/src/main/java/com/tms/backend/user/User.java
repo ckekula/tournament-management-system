@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 
 import static jakarta.persistence.FetchType.EAGER;
 
-
 @Getter
 @Setter
 @SuperBuilder
@@ -35,14 +34,14 @@ import static jakarta.persistence.FetchType.EAGER;
 public class User implements UserDetails, Principal {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String firstname;
     private String lastname;
     private LocalDate dateOfBirth;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
     private String password;
@@ -51,6 +50,14 @@ public class User implements UserDetails, Principal {
 
     @ManyToMany(fetch = EAGER)
     private List<Role> roles;
+
+    @ManyToMany
+    @JoinTable(
+            name = "organization_admins",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "organization_id")
+    )
+    private List<Organization> adminOf;
 
     @OneToOne(mappedBy = "owner")
     private Organization organization;
@@ -99,10 +106,6 @@ public class User implements UserDetails, Principal {
     @Override
     public boolean isEnabled() {
         return enabled;
-    }
-
-    public String fullName() {
-        return getFirstname() + " " + getLastname();
     }
 
     @Override

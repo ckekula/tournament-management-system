@@ -21,18 +21,18 @@ public class Organization {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String abbreviation;
 
     @Column(nullable = true)
     private String image;
 
     @OneToOne
-    @JoinColumn(name = "manager_id")
-    private User manager;
+    @JoinColumn(name = "owner_id", nullable = false, unique = true)
+    private User owner;
 
-//    @ManyToMany(mappedBy = "memberOrganizations")
-//    private List<User> members;
+    @ManyToMany(mappedBy = "adminOf")
+    private List<User> admins;
 
     @OneToMany(mappedBy = "organizer")
     private List<Competition> competitions;

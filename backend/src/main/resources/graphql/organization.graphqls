@@ -1,26 +1,44 @@
 extend type Query {
-    # Fetch all organizations
-    organizations: [Organization!]!
+  # Fetch all organizations
+  organizations: [Organization!]!
 
-    # Fetch a specific organization by ID
-    organization(id: ID!): Organization
+  # Fetch a specific organization by ID
+  organization(id: ID!): Organization
 }
 
 extend type Mutation {
-    # Create a new organization
-    createOrganization(name: String!, abbreviation: String!, image: String): Organization!
+  # Create a new organization
+  createOrganization(
+    name: String!
+    abbreviation: String!
+    image: String
+  ): Organization!
 
-    # Update an existing organization
-    updateOrganization(id: ID!, name: String!, abbreviation: String!, image: String): Organization!
-
-    # Delete an organization
-    deleteOrganization(id: ID!): Boolean!
-}
-
-# Organization entity
-type Organization {
+  # Update an existing organization
+  updateOrganization(
     id: ID!
     name: String!
     abbreviation: String!
     image: String
+  ): Organization!
+
+  # Delete an organization
+  deleteOrganization(id: ID!): Boolean!
+}
+
+# Organization entity
+type Organization {
+  id: ID!
+  name: String!
+  abbreviation: String!
+  image: String
+  manager: User!
+}
+
+type User {
+  id: ID!
+  email: String!
+  firstname: String!
+  lastname: String!
+  fullName: String!
 }

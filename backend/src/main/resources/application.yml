@@ -4,14 +4,19 @@ spring:
   servlet:
     multipart:
       max-file-size: 50MB
-springdoc:
-  default-produces-media-type: application/json
-server:
-  servlet:
-    context-path: /api/v1/
   graphql:
     graphiql:
       enabled: true
-    playground:
-      enabled: true
+      path: /graphiql
     path: /graphql
+    schema:
+      printer:
+        enabled: true
+
+springdoc:
+  default-produces-media-type: application/json
+
+server:
+  servlet:
+    context-path: /api/v1
+  port: 8088

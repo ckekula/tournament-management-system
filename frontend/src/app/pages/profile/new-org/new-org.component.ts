@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Import Router
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -7,7 +7,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { FileUploadModule } from 'primeng/fileupload';
 import { AvatarModule } from 'primeng/avatar';
-import { OrganizationService } from '../../../graphql/organization.service';
+import { OrganizationService } from '../../../graphql/services/organization.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-new-org',
@@ -27,12 +28,12 @@ import { OrganizationService } from '../../../graphql/organization.service';
 export class NewOrgComponent {
   name: string = '';
   abbreviation: string = '';
-  profileImage: string = 'assets/images/default-profile.png';
+  profileImage: string | null = null;
   selectedFile: File | null = null;
 
   constructor(
     private organizationService: OrganizationService,
-    private router: Router // Inject Router
+    private router: Router
   ) {}
 
   onFileSelected(event: any) {
@@ -47,18 +48,35 @@ export class NewOrgComponent {
     }
   }
 
-  createOrg() {
-    let imageBase64 = this.profileImage.startsWith('data:image') ? this.profileImage : null;
-    this.organizationService.createOrganization(this.name, this.abbreviation, imageBase64 ?? undefined).subscribe({
-      next: (response: any) => {
+  async createOrg() {
+    try {
+      if (!this.name || !this.abbreviation) {
+        alert('Please fill in both name and abbreviation.');
+        return;
+      }
+  
+      const variables: { name: string; abbreviation: string; image?: string; } = {
+        name: this.name,
+        abbreviation: this.abbreviation
+      };
+  
+      // Only add image if it exists
+      if (this.profileImage) {
+        variables['image'] = this.profileImage;
+      }
+  
+      const response = await firstValueFrom(this.organizationService.createOrganization(variables));
+      
+      if (response?.data?.createOrganization) {
         console.log('Organization created:', response);
         alert('Organization created successfully!');
         this.router.navigate([`/organization/${response.data.createOrganization.id}`]);
-      },
-      error: (error: any) => {
-        console.error('Error creating organization:', error);
-        alert('Failed to create organization.');
+      } else {
+        throw new Error('Invalid response format');
       }
-    });
+    } catch (error: any) {
+      console.error('Error creating organization:', error);
+      alert(`Failed to create organization: ${error.message || 'Unknown error'}`);
+    }
   }
 }

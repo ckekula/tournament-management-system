@@ -1,6 +1,7 @@
 package com.tms.backend.resolvers;
 
 import com.tms.backend.entities.Organization;
+import com.tms.backend.exception.GraphQLException;
 import com.tms.backend.services.OrganizationService;
 import com.tms.backend.user.User;
 
@@ -8,7 +9,7 @@ import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.lang.Nullable;
 
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,27 +34,27 @@ public class OrganizationResolver implements GraphQLQueryResolver, GraphQLMutati
     }
 
     // Mutation: Create a new organization
-    public Organization createOrganization(String name, String abbreviation, @Nullable String image) {
+    public Organization createOrganization(
+            String name,
+            String abbreviation,
+            @Nullable String image,
+            @AuthenticationPrincipal User currentUser) {
         try {
-            // Get the current authenticated user
-            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-            // Add debug logging
-            System.out.println("Creating organization with name: " + name +
-                    ", abbreviation: " + abbreviation +
-                    ", image: " + (image != null ? "present" : "null"));
+            if (name == null || name.isBlank() || abbreviation == null || abbreviation.isBlank()) {
+                throw new GraphQLException("Name and abbreviation are required fields.");
+            }
 
             Organization organization = Organization.builder()
                     .name(name)
                     .abbreviation(abbreviation)
                     .image(image)
-                    .manager(currentUser)
+                    .owner(currentUser)
+                    .admins(List.of(currentUser))
                     .build();
 
             return organizationService.createOrganization(organization);
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("Error creating organization: " + e.getMessage());
+            throw new GraphQLException("Failed to create organization", e);
         }
     }
 

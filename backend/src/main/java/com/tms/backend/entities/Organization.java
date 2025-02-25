@@ -28,11 +28,11 @@ public class Organization {
     private String image;
 
     @OneToOne
-    @JoinColumn(name = "manager_id", nullable = false)
-    private User manager;
+    @JoinColumn(name = "owner_id", nullable = false, unique = true)
+    private User owner;
 
-    // @ManyToMany(mappedBy = "memberOrganizations")
-    // private List<User> members;
+    @ManyToMany(mappedBy = "adminOf")
+    private List<User> admins;
 
     @OneToMany(mappedBy = "organizer")
     private List<Competition> competitions;

@@ -21,8 +21,8 @@ public class OrganizationService {
     @Transactional
     public Organization createOrganization(Organization organization) {
         try {
-            if (organization.getManager() == null) {
-                throw new IllegalArgumentException("Organization manager cannot be null");
+            if (organization.getOwner() == null) {
+                throw new IllegalArgumentException("Organization owner cannot be null");
             }
 
             return organizationRepository.save(organization);

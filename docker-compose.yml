@@ -22,19 +22,19 @@ services:
       - 1080:1080
       - 1025:1025
 
-  jenkins:
-    container_name: jenkins-server
-    image: jenkins/jenkins:lts
-    user: root
-    ports:
-      - 8080:8080
-      - 50000:50000
-    volumes:
-      - jenkins-data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - spring-demo
-    restart: unless-stopped
+  # jenkins:
+  #   container_name: jenkins-server
+  #   image: jenkins/jenkins:lts
+  #   user: root
+  #   ports:
+  #     - 8080:8080
+  #     - 50000:50000
+  #   volumes:
+  #     - jenkins-data:/var/jenkins_home
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   networks:
+  #     - spring-demo
+  #   restart: unless-stopped
 
 networks:
   spring-demo:

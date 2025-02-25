@@ -51,10 +51,15 @@ public class User implements UserDetails, Principal {
     @ManyToMany(fetch = EAGER)
     private List<Role> roles;
 
-    // @ManyToMany
-    // private List<Organization> memberOrganizations;
+    @ManyToMany
+    @JoinTable(
+            name = "organization_admins",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "organization_id")
+    )
+    private List<Organization> adminOf;
 
-    @OneToOne(mappedBy = "manager")
+    @OneToOne(mappedBy = "owner")
     private Organization organization;
 
     @CreatedDate

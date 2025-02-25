@@ -1,33 +1,50 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthResponse } from './models/auth-response';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthStateService {
-  private authToken = new BehaviorSubject<string | null>(localStorage.getItem('token'));
-  private currentUser = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('user') || 'null'));
+  private authToken = new BehaviorSubject<string | null>(null);
+  private currentUser = new BehaviorSubject<any>(null);
+  private isBrowser: boolean;
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+
+    if (this.isBrowser) {
+      const token = localStorage.getItem('token');
+      const user = localStorage.getItem('user');
+
+      this.authToken.next(token);
+      this.currentUser.next(user ? JSON.parse(user) : null);
+    }
+  }
 
   setAuthState(response: AuthResponse) {
+    if (!this.isBrowser) return; // Prevent execution on the server
+
     if (response.token) {
       localStorage.setItem('token', response.token);
       this.authToken.next(response.token);
       
-      // Store user info from token
+      // Decode token payload
       const tokenPayload = JSON.parse(atob(response.token.split('.')[1]));
       const user = {
         email: tokenPayload.sub,
         fullName: tokenPayload.fullName
       };
+
       localStorage.setItem('user', JSON.stringify(user));
       this.currentUser.next(user);
     }
   }
 
   clearAuthState() {
+    if (!this.isBrowser) return; // Prevent execution on the server
+
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.authToken.next(null);
@@ -35,7 +52,7 @@ export class AuthStateService {
   }
 
   isAuthenticated(): boolean {
-    return !!this.authToken.value;
+    return this.authToken.value !== null;
   }
 
   getToken(): string | null {

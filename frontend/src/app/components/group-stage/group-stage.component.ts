@@ -4,7 +4,6 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputIconModule } from 'primeng/inputicon';
 import { CommonModule } from '@angular/common';
-import jsonData from '../../utils/init.json';
 import { TabViewModule } from 'primeng/tabview';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { GroupComponent } from './group/group.component';
@@ -38,20 +37,12 @@ export class GroupStageComponent {
     this.loading = true;
   
     if (this.eventId) {
-      this.event = jsonData.event.find(e => e.id === this.eventId);
 
-      this.groups = jsonData.group.filter(g => g.event_id === this.eventId);
     } else {
       console.error('Event not found!');
     }
     
     this.loading = false;
-  }
-
-
-  onGlobalFilter(event: Event, dt2: any) {
-    const inputValue = (event.target as HTMLInputElement).value;
-    dt2.filterGlobal(inputValue, 'contains');
   }
 
 }

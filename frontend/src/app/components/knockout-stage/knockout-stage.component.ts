@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import jsonResults from '../../utils/results.json';
-import jsonTeam from '../../utils/teams.json';
 import { CommonModule } from '@angular/common';
 
 interface KnockoutRound {
@@ -45,20 +43,7 @@ export class KnockoutStageComponent {
     this.loading = true;
   
     if (this.eventId) {
-      this.knockoutRounds = jsonResults.knockout_round.filter(k => k.event_id === this.eventId);
-
-      this.quarterfinal1 = this.knockoutRounds.find(k => k.name === 'qf1');
-      this.quarterfinal2 = this.knockoutRounds.find(k => k.name === 'qf2');
-      this.quarterfinal3 = this.knockoutRounds.find(k => k.name === 'qf3');
-      this.quarterfinal4 = this.knockoutRounds.find(k => k.name === 'qf4');
-
-      this.semifinal1 = this.knockoutRounds.find(k => k.name === 'sf1');
-      this.semifinal2 = this.knockoutRounds.find(k => k.name === 'sf2');
-      this.final = this.knockoutRounds.find(k => k.name === 'f');
-      this.consolationfinal = this.knockoutRounds.find(k => k.name === 'cf');
-
-      // Emit the winner names to the parent component
-      this.emitWinners();
+ 
     } else {
       console.error('No eventId provided!');
     }
@@ -157,36 +142,16 @@ export class KnockoutStageComponent {
   }
 
   getTeamAbb(round: KnockoutRound, teamType: 'team1' | 'team2'): string {
-    const teamId = teamType === 'team1' ? round.team1_id : round.team2_id;
-    const eventId = round.event_id;
-    const team = jsonTeam.team.find(t => t.id === teamId && t.event_id === eventId);
-    if (!team) {
-      console.log(`Team with id ${teamId} in event ${eventId} not found!`);
-    }
-    return team && team.abb ? team.abb : 'N/A';
+    return 'N/A';
   }
 
   getTeamName(round: KnockoutRound, teamType: 'team1' | 'team2'): string {
-    const teamId = teamType === 'team1' ? round.team1_id : round.team2_id;
-    const eventId = round.event_id;
-    const team = jsonTeam.team.find(t => t.id === teamId && t.event_id === eventId);
-    if (!team) {
-      console.log(`Team with id ${teamId} in event ${eventId} not found!`);
-    }
-    return team && team.name ? team.name : 'N/A';
+    return 'N/A';
   }
 
   getTeamImg(round: KnockoutRound, teamType: 'team1' | 'team2'): string {
-    const teamId = teamType === 'team1' ? round.team1_id : round.team2_id;
-    const eventId = round.event_id;
-    const team = jsonTeam.team.find(t => t.id === teamId && t.event_id === eventId);
-
-    if (!team || !team.image) {
-      // Return a placeholder image from public/assets folder
-      return 'assets/team.webp'; // Path to your test image
-    }
   
-    return team.image;
+    return 'N/A';
   }
 
   isImagePath(content: string | undefined): boolean {

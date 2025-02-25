@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import jsonData from '../../../utils/init.json';
-import jsonTeam from '../../../utils/teams.json';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 
@@ -25,13 +23,7 @@ export class GroupComponent {
   ngOnInit() {
     this.loading = true;
     if (this.groupId) {
-      this.groupRounds = jsonData.group_round.filter(g => g.group_id === this.groupId);
-
-      // Initialize teams stats
-      this.initializeTeamsStats();
-
-      // Calculate stats for each team
-      this.calculateTeamStats();
+      
     } else {
       console.error('Group not found!');
     }
@@ -82,8 +74,7 @@ export class GroupComponent {
 
   // Get team name by team ID
   getTeamName(teamId: string): string {
-    const team = jsonTeam.team.find(t => t.id === teamId);
-    return team?.name ?? 'Unknown Team';
+    return 'saman';
   }
 
   // Calculate points based on wins and ties

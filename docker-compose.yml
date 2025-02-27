@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   frontend:
     container_name: angular-frontend
@@ -7,7 +5,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "3000:3000"
     depends_on:
       - backend
     networks:
@@ -29,16 +27,6 @@ services:
       - postgres
     networks:
       - spring-demo
-
-  jenkins:
-    image: jenkins/jenkins:lts
-    container_name: jenkins
-    restart: unless-stopped
-    ports:
-      - "8080:8080"
-      - "50000:50000"
-    volumes:
-      - jenkins_home:/var/jenkins_home
 
   postgres:
     container_name: postgres-sql-tms
@@ -72,5 +60,3 @@ networks:
 volumes:
   postgres:
     driver: local
-  volumes:
-    jenkins_home:

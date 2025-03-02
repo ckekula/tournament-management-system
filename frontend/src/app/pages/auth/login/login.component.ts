@@ -8,6 +8,8 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
 import { AuthStateService } from '../../../services/auth-state.service';
+import { HeaderComponent } from "../../../components/shared/header/header.component";
+import { FooterComponent } from '../../../components/shared/footer/footer.component';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +19,10 @@ import { AuthStateService } from '../../../services/auth-state.service';
     ButtonModule,
     RippleModule,
     InputTextModule,
-    FormsModule
-  ],
+    FormsModule,
+    HeaderComponent,
+    FooterComponent
+],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

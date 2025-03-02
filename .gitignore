@@ -1,0 +1,3 @@
+# Ignore local Jenkins setup files
+jenkins/
+docker-compose.jenkins.yml

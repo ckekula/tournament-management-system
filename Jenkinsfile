@@ -4,17 +4,19 @@ pipeline {
     environment {
         REPO_URL = 'https://github.com/ckekula/tournament-management-system.git'
         DOCKERHUB_CREDENTIALS_ID = 'docker-hub-credentials'
-        IMAGE_FRONTEND = 'your-dockerhub-username/tms-frontend'
-        IMAGE_BACKEND = 'your-dockerhub-username/tms-backend'
+        IMAGE_FRONTEND = 'chamudithak/tms-frontend'
+        IMAGE_BACKEND = 'chamudithak/tms-backend'
         EC2_USER = 'ubuntu'
-        EC2_HOST = '3.109.124.172'
+        EC2_HOST = '15.207.14.142'
         SSH_CREDENTIALS_ID = 'ec2-ssh-key'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'github-credentials', url: "${REPO_URL}"
+                git branch: 'main', 
+                credentialsId: 'github-credentials', 
+                url: "${REPO_URL}"
             }
         }
 
@@ -27,7 +29,8 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                withDockerRegistry([credentialsId: "${DOCKERHUB_CREDENTIALS_ID}", url: "https://index.docker.io/v1/"]) {
+                withDockerRegistry([credentialsId: "${DOCKERHUB_CREDENTIALS_ID}", 
+                url: "https://index.docker.io/v1/"]) {
                     sh 'docker push ${IMAGE_FRONTEND}'
                     sh 'docker push ${IMAGE_BACKEND}'
                 }

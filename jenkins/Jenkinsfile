@@ -7,7 +7,7 @@ pipeline {
         IMAGE_FRONTEND = 'your-dockerhub-username/tms-frontend'
         IMAGE_BACKEND = 'your-dockerhub-username/tms-backend'
         EC2_USER = 'ubuntu'
-        EC2_HOST = 'your-ec2-ip'
+        EC2_HOST = '3.109.124.172'
         SSH_CREDENTIALS_ID = 'ec2-ssh-key'
     }
 

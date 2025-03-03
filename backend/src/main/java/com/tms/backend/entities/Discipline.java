@@ -3,15 +3,13 @@ package com.tms.backend.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Competition {
+public class Discipline {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +19,6 @@ public class Competition {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "organizer_id")
-    private Organization organizer;
-
-    @Column(nullable = false)
-    private Integer year;
-
-    @OneToMany(mappedBy = "competition")
-    private List<Tournament> tournaments;
+    @JoinColumn(name = "competition_id", nullable = false)
+    private Tournament tournament;
 }

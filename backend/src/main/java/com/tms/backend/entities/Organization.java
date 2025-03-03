@@ -35,5 +35,5 @@ public class Organization {
     private List<User> admins;
 
     @OneToMany(mappedBy = "organizer")
-    private List<Competition> competitions;
+    private List<Tournament> tournaments;
 }

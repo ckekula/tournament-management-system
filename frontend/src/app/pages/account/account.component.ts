@@ -5,16 +5,15 @@ import { RippleModule } from 'primeng/ripple';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-account',
-  standalone: true,
-  imports: [
-    HeaderComponent,
-    FooterComponent,
-    ButtonModule,
-    RippleModule
-  ],
-  templateUrl: './account.component.html',
-  styleUrl: './account.component.scss'
+    selector: 'app-account',
+    imports: [
+        HeaderComponent,
+        FooterComponent,
+        ButtonModule,
+        RippleModule
+    ],
+    templateUrl: './account.component.html',
+    styleUrl: './account.component.scss'
 })
 export class AccountComponent {
 

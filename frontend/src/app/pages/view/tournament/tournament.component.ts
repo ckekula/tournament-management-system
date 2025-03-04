@@ -10,21 +10,20 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-tournament',
-  standalone: true,
-  imports: [
-    TableModule,
-    IconFieldModule, 
-    InputTextModule,
-    InputIconModule, 
-    MultiSelectModule,
-    DropdownModule,
-    CommonModule,
-    FormsModule,
-    RouterModule
-  ],
-  templateUrl: './tournament.component.html',
-  styleUrl: './tournament.component.scss'
+    selector: 'app-tournament',
+    imports: [
+        TableModule,
+        IconFieldModule,
+        InputTextModule,
+        InputIconModule,
+        MultiSelectModule,
+        DropdownModule,
+        CommonModule,
+        FormsModule,
+        RouterModule
+    ],
+    templateUrl: './tournament.component.html',
+    styleUrl: './tournament.component.scss'
 })
 export class TournamentComponent implements OnInit {
 

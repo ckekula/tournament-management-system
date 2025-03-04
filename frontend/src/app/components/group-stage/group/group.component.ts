@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 
 @Component({
-  selector: 'app-group',
-  standalone: true,
-  imports: [
-    CommonModule,
-    TableModule
-  ],
-  templateUrl: './group.component.html',
-  styleUrl: './group.component.scss'
+    selector: 'app-group',
+    imports: [
+        CommonModule,
+        TableModule
+    ],
+    templateUrl: './group.component.html',
+    styleUrl: './group.component.scss'
 })
 export class GroupComponent {
   @Input() groupId!: string;

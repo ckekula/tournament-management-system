@@ -4,14 +4,13 @@ import { FooterComponent } from '../../../components/shared/footer/footer.compon
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-new-profile',
-  standalone: true,
-  imports: [
-    HeaderComponent,
-    FooterComponent
-  ],
-  templateUrl: './new-profile.component.html',
-  styleUrl: './new-profile.component.scss'
+    selector: 'app-new-profile',
+    imports: [
+        HeaderComponent,
+        FooterComponent
+    ],
+    templateUrl: './new-profile.component.html',
+    styleUrl: './new-profile.component.scss'
 })
 export class NewProfileComponent {
   constructor(private router: Router) {}

@@ -3,14 +3,13 @@ import { RouterOutlet } from '@angular/router';
 import {StyleClassModule} from 'primeng/styleclass';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    StyleClassModule
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        StyleClassModule
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'frontend';

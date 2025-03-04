@@ -3,13 +3,12 @@ import { Component, Input } from '@angular/core';
 import { Competition } from '../../../types/competition';
 
 @Component({
-  selector: 'app-comp-card',
-  standalone: true,
-  imports: [
-    CommonModule
-  ],
-  templateUrl: './comp-card.component.html',
-  styleUrl: './comp-card.component.scss'
+    selector: 'app-comp-card',
+    imports: [
+        CommonModule
+    ],
+    templateUrl: './comp-card.component.html',
+    styleUrl: './comp-card.component.scss'
 })
 export class CompCardComponent {
   @Input() competition!: Competition;

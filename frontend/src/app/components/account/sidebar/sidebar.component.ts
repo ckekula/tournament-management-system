@@ -3,14 +3,13 @@ import { ButtonModule } from 'primeng/button';
 import { DrawerModule } from 'primeng/drawer';
 
 @Component({
-  selector: 'app-sidebar',
-  standalone: true,
-  imports: [
-    ButtonModule,
-    DrawerModule
-  ],
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss'
+    selector: 'app-sidebar',
+    imports: [
+      DrawerModule,
+      ButtonModule
+    ],
+    templateUrl: './sidebar.component.html',
+    styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
   @Input() visible: boolean = false;

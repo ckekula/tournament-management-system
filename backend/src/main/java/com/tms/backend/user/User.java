@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static jakarta.persistence.FetchType.EAGER;
@@ -51,16 +52,16 @@ public class User implements UserDetails, Principal {
     @ManyToMany(fetch = EAGER)
     private List<Role> roles;
 
+    @OneToMany(mappedBy = "owner")
+    private Organization organization;
+
     @ManyToMany
     @JoinTable(
             name = "organization_admins",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "organization_id")
     )
-    private List<Organization> adminOf;
-
-    @OneToOne(mappedBy = "owner")
-    private Organization organization;
+    private Set<Organization> adminOf;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

@@ -11,7 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Tournament {
+public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +21,9 @@ public class Tournament {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "organizer_id")
-    private Organization organizer;
+    @JoinColumn(name = "tournament_id", nullable = false)
+    private Tournament tournament;
 
-    @Column(nullable = false)
-    private Integer year;
-
-    @OneToMany(mappedBy = "tournament")
-    private Set<Activity> activities;
+    @OneToMany(mappedBy = "event")
+    private Set<Event> events;
 }

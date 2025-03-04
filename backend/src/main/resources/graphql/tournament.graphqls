@@ -1,0 +1,24 @@
+type Tournament {
+    id: ID!
+    name: String!
+    organizer: String!
+    year: Int!
+    status: Status!
+}
+
+enum Status {
+    COMPLETED
+    ONGOING
+    NOT_STARTED
+}
+
+type Query {
+    tournaments: [Tournament!]!
+    tournament(id: ID!): Tournament
+}
+
+type Mutation {
+    createTournament(name: String!, organizer: String!, year: Int!, status: Status!): Tournament
+    updateTournament(id: ID!, name: String, organizer: String, year: Int, status: Status): Tournament
+    deleteTournament(id: ID!): Boolean
+}

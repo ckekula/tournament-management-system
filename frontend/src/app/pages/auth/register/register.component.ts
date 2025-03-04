@@ -7,19 +7,22 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from "../../../components/shared/header/header.component";
+import { FooterComponent } from "../../../components/shared/footer/footer.component";
 
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  imports: [
-    CheckboxModule,
-    ButtonModule,
-    RippleModule,
-    InputTextModule,
-    FormsModule
-  ],
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+    selector: 'app-register',
+    imports: [
+        CheckboxModule,
+        ButtonModule,
+        RippleModule,
+        InputTextModule,
+        FormsModule,
+        HeaderComponent,
+        FooterComponent
+    ],
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
 

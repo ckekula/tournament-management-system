@@ -10,16 +10,15 @@ import { CompetitionService } from '../../../graphql/services/competition.servic
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-organization',
-  standalone: true,
-  imports: [
-    HeaderComponent,
-    FooterComponent,
-    CommonModule,
-    CompCardComponent
-  ],
-  templateUrl: './organization.component.html',
-  styleUrl: './organization.component.scss'
+    selector: 'app-organization',
+    imports: [
+        HeaderComponent,
+        FooterComponent,
+        CommonModule,
+        CompCardComponent
+    ],
+    templateUrl: './organization.component.html',
+    styleUrl: './organization.component.scss'
 })
 export class OrganizationComponent implements OnInit {
   public competitions: Competition[] = [];

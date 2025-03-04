@@ -11,19 +11,18 @@ import { OrganizationService } from '../../../graphql/services/organization.serv
 import { firstValueFrom } from 'rxjs';
 
 @Component({
-  selector: 'app-new-org',
-  standalone: true,
-  imports: [
-    CheckboxModule,
-    ButtonModule,
-    RippleModule,
-    InputTextModule,
-    FormsModule,
-    FileUploadModule,
-    AvatarModule
-  ],
-  templateUrl: './new-org.component.html',
-  styleUrl: './new-org.component.scss'
+    selector: 'app-new-org',
+    imports: [
+        CheckboxModule,
+        ButtonModule,
+        RippleModule,
+        InputTextModule,
+        FormsModule,
+        FileUploadModule,
+        AvatarModule
+    ],
+    templateUrl: './new-org.component.html',
+    styleUrl: './new-org.component.scss'
 })
 export class NewOrgComponent {
   name: string = '';

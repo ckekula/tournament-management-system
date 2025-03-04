@@ -12,6 +12,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { NewProfileComponent } from './pages/profile/new-profile/new-profile.component';
 import { NewOrgComponent } from './pages/profile/new-org/new-org.component';
 import { OrganizationComponent } from './pages/profile/organization/organization.component';
+import { AccountComponent } from './pages/account/account.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -19,8 +20,8 @@ export const routes: Routes = [
     { path: 'activate-account', component: ActivateAccountComponent },
     { path: 'register', component: RegisterComponent },
     { 
-        path: 'profile',
-        component: ProfileComponent,
+        path: 'account',
+        component: AccountComponent,
         canActivate: [AuthGuard]
     },
     { 

@@ -8,20 +8,19 @@ import { KnockoutStageComponent } from "../../../components/knockout-stage/knock
 import { GroupStageComponent } from '../../../components/group-stage/group-stage.component';
 import { ChangeDetectorRef } from '@angular/core'; // Import ChangeDetectorRef
 
-@Component({ 
-  selector: 'app-event',
-  standalone: true,
-  imports: [
-    TabViewModule,
-    BadgeModule,
-    CommonModule,
-    ScrollPanelModule,
-    KnockoutStageComponent,
-    GroupStageComponent,
-    RouterModule
-],
-  templateUrl: './event.component.html',
-  styleUrl: './event.component.scss'
+@Component({
+    selector: 'app-event',
+    imports: [
+        TabViewModule,
+        BadgeModule,
+        CommonModule,
+        ScrollPanelModule,
+        KnockoutStageComponent,
+        GroupStageComponent,
+        RouterModule
+    ],
+    templateUrl: './event.component.html',
+    styleUrl: './event.component.scss'
 })
 export class EventComponent implements OnInit{
 

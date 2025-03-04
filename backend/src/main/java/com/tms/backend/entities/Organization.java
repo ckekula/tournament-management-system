@@ -4,7 +4,7 @@ import com.tms.backend.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -27,13 +27,19 @@ public class Organization {
     @Column(nullable = true)
     private String image;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false, unique = true)
     private User owner;
 
     @ManyToMany(mappedBy = "adminOf")
-    private List<User> admins;
+    private Set<User> admins;
 
     @OneToMany(mappedBy = "organizer")
-    private List<Competition> competitions;
+    private Set<Tournament> tournaments;
+
+    @OneToMany(mappedBy = "organization")
+    private Set<Team> teams;
+
+    @OneToMany(mappedBy = "organization")
+    private Set<Participant> participants;
 }

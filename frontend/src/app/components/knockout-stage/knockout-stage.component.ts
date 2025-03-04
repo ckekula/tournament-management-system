@@ -10,13 +10,12 @@ interface KnockoutRound {
 }
 
 @Component({
-  selector: 'app-knockout-stage',
-  standalone: true,
-  imports: [
-    CommonModule
-  ],
-  templateUrl: './knockout-stage.component.html',
-  styleUrl: './knockout-stage.component.scss'
+    selector: 'app-knockout-stage',
+    imports: [
+        CommonModule
+    ],
+    templateUrl: './knockout-stage.component.html',
+    styleUrl: './knockout-stage.component.scss'
 })
 export class KnockoutStageComponent {
 

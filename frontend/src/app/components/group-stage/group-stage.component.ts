@@ -9,21 +9,20 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { GroupComponent } from './group/group.component';
 
 @Component({
-  selector: 'app-group-stage',
-  standalone: true,
-  imports: [
-    TableModule,
-    IconFieldModule, 
-    InputTextModule,
-    InputIconModule, 
-    CommonModule,
-    TabViewModule,
-    CommonModule,
-    ScrollPanelModule,
-    GroupComponent
-  ],
-  templateUrl: './group-stage.component.html',
-  styleUrl: './group-stage.component.scss'
+    selector: 'app-group-stage',
+    imports: [
+        TableModule,
+        IconFieldModule,
+        InputTextModule,
+        InputIconModule,
+        CommonModule,
+        TabViewModule,
+        CommonModule,
+        ScrollPanelModule,
+        GroupComponent
+    ],
+    templateUrl: './group-stage.component.html',
+    styleUrl: './group-stage.component.scss'
 })
 export class GroupStageComponent {
 

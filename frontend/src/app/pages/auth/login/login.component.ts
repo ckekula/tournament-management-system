@@ -12,19 +12,18 @@ import { HeaderComponent } from "../../../components/shared/header/header.compon
 import { FooterComponent } from '../../../components/shared/footer/footer.component';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [
-    CheckboxModule,
-    ButtonModule,
-    RippleModule,
-    InputTextModule,
-    FormsModule,
-    HeaderComponent,
-    FooterComponent
-],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    imports: [
+        CheckboxModule,
+        ButtonModule,
+        RippleModule,
+        InputTextModule,
+        FormsModule,
+        HeaderComponent,
+        FooterComponent
+    ],
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 
 export class LoginComponent {

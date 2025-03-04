@@ -21,8 +21,7 @@
       "ES2022",
       "dom",
       "esnext.asynciterable"
-    ],
-    "allowSyntheticDefaultImports": true
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

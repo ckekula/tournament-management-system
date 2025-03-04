@@ -14,20 +14,19 @@ import { HeaderComponent } from "../../../components/shared/header/header.compon
 import { FooterComponent } from '../../../components/shared/footer/footer.component';
 
 @Component({
-  selector: 'app-activate-account',
-  standalone: true,
-  imports: [
-    CheckboxModule,
-    ButtonModule,
-    RippleModule,
-    InputTextModule,
-    CommonModule,
-    CodeInputModule,
-    HeaderComponent,
-    FooterComponent
-],
-  templateUrl: './activate-account.component.html',
-  styleUrls: ['./activate-account.component.scss']
+    selector: 'app-activate-account',
+    imports: [
+        CheckboxModule,
+        ButtonModule,
+        RippleModule,
+        InputTextModule,
+        CommonModule,
+        CodeInputModule,
+        HeaderComponent,
+        FooterComponent
+    ],
+    templateUrl: './activate-account.component.html',
+    styleUrls: ['./activate-account.component.scss']
 })
 export class ActivateAccountComponent {
 

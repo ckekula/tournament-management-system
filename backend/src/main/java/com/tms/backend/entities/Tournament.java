@@ -3,6 +3,8 @@ package com.tms.backend.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @Builder
@@ -19,6 +21,12 @@ public class Tournament {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "competition_id", nullable = false)
-    private Competition competition;
+    @JoinColumn(name = "organizer_id")
+    private Organization organizer;
+
+    @Column(nullable = false)
+    private Integer year;
+
+    @OneToMany(mappedBy = "tournament")
+    private Set<Activity> activities;
 }

@@ -6,15 +6,14 @@ import { AuthStateService } from '../../../services/auth-state.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [
-    ButtonModule,
-    RippleModule,
-    CommonModule
-  ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+    selector: 'app-header',
+    imports: [
+        ButtonModule,
+        RippleModule,
+        CommonModule
+    ],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
   isAuthenticated: boolean = false;

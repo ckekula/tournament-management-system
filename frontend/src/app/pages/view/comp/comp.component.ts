@@ -13,24 +13,23 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-comp',
-  standalone: true,
-  imports: [
-    RippleModule,
-    ButtonModule,
-    TagModule,
-    TableModule,
-    IconFieldModule, 
-    InputTextModule,
-    InputIconModule, 
-    MultiSelectModule,
-    DropdownModule,
-    CommonModule,
-    FormsModule,
-    RouterModule
-  ],
-  templateUrl: './comp.component.html',
-  styleUrls: ['./comp.component.scss']
+    selector: 'app-comp',
+    imports: [
+        RippleModule,
+        ButtonModule,
+        TagModule,
+        TableModule,
+        IconFieldModule,
+        InputTextModule,
+        InputIconModule,
+        MultiSelectModule,
+        DropdownModule,
+        CommonModule,
+        FormsModule,
+        RouterModule
+    ],
+    templateUrl: './comp.component.html',
+    styleUrls: ['./comp.component.scss']
 })
 export class CompComponent implements OnInit {
 

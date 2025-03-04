@@ -3,7 +3,7 @@ package com.tms.backend.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Competition {
+public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +21,9 @@ public class Competition {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "organizer_id")
-    private Organization organizer;
+    @JoinColumn(name = "tournament_id", nullable = false)
+    private Tournament tournament;
 
-    @Column(nullable = false)
-    private Integer year;
-
-    @OneToMany(mappedBy = "competition")
-    private List<Tournament> tournaments;
+    @OneToMany(mappedBy = "event")
+    private Set<Event> events;
 }

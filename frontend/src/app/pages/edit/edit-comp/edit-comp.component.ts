@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-edit-comp',
-  standalone: true,
-  imports: [],
-  templateUrl: './edit-comp.component.html',
-  styleUrl: './edit-comp.component.scss'
+    selector: 'app-edit-comp',
+    imports: [],
+    templateUrl: './edit-comp.component.html',
+    styleUrl: './edit-comp.component.scss'
 })
 export class EditCompComponent {
 

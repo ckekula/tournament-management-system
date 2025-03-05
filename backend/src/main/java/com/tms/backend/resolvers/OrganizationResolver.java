@@ -13,6 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class OrganizationResolver implements GraphQLQueryResolver, GraphQLMutationResolver {
@@ -49,7 +50,7 @@ public class OrganizationResolver implements GraphQLQueryResolver, GraphQLMutati
                     .abbreviation(abbreviation)
                     .image(image)
                     .owner(currentUser)
-                    .admins(List.of(currentUser))
+                    .admins(Set.of(currentUser))
                     .build();
 
             return organizationService.createOrganization(organization);

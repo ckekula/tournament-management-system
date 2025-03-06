@@ -8,11 +8,8 @@ import { EventComponent } from './pages/view/event/event.component';
 import { ActivateAccountComponent } from './pages/auth/activate-account/activate-account.component';
 import { AuthGuard } from './guards/auth.guard';
 import { EditCompComponent } from './pages/edit/edit-comp/edit-comp.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { NewProfileComponent } from './pages/profile/new-profile/new-profile.component';
-import { NewOrgComponent } from './pages/profile/new-org/new-org.component';
-import { OrganizationComponent } from './pages/profile/organization/organization.component';
 import { AccountComponent } from './pages/account/account.component';
+import { OrganizationComponent } from './pages/view/organization/organization.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -24,21 +21,7 @@ export const routes: Routes = [
         component: AccountComponent,
         canActivate: [AuthGuard]
     },
-    { 
-        path: 'new-profile',
-        component: NewProfileComponent,
-        canActivate: [AuthGuard]
-    },
-    { 
-        path: 'new-organization',
-        component: NewOrgComponent,
-        canActivate: [AuthGuard]
-    },
-    { 
-        path: 'organization/:id',
-        component: OrganizationComponent,
-        canActivate: [AuthGuard]
-    },
+    { path: 'org/:id', component: OrganizationComponent },
     { path: 'comp/view/:id', component: CompComponent },
     { path: 'tournament/view/:id', component: TournamentComponent },
     { path: 'event/view/:id', component: EventComponent },

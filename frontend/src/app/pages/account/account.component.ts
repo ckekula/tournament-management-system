@@ -4,7 +4,6 @@ import { FooterComponent } from '../../components/shared/footer/footer.component
 import { RippleModule } from 'primeng/ripple';
 import { ButtonModule } from 'primeng/button';
 import { SidebarComponent } from '../../components/account/sidebar/sidebar.component';
-import { NewOrgComponent } from "../profile/new-org/new-org.component";
 import { CommonModule } from '@angular/common';
 import { OrganizationsComponent } from '../../components/account/organizations/organizations.component';
 

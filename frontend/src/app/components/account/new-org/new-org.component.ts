@@ -1,13 +1,17 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Dialog } from 'primeng/dialog';
-import { InputText } from 'primeng/inputtext';
-import { Organization } from '../../../types/account';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { Organization } from '../../../types/models';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-new-org',
   imports: [
-    Dialog, InputText, ReactiveFormsModule
+    DialogModule,
+    InputTextModule,
+    ReactiveFormsModule,
+    ButtonModule
   ],
   templateUrl: './new-org.component.html',
   styleUrl: './new-org.component.scss'

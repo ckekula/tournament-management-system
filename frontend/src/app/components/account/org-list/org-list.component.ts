@@ -5,23 +5,20 @@ import { Organization } from '../../../types/models';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { Router } from '@angular/router';
-import { HeaderComponent } from "../../shared/header/header.component";
-import { FooterComponent } from "../../shared/footer/footer.component";
 
 @Component({
-  selector: 'app-organizations',
+  selector: 'app-org-list',
   imports: [
     CommonModule,
     ButtonModule,
     NewOrgComponent,
-    CardModule,
-    HeaderComponent,
-    FooterComponent
-],
-  templateUrl: './organizations.component.html',
-  styleUrl: './organizations.component.scss'
+    CardModule
+  ],
+  templateUrl: './org-list.component.html',
+  styleUrl: './org-list.component.scss'
 })
-export class OrganizationsComponent {
+export class OrgListComponent {
+
   constructor(
     private router: Router,
   ) {}
@@ -45,5 +42,4 @@ export class OrganizationsComponent {
   viewOrganization(org: Organization): void {
     this.router.navigate(['/org', org.id]);
   }
-
 }

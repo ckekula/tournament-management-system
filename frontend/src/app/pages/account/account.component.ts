@@ -5,7 +5,7 @@ import { RippleModule } from 'primeng/ripple';
 import { ButtonModule } from 'primeng/button';
 import { SidebarComponent } from '../../components/account/sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
-import { OrganizationsComponent } from '../../components/account/organizations/organizations.component';
+import { OrgListComponent } from '../../components/account/org-list/org-list.component';
 
 @Component({
     selector: 'app-account',
@@ -15,7 +15,7 @@ import { OrganizationsComponent } from '../../components/account/organizations/o
       FooterComponent,
       ButtonModule,
       RippleModule,
-      OrganizationsComponent
+      OrgListComponent
 ],
     templateUrl: './account.component.html',
     styleUrl: './account.component.scss'

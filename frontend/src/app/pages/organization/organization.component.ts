@@ -3,9 +3,9 @@ import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { Router } from '@angular/router';
-import { Tournament } from '../../../types/models';
-import { HeaderComponent } from "../../../components/shared/header/header.component";
-import { FooterComponent } from '../../../components/shared/footer/footer.component';
+import { Tournament } from '../../types/models';
+import { HeaderComponent } from "../../components/shared/header/header.component";
+import { FooterComponent } from '../../components/shared/footer/footer.component';
 
 @Component({
   selector: 'app-organization',

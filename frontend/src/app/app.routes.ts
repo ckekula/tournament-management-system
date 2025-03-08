@@ -9,7 +9,7 @@ import { ActivateAccountComponent } from './pages/auth/activate-account/activate
 import { AuthGuard } from './guards/auth.guard';
 import { EditCompComponent } from './pages/edit/edit-comp/edit-comp.component';
 import { AccountComponent } from './pages/account/account.component';
-import { OrganizationComponent } from './pages/view/organization/organization.component';
+import { OrganizationComponent } from './pages/organization/organization.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },

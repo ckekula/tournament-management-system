@@ -8,11 +8,11 @@ import { SelectModule } from 'primeng/select';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Activity } from '../../../types/models';
-import { AddActivityComponent } from '../add-activity/add-activity.component';
+import { _Event } from '../../../types/models';
+import { AddActivityComponent } from '../../tournament/add-activity/add-activity.component';
 
 @Component({
-  selector: 'app-activity-table',
+  selector: 'app-event-table',
   imports: [
     TableModule, 
     TagModule, 
@@ -24,17 +24,17 @@ import { AddActivityComponent } from '../add-activity/add-activity.component';
     CommonModule,
     AddActivityComponent
   ],
-  templateUrl: './activity-table.component.html',
-  styleUrl: './activity-table.component.scss'
+  templateUrl: './event-table.component.html',
+  styleUrl: './event-table.component.scss'
 })
-export class ActivityTableComponent {
+export class EventTableComponent {
 
-  activities: Activity [] = [
-    { id: 1, name: 'Basketball' },
-    { id: 2, name: 'Cricket' },
+  events: _Event [] = [
+    { id: 1, name: 'Mens Basketball', category: 'Men' },
+    { id: 2, name: 'Womens Basketball', category: 'Women' },
   ]
 
-  selectedActivity!: Activity;
+  selectedEvent!: _Event;
 
   loading: boolean = false; //set to true later
 
@@ -43,26 +43,25 @@ export class ActivityTableComponent {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  newActivityVisible = false;
+  newEventVisible = false;
 
   onGlobalFilter(event: Event, dt2: any) {
     const inputValue = (event.target as HTMLInputElement).value;
     dt2.filterGlobal(inputValue, 'contains');
   }
 
-  navigateToActivity(activity: any) {
-    const tournId = this.activatedRoute.snapshot.paramMap.get('id');
-    if (tournId) {
-      // activity names should be unique for a tournament
-      this.router.navigate(['tourna', tournId, activity.name]);
+  navigateToEvent(event: any) {
+    const tournSlug = this.activatedRoute.snapshot.paramMap.get('slug');
+    if (tournSlug) {
+      this.router.navigate([tournSlug, event.id]);
     }
   }
 
-  toggleNewActivity(): void {
-    this.newActivityVisible = true;
+  toggleNewEvent(): void {
+    this.newEventVisible = true;
   }
 
-  addActivity(activity: Activity): void {
-    this.activities = [...this.activities, activity];
+  addActivity(event: _Event): void {
+    this.events = [...this.events, event];
   }
 }

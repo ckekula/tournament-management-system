@@ -2,29 +2,30 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
-import { Organization } from '../../../types/models';
 import { ButtonModule } from 'primeng/button';
+import { Tournament } from '../../../types/models';
 
 @Component({
-  selector: 'app-new-org',
+  selector: 'app-add-tourna',
   imports: [
     DialogModule,
     InputTextModule,
     ReactiveFormsModule,
     ButtonModule
   ],
-  templateUrl: './new-org.component.html',
-  styleUrl: './new-org.component.scss'
+  templateUrl: './add-tourna.component.html',
+  styleUrl: './add-tourna.component.scss'
 })
-export class NewOrgComponent {
+export class AddTournaComponent {
+
   @Input() visible = false;
   @Output() visibleChange = new EventEmitter<boolean>();
-  @Output() organizationCreated = new EventEmitter<Organization>();
+  @Output() tournamentCreated = new EventEmitter<Tournament>();
 
-  organizationForm: FormGroup;
+  tournamentForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.organizationForm = this.fb.group({
+    this.tournamentForm = this.fb.group({
       id: [this.generateUniqueId()],
       name: ['', [Validators.required, Validators.minLength(2)]],
       abbreviation: ['', [
@@ -40,15 +41,15 @@ export class NewOrgComponent {
   }
 
   submit(): void {
-    if (this.organizationForm.valid) {
-      this.organizationCreated.emit(this.organizationForm.value);
+    if (this.tournamentForm.valid) {
+      this.tournamentCreated.emit(this.tournamentForm.value);
       this.resetForm();
       this.closeDialog();
     }
   }
 
   resetForm(): void {
-    this.organizationForm.reset({
+    this.tournamentForm.reset({
       id: this.generateUniqueId(),
       name: '',
       abbreviation: ''

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Tournament } from '../../types/models';
 import { HeaderComponent } from "../../components/shared/header/header.component";
 import { FooterComponent } from '../../components/shared/footer/footer.component';
+import { AddTournaComponent } from '../../components/account/add-tourna/add-tourna.component';
 
 @Component({
   selector: 'app-organization',
@@ -14,12 +15,14 @@ import { FooterComponent } from '../../components/shared/footer/footer.component
     ButtonModule,
     CardModule,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AddTournaComponent
 ],
   templateUrl: './organization.component.html',
   styleUrl: './organization.component.scss'
 })
 export class OrganizationComponent {
+  
   constructor(
     private router: Router,
   ) {}
@@ -30,10 +33,10 @@ export class OrganizationComponent {
     { id: 3, name: "Sri Lanka University Games", year: 2027 },
   ]
 
-  newOrgVisible = false;
+  newTournaVisible = false;
 
-  toggleNewTournament(): void {
-    this.newOrgVisible = true;
+  toggleNewTourna(): void {
+    this.newTournaVisible = true;
   }
 
   addTournament(tournament: Tournament): void {
@@ -41,6 +44,6 @@ export class OrganizationComponent {
   }
 
   viewTournament(tournament: Tournament): void {
-    this.router.navigate(['/tournament', tournament.id]);
+    this.router.navigate(['/tourna', tournament.id]);
   }
 }

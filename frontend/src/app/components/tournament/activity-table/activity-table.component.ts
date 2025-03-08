@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Activity } from '../../../types/models';
+import { AddActivityComponent } from '../add-activity/add-activity.component';
 
 @Component({
   selector: 'app-activity-table',
@@ -20,14 +21,15 @@ import { Activity } from '../../../types/models';
     InputIconModule, 
     MultiSelectModule, 
     SelectModule, 
-    CommonModule
+    CommonModule,
+    AddActivityComponent
   ],
   templateUrl: './activity-table.component.html',
   styleUrl: './activity-table.component.scss'
 })
 export class ActivityTableComponent {
 
-  activity: Activity [] = [
+  activities: Activity [] = [
     { id: 1, name: 'Basketball' },
     { id: 2, name: 'Cricket' },
   ]
@@ -41,6 +43,8 @@ export class ActivityTableComponent {
     private activatedRoute: ActivatedRoute
   ) {}
 
+  newActivityVisible = false;
+
   onGlobalFilter(event: Event, dt2: any) {
     const inputValue = (event.target as HTMLInputElement).value;
     dt2.filterGlobal(inputValue, 'contains');
@@ -51,5 +55,13 @@ export class ActivityTableComponent {
     if (tournId) {
       this.router.navigate([tournId, 'act', activity.id]);
     }
+  }
+
+  toggleNewActivity(): void {
+    this.newActivityVisible = true;
+  }
+
+  addActivity(activity: Activity): void {
+    this.activities = [...this.activities, activity];
   }
 }

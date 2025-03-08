@@ -2,30 +2,31 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
-import { Organization } from '../../../types/models';
+import { Activity } from '../../../types/models';
 import { ButtonModule } from 'primeng/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-add-org',
+  selector: 'app-add-activity',
   imports: [
+    CommonModule,
     DialogModule,
     InputTextModule,
     ReactiveFormsModule,
     ButtonModule
   ],
-  templateUrl: './add-org.component.html',
-  styleUrl: './add-org.component.scss'
+  templateUrl: './add-activity.component.html',
+  styleUrl: './add-activity.component.scss'
 })
-export class AddOrgComponent {
-
+export class AddActivityComponent {
   @Input() visible = false;
   @Output() visibleChange = new EventEmitter<boolean>();
-  @Output() organizationCreated = new EventEmitter<Organization>();
+  @Output() activityCreated = new EventEmitter<Activity>();
 
-  organizationForm: FormGroup;
+  activityForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.organizationForm = this.fb.group({
+    this.activityForm = this.fb.group({
       id: [''],
       name: ['', [Validators.required, Validators.minLength(2)]],
       abbreviation: ['', [
@@ -37,15 +38,15 @@ export class AddOrgComponent {
   }
 
   submit(): void {
-    if (this.organizationForm.valid) {
-      this.organizationCreated.emit(this.organizationForm.value);
+    if (this.activityForm.valid) {
+      this.activityCreated.emit(this.activityForm.value);
       this.resetForm();
       this.closeDialog();
     }
   }
 
   resetForm(): void {
-    this.organizationForm.reset({
+    this.activityForm.reset({
       id: '',
       name: '',
       abbreviation: ''

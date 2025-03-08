@@ -1,6 +1,6 @@
 <p-table
     #dt2
-    [value]="activity"
+    [value]="activities"
     dataKey="id"
     [rows]="10"
     [rowsPerPageOptions]="[10, 25, 50]"
@@ -12,12 +12,15 @@
     [(selection)]="selectedActivity"
     (onRowSelect)="navigateToActivity($event.data)"
     >
+
     <ng-template pTemplate="caption">
         <div class="flex justify-between items-center">
-            <div class="text-blue-600 font-semibold mt-3 text-left">Search and click on any sport!</div>
+            <span (click)="toggleNewActivity()" class="text-blue-600 font-semibold mt-3 text-left cursor-pointer">
+                Add a sport
+            </span>            
             <p-iconField iconPosition="left" class="ml-auto">
                 <p-inputIcon>
-                    <i class="pi pi-search"></i>
+                    <i class=""></i>
                 </p-inputIcon>
                 <input 
                     pInputText 
@@ -27,30 +30,24 @@
             </p-iconField>
         </div>
     </ng-template>
-    <ng-template pTemplate="header">
-        <tr>
-            <th style="width:22%">Sport</th>
-        </tr>
-        <tr>
-            <th>
-                <p-columnFilter 
-                    type="text" 
-                    field="name" 
-                    placeholder="Search by name" 
-                    ariaLabel="Filter Name" />
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-activity>
+
+    <ng-template *ngFor="let activity of activities" pTemplate="body" let-activity>
         <tr [pSelectableRow]="activity">
             <td>
                 {{ activity.name }}
             </td>
         </tr>
     </ng-template>
+
     <ng-template pTemplate="emptymessage">
         <tr>
             <td colspan="5">No Activities found.</td>
         </tr>
     </ng-template>
+
 </p-table>
+
+<app-add-activity
+    [(visible)]="newActivityVisible" 
+    (activityCreated)="addActivity($event)">
+</app-add-activity>

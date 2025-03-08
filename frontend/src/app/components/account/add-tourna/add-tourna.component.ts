@@ -26,7 +26,7 @@ export class AddTournaComponent {
 
   constructor(private fb: FormBuilder) {
     this.tournamentForm = this.fb.group({
-      id: [this.generateUniqueId()],
+      id: [''],
       name: ['', [Validators.required, Validators.minLength(2)]],
       abbreviation: ['', [
         Validators.required, 
@@ -34,10 +34,6 @@ export class AddTournaComponent {
         Validators.maxLength(5)
       ]],
     });
-  }
-
-  private generateUniqueId(): number {
-    return Math.floor(Math.random() * 1000000);
   }
 
   submit(): void {
@@ -50,7 +46,7 @@ export class AddTournaComponent {
 
   resetForm(): void {
     this.tournamentForm.reset({
-      id: this.generateUniqueId(),
+      id: '',
       name: '',
       abbreviation: ''
     });

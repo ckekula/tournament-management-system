@@ -7,6 +7,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AccountComponent } from './pages/account/account.component';
 import { OrganizationComponent } from './pages/organization/organization.component';
 import { TournamentComponent } from './pages/tournament/tournament.component';
+import { ActivityComponent } from './pages/activity/activity.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -20,4 +21,5 @@ export const routes: Routes = [
     },
     { path: 'org/:id', component: OrganizationComponent },
     { path: 'tourna/:id', component: TournamentComponent },
+    { path: ':tournId/act/:id', component: ActivityComponent}
 ];

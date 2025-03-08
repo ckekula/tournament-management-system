@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { Organization } from '../../../types/models';
 import { CommonModule } from '@angular/common';
-import { CardModule } from 'primeng/card';
 import { Router } from '@angular/router';
 import { AddOrgComponent } from '../add-org/add-org.component';
+import { OrgCardComponent } from '../org-card/org-card.component';
 
 @Component({
   selector: 'app-org-list',
@@ -12,7 +12,7 @@ import { AddOrgComponent } from '../add-org/add-org.component';
     CommonModule,
     ButtonModule,
     AddOrgComponent,
-    CardModule
+    OrgCardComponent
   ],
   templateUrl: './org-list.component.html',
   styleUrl: './org-list.component.scss'

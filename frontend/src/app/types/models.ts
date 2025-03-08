@@ -13,5 +13,4 @@ export interface Tournament {
 export interface Activity {
     id: number;
     name: string;
-    tournament: Tournament;
 }

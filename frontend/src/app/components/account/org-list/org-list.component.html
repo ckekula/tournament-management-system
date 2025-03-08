@@ -21,25 +21,11 @@
         </div>
       } @else {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
-          <p-card 
+          <app-org-card 
             *ngFor="let org of organizations" 
-            [style]="{ width: '25rem', overflow: 'hidden' }">
-            <ng-template #header>
-                <img alt="Card" class="w-full" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
-            </ng-template>
-            <ng-template #title> {{ org.name }} </ng-template>
-            <ng-template #subtitle> {{ org.abbreviation }} </ng-template>
-            <ng-template #footer>
-                <div class="mt-1">
-                    <p-button 
-                      label="View" 
-                      class="w-full" 
-                      styleClass="w-full" 
-                      (click)="viewOrganization(org)"
-                    />
-                </div>
-            </ng-template>
-          </p-card>
+            [organization]="org" 
+            (view)="viewOrganization($event)">
+          </app-org-card>
         </div>
       }
     </div>

@@ -28,9 +28,9 @@ export class OrganizationComponent {
   ) {}
 
   tournaments = [
-    { id: 1, name: "Sri Lanka University Games", year: 2023 },
-    { id: 2, name: "Sri Lanka University Games", year: 2025 },
-    { id: 3, name: "Sri Lanka University Games", year: 2027 },
+    { id: 1, name: "Sri Lanka University Games", year: 2023, abbreviation: "slug2023" },
+    { id: 2, name: "Sri Lanka University Games", year: 2025, abbreviation: "slug2025" },
+    { id: 3, name: "Sri Lanka University Games", year: 2027, abbreviation: "slug2027" },
   ];
 
   newTournaVisible = false;
@@ -43,7 +43,7 @@ export class OrganizationComponent {
     this.tournaments = [...this.tournaments, tournament];
   }
 
-  viewTournament(tournament: Tournament): void {
-    this.router.navigate(['/tourna', tournament.id]);
+  navigateToTourna(tournaAbb: string, tournaId: number) {
+    this.router.navigate([`${tournaAbb}/${tournaId}`]);
   }
 }

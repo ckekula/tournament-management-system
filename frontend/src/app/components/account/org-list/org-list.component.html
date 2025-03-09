@@ -22,9 +22,9 @@
       } @else {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
           <app-org-card 
-            *ngFor="let org of organizations" 
+            *ngFor="let org of organizations; let i=index" 
             [organization]="org" 
-            (view)="viewOrganization($event)">
+            (view)="navigateToOrg(organizations[i].abbreviation, organizations[i].id)">
           </app-org-card>
         </div>
       }

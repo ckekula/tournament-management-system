@@ -8,6 +8,7 @@ export interface Tournament {
     id: number;
     name: string;
     year: number;
+    abbreviation: string;
 }
 
 export interface Activity {

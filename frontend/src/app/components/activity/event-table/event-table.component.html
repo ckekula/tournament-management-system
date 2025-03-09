@@ -10,7 +10,7 @@
     [tableStyle]="{ 'min-width': '75rem' }"
     selectionMode="single"
     [(selection)]="selectedEvent"
-    (onRowSelect)="navigateToEvent($event.data)"
+    (onRowSelect)="navigateToEvent($event.data.category)"
     >
 
     <ng-template pTemplate="caption">

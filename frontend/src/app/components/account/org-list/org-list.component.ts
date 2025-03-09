@@ -39,7 +39,7 @@ export class OrgListComponent {
     this.organizations = [...this.organizations, org];
   }
 
-  viewOrganization(org: Organization): void {
-    this.router.navigate(['/org', org.id]);
+  navigateToOrg(orgAbb: string, orgId: number): void {
+    this.router.navigate(['/org', orgAbb, orgId]);
   }
 }

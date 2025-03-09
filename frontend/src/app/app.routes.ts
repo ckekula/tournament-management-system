@@ -8,6 +8,7 @@ import { AccountComponent } from './pages/account/account.component';
 import { OrganizationComponent } from './pages/organization/organization.component';
 import { TournamentComponent } from './pages/tournament/tournament.component';
 import { ActivityComponent } from './pages/activity/activity.component';
+import { EventComponent } from './pages/event/event.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -19,7 +20,11 @@ export const routes: Routes = [
         component: AccountComponent,
         canActivate: [AuthGuard]
     },
-    { path: 'org/:id', component: OrganizationComponent },
-    { path: 'tourna/:id', component: TournamentComponent },
-    { path: ':tournId/act/:id', component: ActivityComponent}
+    { path: 'org/:slug/:id', component: OrganizationComponent },
+    { path: ':slug/:id', component: TournamentComponent },
+    { path: ':tournaSlug/:id/:actSlug', component: ActivityComponent },
+    { path: ':tournaSlug/:id/:actSlug/:catSlug', component: EventComponent },
+    // { path: ':slug/:id/:slug/:slug/:slug', component: StageComponent },
+    // { path: ':slug/:id/:slug/:slug/:slug/:slug', component: RoundComponent },
+    // { path: ':slug/:id/:slug/:slug/:slug/round/:id', component: MatchComponent },
 ];

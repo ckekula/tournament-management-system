@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { _Event } from '../../../types/models';
-import { AddActivityComponent } from '../../tournament/add-activity/add-activity.component';
 
 @Component({
   selector: 'app-event-table',
@@ -22,7 +21,6 @@ import { AddActivityComponent } from '../../tournament/add-activity/add-activity
     MultiSelectModule, 
     SelectModule, 
     CommonModule,
-    AddActivityComponent
   ],
   templateUrl: './event-table.component.html',
   styleUrl: './event-table.component.scss'
@@ -30,8 +28,8 @@ import { AddActivityComponent } from '../../tournament/add-activity/add-activity
 export class EventTableComponent {
 
   events: _Event [] = [
-    { id: 1, name: 'Mens Basketball', category: 'Men' },
-    { id: 2, name: 'Womens Basketball', category: 'Women' },
+    { id: 1, name: 'Basketball - Men', category: 'Men' },
+    { id: 2, name: 'Basketball - Women', category: 'Women' },
   ]
 
   selectedEvent!: _Event;
@@ -40,7 +38,7 @@ export class EventTableComponent {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private route: ActivatedRoute
   ) {}
 
   newEventVisible = false;
@@ -50,11 +48,13 @@ export class EventTableComponent {
     dt2.filterGlobal(inputValue, 'contains');
   }
 
-  navigateToEvent(event: any) {
-    const tournSlug = this.activatedRoute.snapshot.paramMap.get('slug');
-    if (tournSlug) {
-      this.router.navigate([tournSlug, event.id]);
-    }
+  navigateToEvent(category: string) {
+    const tournaSlug = this.route.snapshot.paramMap.get('tournaSlug');
+    const tournaId = this.route.snapshot.paramMap.get('id');
+    const actSlug = this.route.snapshot.paramMap.get('actSlug');
+    const categorySlug = category.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+
+    this.router.navigate([tournaSlug, tournaId, actSlug, categorySlug], { relativeTo: this.route.root });
   }
 
   toggleNewEvent(): void {

@@ -40,7 +40,7 @@ export class ActivityTableComponent {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private route: ActivatedRoute
   ) {}
 
   newActivityVisible = false;
@@ -50,12 +50,12 @@ export class ActivityTableComponent {
     dt2.filterGlobal(inputValue, 'contains');
   }
 
-  navigateToActivity(activity: any) {
-    const tournId = this.activatedRoute.snapshot.paramMap.get('id');
-    if (tournId) {
-      // activity names should be unique for a tournament
-      this.router.navigate(['tourna', tournId, activity.name]);
-    }
+  navigateToActivity(activityName: string) {
+    const tournaSlug = this.route.snapshot.paramMap.get('slug');
+    const tournaId = this.route.snapshot.paramMap.get('id');
+    const actName = activityName.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+
+    this.router.navigate([tournaSlug, tournaId, actName], { relativeTo: this.route.root });
   }
 
   toggleNewActivity(): void {

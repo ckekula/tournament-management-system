@@ -46,3 +46,8 @@
     </ng-template>
 
 </p-table>
+
+<app-add-event
+    [(visible)]="newEventVisible" 
+    (eventCreated)="addEvent($event)">
+</app-add-event>

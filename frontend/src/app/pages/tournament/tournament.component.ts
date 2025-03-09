@@ -6,8 +6,7 @@ import { Tournament } from '../../types/models';
 import { HeaderComponent } from "../../components/shared/header/header.component";
 import { FooterComponent } from '../../components/shared/footer/footer.component';
 import { ActivityTableComponent } from "../../components/tournament/activity-table/activity-table.component";
-import { TournaStandingsComponent } from "../../components/tournament/tourna-standings/tourna-standings.component";
-import { TopThreeComponent } from "../../components/shared/top-three/top-three.component";
+import { StandingsTableComponent } from '../../components/shared/standings-table/standings-table.component';
 
 @Component({
   selector: 'app-tournament',
@@ -17,8 +16,7 @@ import { TopThreeComponent } from "../../components/shared/top-three/top-three.c
     HeaderComponent,
     FooterComponent,
     ActivityTableComponent,
-    TournaStandingsComponent,
-    TopThreeComponent
+    StandingsTableComponent,
 ],
   templateUrl: './tournament.component.html',
   styleUrl: './tournament.component.scss'

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TournaStandingsComponent } from './tourna-standings.component';
+import { StandingsTableComponent } from './standings-table.component';
 
-describe('TournaStandingsComponent', () => {
-  let component: TournaStandingsComponent;
-  let fixture: ComponentFixture<TournaStandingsComponent>;
+describe('StandingsTableComponent', () => {
+  let component: StandingsTableComponent;
+  let fixture: ComponentFixture<StandingsTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TournaStandingsComponent]
+      imports: [StandingsTableComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TournaStandingsComponent);
+    fixture = TestBed.createComponent(StandingsTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

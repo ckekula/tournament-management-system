@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { _Event } from '../../../types/models';
+import { AddEventComponent } from '../add-event/add-event.component';
 
 @Component({
   selector: 'app-event-table',
@@ -21,6 +22,7 @@ import { _Event } from '../../../types/models';
     MultiSelectModule, 
     SelectModule, 
     CommonModule,
+    AddEventComponent
   ],
   templateUrl: './event-table.component.html',
   styleUrl: './event-table.component.scss'
@@ -61,7 +63,7 @@ export class EventTableComponent {
     this.newEventVisible = true;
   }
 
-  addActivity(event: _Event): void {
+  addEvent(event: _Event): void {
     this.events = [...this.events, event];
   }
 }

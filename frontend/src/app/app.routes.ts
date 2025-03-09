@@ -24,7 +24,5 @@ export const routes: Routes = [
     { path: ':slug/:id', component: TournamentComponent },
     { path: ':tournaSlug/:id/:actSlug', component: ActivityComponent },
     { path: ':tournaSlug/:id/:actSlug/:catSlug', component: EventComponent },
-    // { path: ':slug/:id/:slug/:slug/:slug', component: StageComponent },
-    // { path: ':slug/:id/:slug/:slug/:slug/:slug', component: RoundComponent },
-    // { path: ':slug/:id/:slug/:slug/:slug/round/:id', component: MatchComponent },
+    // { path: ':tournaSlug/:tournaId/:actSlug/:catSlug/:matchSlug/:matchId', component: MatchComponent },
 ];

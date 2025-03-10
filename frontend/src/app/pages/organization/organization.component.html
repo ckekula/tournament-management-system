@@ -1,0 +1,40 @@
+<div>
+  <app-header></app-header>
+
+  <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+    <div class="text-700 text-center">
+      <div class="text-blue-600 font-bold mb-3">WELCOME TO</div>
+      <div class="text-900 font-bold text-5xl mb-3">Organization Name</div>
+      <button 
+        pButton 
+        pRipple 
+        label="Create Tournament" 
+        (click)="toggleNewTourna()" 
+        class="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap">
+      </button>
+    </div>
+  </div>
+
+  <div class="surface-section px-4 py-4 md:px-6 lg:px-8">
+      @if (tournaments.length === 0) {
+        <div class="text-center">    
+          <div class="text-700 text-2xl mb-5">This organization doesn't have any tournaments yet.</div>
+        </div>
+      } @else {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
+          <app-tourna-card 
+            *ngFor="let tourna of tournaments" 
+            [tournament]="tourna" 
+            (view)="navigateToTourna(tourna.abbreviation, tourna.id)">
+          </app-tourna-card>
+        </div>
+      }
+  </div>
+
+  <app-add-tourna
+    [(visible)]="newTournaVisible" 
+    (tournamentCreated)="addTournament($event)">
+  </app-add-tourna>
+
+  <app-footer></app-footer>
+</div>

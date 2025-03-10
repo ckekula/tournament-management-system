@@ -23,6 +23,7 @@
     "@angular/router": "^19.2.0",
     "@angular/ssr": "^19.2.0",
     "@fortawesome/angular-fontawesome": "^1.0.0",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@primeng/themes": "^19.0.9",
     "angular-code-input": "^2.0.0",
     "apollo-angular": "^8.0.2",

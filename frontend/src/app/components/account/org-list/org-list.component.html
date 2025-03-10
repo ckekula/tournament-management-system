@@ -1,0 +1,39 @@
+<div>
+
+    <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+      <div class="text-700 text-center">
+        <div class="text-blue-600 font-bold mb-3">WELCOME BACK!</div>
+        <div class="text-900 font-bold text-5xl mb-3">Your Organizations</div>
+        <button 
+          pButton 
+          pRipple 
+          label="Create Organization" 
+          (click)="toggleNewOrg()" 
+          class="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap">
+        </button>
+      </div>
+    </div>
+  
+    <div class="surface-section px-4 py-4 md:px-6 lg:px-8">
+      @if (organizations.length === 0) {
+        <div class="text-center">    
+          <div class="text-700 text-2xl mb-5">You don't have any organizations yet.</div>
+        </div>
+      } @else {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
+          <app-org-card 
+            *ngFor="let org of organizations; let i=index" 
+            [organization]="org" 
+            (view)="navigateToOrg(organizations[i].abbreviation, organizations[i].id)">
+          </app-org-card>
+        </div>
+      }
+    </div>
+  
+    <app-add-org 
+      [(visible)]="newOrgVisible" 
+      (organizationCreated)="addOrganization($event)">
+    </app-add-org>
+  
+  </div>
+  

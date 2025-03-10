@@ -1,0 +1,18 @@
+<p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+    <ng-template #header>
+      <img alt="Card" class="w-full" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
+    </ng-template>
+    <ng-template #title> {{ tournament.name }} </ng-template>
+    <ng-template #subtitle> {{ tournament.year }} </ng-template>
+    <ng-template #footer>
+      <div class="mt-1">
+        <p-button 
+          label="View" 
+          class="w-full" 
+          styleClass="w-full" 
+          (click)="onView()"
+        />
+      </div>
+    </ng-template>
+</p-card>
+  

@@ -1,0 +1,59 @@
+<p-dialog 
+  [(visible)]="visible" 
+  (visibleChange)="visibleChange.emit($event)"
+  header="Create Organization" 
+  [modal]="true" 
+  [style]="{ width: '450px' }">
+  <form [formGroup]="eventForm" (ngSubmit)="submit()">
+    <div class="p-fluid">
+      <div class="p-field mb-4">
+        <label for="name" class="block mb-2">Event Name</label>
+        <input 
+          id="name" 
+          pInputText 
+          formControlName="name" 
+          placeholder="Enter event name (optional)"
+        />
+      </div>
+  
+      <div class="p-field mb-4">
+        <label for="category" class="block mb-2">Category</label>
+        <input 
+          id="category" 
+          pInputText 
+          formControlName="category" 
+          placeholder="Enter category (2-5 characters)"
+          [class.ng-invalid]="eventForm.get('category')?.invalid && eventForm.get('category')?.touched"
+        />
+        @if (eventForm.get('category')?.invalid && eventForm.get('category')?.touched) {
+          <small class="p-error block">
+            @if (eventForm.get('category')?.errors?.['required']) {
+              category is required
+            } @else if (eventForm.get('category')?.errors?.['minlength']) {
+              category must be at least 2 characters
+            } @else if (eventForm.get('category')?.errors?.['maxlength']) {
+              category cannot exceed 5 characters
+            }
+          </small>
+        }
+      </div>
+  
+      <div class="p-field">
+        <button 
+          pButton 
+          type="submit" 
+          label="Create" 
+          [disabled]="eventForm.invalid" 
+          class="p-button-primary">
+        </button>
+        <button 
+          pButton 
+          type="button" 
+          label="Cancel" 
+          (click)="closeDialog()" 
+          class="p-button-secondary ml-2">
+        </button>
+      </div>
+    </div>
+  </form>
+</p-dialog>

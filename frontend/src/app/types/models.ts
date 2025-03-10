@@ -8,10 +8,16 @@ export interface Tournament {
     id: number;
     name: string;
     year: number;
+    abbreviation: string;
 }
 
 export interface Activity {
     id: number;
     name: string;
-    tournament: Tournament;
+}
+
+export interface _Event {
+    id: number;
+    name: string;
+    category: string;
 }
